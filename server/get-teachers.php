@@ -8,7 +8,7 @@
     $res = new R();
     $res->name = $row['name'];
     $res->email = $row['email'];
-    $res->telNumber = $row['telNumber'];
+    $res->tellNumber = $row['tellNumber'];
     $res->password = $row['password'];
     $res->description = $row['description'];
     $res->photoLink = $row['photoLink'];
