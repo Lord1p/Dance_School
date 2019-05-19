@@ -16,10 +16,9 @@
     trainers.password,
     trainers.description,
     trainers.photoLink FROM
-    orders,trainers,courses,styles
+    trainers,courses,styles
     WHERE
-    orders.clientId = :id and
-    orders.courseId = Courses.courseId and
+    courses.teacherId = :id and
     styles.styleId = courses.styleId and
     courses.teacherId = trainers.teacherId
     ");
@@ -48,6 +47,6 @@
     
     array_push($JSONres,$res);
     }
-    $Res=array('clCourses'=>$JSONres);
+    $Res=array('trCourses'=>$JSONres);
     echo json_encode($Res);
 ?>
