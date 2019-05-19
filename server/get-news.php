@@ -6,7 +6,7 @@
 
     while($row = $projects->fetch(PDO::FETCH_ASSOC)){
     $res = new R();
-    $res->idNews = $row['idNews'];
+    $res->newsId = $row['newsId'];
     $res->date = $row['date'];
     $res->header = $row['header'];
     $res->text = $row['text'];
