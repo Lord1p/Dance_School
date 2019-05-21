@@ -12,7 +12,7 @@
       init();
   
       function init() {
-        $http.get('/get-teachers')
+        $http.get('/get-teachers.php')
           .then(res => {
             console.log(res.data.teachers);
             $scope.teachers = res.data.teachers;
