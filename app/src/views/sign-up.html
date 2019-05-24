@@ -4,10 +4,16 @@
       Имя:
       <input type="text" name="userFirstName" ng-model="user.firstName" />
     </label>
+    <div class="error" ng-if="reg.userFirstName.$invalid">
+      Введите Имя!
+    </div>
     <label>
       Фамилия:
       <input type="text" name="userLastName" ng-model="user.lastName" />
     </label>
+    <div class="error" ng-if="reg.userLastName.$invalid">
+      Введите Фамилию!
+    </div>
     <label>
       Телефон:
       <input type="tel" name="phoneNumber" ng-model="user.tellNumber" />
@@ -26,6 +32,9 @@
       Пароль:
       <input type="password" name="password" ng-model="user.password" />
     </label>
+    <div class="error" ng-if="reg.userLastName.$invalid">
+      Введите Пароль!
+    </div>
     <label>
       Я согласен получать рассылку новостей и уведомлений
       <input type="checkbox" name="mail" ng-model="user.mailSending" />
@@ -36,5 +45,8 @@
     >
       Регистрация
     </button>
+    <div ng-if="!isOk" class="error">
+      Воу воу, похоже у нас есть пользователь с похожими данными!
+    </div>
   </form>
 </div>

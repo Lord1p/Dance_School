@@ -26,11 +26,11 @@
             <a class="nav-link" href="#!styles">Стили</a>
           </li>
           <li class="nav-item" ng-if="$rootScope.currentUser.type != $rootScope.userType.anonim">
-            <a class="nav-link" href="#">Мои курсы</a>
+            <a class="nav-link" href="#!mycourses">Мои курсы</a>
           </li>
           <li class="nav-item" ng-if="$rootScope.currentUser.type == $rootScope.userType.anonim">
             <span class="row right">
-              <a class="nav-link" href="#!signin">Вход</a><a class="nav-link" href="#!sign-up">Регистрация</a>
+              <a class="nav-link" href="#!sign-in">Вход</a><a class="nav-link" href="#!sign-up">Регистрация</a>
             </span>
           </li>
         </ul>
@@ -41,9 +41,11 @@
   <script src="./app/libs/angular.min.js"></script>
   <script src="./app/libs/angular-route.min.js"></script>
   <script src="./app/src/app.module.js"></script>
+  <script src="./app/src/services/encryptor.service.js"></script>
   <script src="./app/src/controllers/news.controller.js"></script>
   <script src="./app/src/controllers/styles.controller.js"></script>
   <script src="./app/src/controllers/courses.controller.js"></script>
   <script src="./app/src/controllers/trainers.controller.js"></script>
   <script src="./app/src/controllers/sign-up.controller.js"></script>
+  <script src="./app/src/controllers/sign-in.controller.js"></script>
 </hrml>

@@ -11,6 +11,9 @@
       Пароль:
       <input type="password" name="password" ng-model="user.password" />
     </label>
-    <button ng-if="login.email.$valid" ng-click="logIn()">Регистрация</button>
+    <button ng-if="login.email.$valid" ng-click="logIn()">Вход</button>
   </form>
+  <div ng-if="!isOk" class="error">
+    Воу воу, похоже данные введены не верно
+  </div>
 </div>
