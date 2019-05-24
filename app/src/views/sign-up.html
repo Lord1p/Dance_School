@@ -30,6 +30,11 @@
       Я согласен получать рассылку новостей и уведомлений
       <input type="checkbox" name="mail" ng-model="user.mailSending" />
     </label>
-    <button ng-click="registration()">Регистрация</button>
+    <button
+      ng-if="reg.email.$valid && reg.phoneNumber.$valid"
+      ng-click="registration()"
+    >
+      Регистрация
+    </button>
   </form>
 </div>
