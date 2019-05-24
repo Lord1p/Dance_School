@@ -1,8 +1,7 @@
 <?php
     include("connect.php");
     $id = $_REQUEST['id'];
-
-   
+    
     $projects = $dbh->prepare("SELECT 
     orders.orderId,
     orders.code,
