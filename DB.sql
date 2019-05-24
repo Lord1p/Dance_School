@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Май 24 2019 г., 20:15
+-- Время создания: Май 24 2019 г., 21:10
 -- Версия сервера: 10.1.38-MariaDB
 -- Версия PHP: 7.3.4
 
@@ -30,45 +30,75 @@ USE `dance_school`;
 -- Структура таблицы `admins`
 --
 
-CREATE TABLE `admins` (
+DROP TABLE IF EXISTS `admins`;
+CREATE TABLE IF NOT EXISTS `admins` (
   `name` varchar(40) NOT NULL,
   `email` varchar(20) NOT NULL,
   `password` varchar(60) NOT NULL,
-  `avatarLink` varchar(60) NOT NULL DEFAULT './avatars/admins/default.jpg'
+  `avatarLink` varchar(60) NOT NULL DEFAULT './avatars/admins/default.jpg',
+  PRIMARY KEY (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
+--
+-- Очистить таблицу перед добавлением данных `admins`
+--
+
+TRUNCATE TABLE `admins`;
 -- --------------------------------------------------------
 
 --
 -- Структура таблицы `clients`
 --
 
-CREATE TABLE `clients` (
+DROP TABLE IF EXISTS `clients`;
+CREATE TABLE IF NOT EXISTS `clients` (
   `name` varchar(100) NOT NULL,
   `email` varchar(50) NOT NULL,
   `tellNumber` varchar(15) NOT NULL,
   `password` varchar(30) NOT NULL,
-  `clientId` int(11) NOT NULL,
+  `clientId` int(11) NOT NULL AUTO_INCREMENT,
   `avatarLink` varchar(60) NOT NULL DEFAULT './avatars/clients/default.jpg',
-  `mailSending` bit(1) NOT NULL DEFAULT b'0'
+  `mailSending` bit(1) NOT NULL DEFAULT b'0',
+  PRIMARY KEY (`clientId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
+--
+-- Очистить таблицу перед добавлением данных `clients`
+--
+
+TRUNCATE TABLE `clients`;
 -- --------------------------------------------------------
 
 --
 -- Структура таблицы `courses`
 --
 
-CREATE TABLE `courses` (
-  `courseId` int(11) NOT NULL,
+DROP TABLE IF EXISTS `courses`;
+CREATE TABLE IF NOT EXISTS `courses` (
+  `courseId` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `teacherId` int(11) NOT NULL,
   `countOfPlaces` int(11) NOT NULL,
   `price` int(11) NOT NULL,
   `styleId` int(11) NOT NULL,
   `description` mediumtext NOT NULL,
-  `duration` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+  `duration` int(11) NOT NULL,
+  PRIMARY KEY (`courseId`),
+  KEY `Tid` (`teacherId`),
+  KEY `Sid` (`styleId`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=cp1251;
+
+--
+-- Очистить таблицу перед добавлением данных `courses`
+--
+
+TRUNCATE TABLE `courses`;
+--
+-- Дамп данных таблицы `courses`
+--
+
+INSERT INTO `courses` (`courseId`, `name`, `teacherId`, `countOfPlaces`, `price`, `styleId`, `description`, `duration`) VALUES
+(1, 'Бальные танцы для 10 классов', 1, 20, 100, 1, 'В следующем году выпускной, а вы ещё не умеете танцевать? Не отчаивайтесь, у нас вы быстро освоите бальные танцы на мастерском уровне и никто более не сможет вас упрекнуть.', 10);
 
 -- --------------------------------------------------------
 
@@ -76,26 +106,42 @@ CREATE TABLE `courses` (
 -- Структура таблицы `lessons`
 --
 
-CREATE TABLE `lessons` (
-  `lessonId` int(11) NOT NULL,
+DROP TABLE IF EXISTS `lessons`;
+CREATE TABLE IF NOT EXISTS `lessons` (
+  `lessonId` int(11) NOT NULL AUTO_INCREMENT,
   `date` date NOT NULL,
   `courseId` int(11) NOT NULL,
-  `roomID` int(11) NOT NULL
+  `roomID` int(11) NOT NULL,
+  PRIMARY KEY (`lessonId`),
+  KEY `Coid` (`courseId`),
+  KEY `lessons_ibfk_2` (`roomID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
+--
+-- Очистить таблицу перед добавлением данных `lessons`
+--
+
+TRUNCATE TABLE `lessons`;
 -- --------------------------------------------------------
 
 --
 -- Структура таблицы `news`
 --
 
-CREATE TABLE `news` (
-  `newsId` int(11) NOT NULL,
+DROP TABLE IF EXISTS `news`;
+CREATE TABLE IF NOT EXISTS `news` (
+  `newsId` int(11) NOT NULL AUTO_INCREMENT,
   `date` date NOT NULL,
   `header` mediumtext NOT NULL,
-  `text` mediumtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+  `text` mediumtext NOT NULL,
+  PRIMARY KEY (`newsId`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=cp1251;
 
+--
+-- Очистить таблицу перед добавлением данных `news`
+--
+
+TRUNCATE TABLE `news`;
 --
 -- Дамп данных таблицы `news`
 --
@@ -109,34 +155,64 @@ INSERT INTO `news` (`newsId`, `date`, `header`, `text`) VALUES
 -- Структура таблицы `orders`
 --
 
-CREATE TABLE `orders` (
-  `orderId` int(11) NOT NULL,
+DROP TABLE IF EXISTS `orders`;
+CREATE TABLE IF NOT EXISTS `orders` (
+  `orderId` int(11) NOT NULL AUTO_INCREMENT,
   `clientId` int(11) NOT NULL,
   `courseId` int(11) NOT NULL,
-  `code` varchar(20) NOT NULL
+  `code` varchar(20) NOT NULL,
+  PRIMARY KEY (`orderId`),
+  KEY `Clid` (`clientId`),
+  KEY `Coid` (`courseId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
+--
+-- Очистить таблицу перед добавлением данных `orders`
+--
+
+TRUNCATE TABLE `orders`;
 -- --------------------------------------------------------
 
 --
 -- Структура таблицы `rooms`
 --
 
-CREATE TABLE `rooms` (
-  `roomId` int(11) NOT NULL,
-  `roomNumber` int(11) NOT NULL
+DROP TABLE IF EXISTS `rooms`;
+CREATE TABLE IF NOT EXISTS `rooms` (
+  `roomId` int(11) NOT NULL AUTO_INCREMENT,
+  `roomNumber` int(11) NOT NULL,
+  PRIMARY KEY (`roomId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
+--
+-- Очистить таблицу перед добавлением данных `rooms`
+--
+
+TRUNCATE TABLE `rooms`;
 -- --------------------------------------------------------
 
 --
 -- Структура таблицы `styles`
 --
 
-CREATE TABLE `styles` (
-  `styleId` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+DROP TABLE IF EXISTS `styles`;
+CREATE TABLE IF NOT EXISTS `styles` (
+  `styleId` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  PRIMARY KEY (`styleId`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=cp1251;
+
+--
+-- Очистить таблицу перед добавлением данных `styles`
+--
+
+TRUNCATE TABLE `styles`;
+--
+-- Дамп данных таблицы `styles`
+--
+
+INSERT INTO `styles` (`styleId`, `name`) VALUES
+(1, 'Бальные танцы');
 
 -- --------------------------------------------------------
 
@@ -144,138 +220,29 @@ CREATE TABLE `styles` (
 -- Структура таблицы `trainers`
 --
 
-CREATE TABLE `trainers` (
+DROP TABLE IF EXISTS `trainers`;
+CREATE TABLE IF NOT EXISTS `trainers` (
   `name` varchar(100) NOT NULL,
   `email` varchar(50) NOT NULL,
   `tellNumber` varchar(15) NOT NULL,
   `password` varchar(30) NOT NULL,
   `description` mediumtext NOT NULL,
   `photoLink` varchar(200) NOT NULL DEFAULT './avatars/trainers/default.jpg',
-  `trainerId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+  `trainerId` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`trainerId`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=cp1251;
 
+--
+-- Очистить таблицу перед добавлением данных `trainers`
+--
+
+TRUNCATE TABLE `trainers`;
 --
 -- Дамп данных таблицы `trainers`
 --
 
 INSERT INTO `trainers` (`name`, `email`, `tellNumber`, `password`, `description`, `photoLink`, `trainerId`) VALUES
 ('Иванов Иван Иванович', 'ivan.ivanich1986@gmail.com', '+380541234567', '00000000', 'Родился и вырос в городе Харьков. Обучался и истинных мастеров своего дела. Участвовал в различных конкурсах и занимал призовые места. Знает о танцах всё.', './avatars/trainers/default.jpg', 1);
-
---
--- Индексы сохранённых таблиц
---
-
---
--- Индексы таблицы `admins`
---
-ALTER TABLE `admins`
-  ADD PRIMARY KEY (`email`);
-
---
--- Индексы таблицы `clients`
---
-ALTER TABLE `clients`
-  ADD PRIMARY KEY (`clientId`);
-
---
--- Индексы таблицы `courses`
---
-ALTER TABLE `courses`
-  ADD PRIMARY KEY (`courseId`),
-  ADD KEY `Tid` (`teacherId`),
-  ADD KEY `Sid` (`styleId`);
-
---
--- Индексы таблицы `lessons`
---
-ALTER TABLE `lessons`
-  ADD PRIMARY KEY (`lessonId`),
-  ADD KEY `Coid` (`courseId`),
-  ADD KEY `lessons_ibfk_2` (`roomID`);
-
---
--- Индексы таблицы `news`
---
-ALTER TABLE `news`
-  ADD PRIMARY KEY (`newsId`);
-
---
--- Индексы таблицы `orders`
---
-ALTER TABLE `orders`
-  ADD PRIMARY KEY (`orderId`),
-  ADD KEY `Clid` (`clientId`),
-  ADD KEY `Coid` (`courseId`);
-
---
--- Индексы таблицы `rooms`
---
-ALTER TABLE `rooms`
-  ADD PRIMARY KEY (`roomId`);
-
---
--- Индексы таблицы `styles`
---
-ALTER TABLE `styles`
-  ADD PRIMARY KEY (`styleId`);
-
---
--- Индексы таблицы `trainers`
---
-ALTER TABLE `trainers`
-  ADD PRIMARY KEY (`trainerId`);
-
---
--- AUTO_INCREMENT для сохранённых таблиц
---
-
---
--- AUTO_INCREMENT для таблицы `clients`
---
-ALTER TABLE `clients`
-  MODIFY `clientId` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT для таблицы `courses`
---
-ALTER TABLE `courses`
-  MODIFY `courseId` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT для таблицы `lessons`
---
-ALTER TABLE `lessons`
-  MODIFY `lessonId` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT для таблицы `news`
---
-ALTER TABLE `news`
-  MODIFY `newsId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT для таблицы `orders`
---
-ALTER TABLE `orders`
-  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT для таблицы `rooms`
---
-ALTER TABLE `rooms`
-  MODIFY `roomId` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT для таблицы `styles`
---
-ALTER TABLE `styles`
-  MODIFY `styleId` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT для таблицы `trainers`
---
-ALTER TABLE `trainers`
-  MODIFY `trainerId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц

@@ -30,21 +30,21 @@
     while($row = $projects->fetch(PDO::FETCH_ASSOC)){
 
     $res = new R();
-    $res->courses->courseId = $row['courses.courseId'];
-    $res->courses->name = $row['courses.name'];
-    $res->courses->teacherId = $row['courses.teacherId'];
-    $res->courses->countOfPlace = $row['courses.countOfPlace'];
-    $res->courses->price = $row['courses.price'];
-    $res->courses->description = $row['courses.description'];
-    $res->courses->duration = $row['courses.duration'];
-    $res->styles->styleId = $row['styles.styleId'];
-    $res->styles->name = $row['styles.name'];
-    $res->trainers->name = $row['trainers.name'];
-    $res->trainers->email = $row['trainers.email'];
-    $res->trainers->tellNumber = $row['trainers.tellNumber'];
-    $res->trainers->password = $row['trainers.password'];
-    $res->trainers->description = $row['trainers.description'];
-    $res->trainers->photoLink = $row['trainers.photoLink'];
+    $res->courseId = $row['courses.courseId'];
+    $res->courseName = $row['courses.name'];
+    $res->teacherId = $row['courses.teacherId'];
+    $res->countOfPlace = $row['courses.countOfPlace'];
+    $res->price = $row['courses.price'];
+    $res->courseDescription = $row['courses.description'];
+    $res->duration = $row['courses.duration'];
+    $res->styleId = $row['styles.styleId'];
+    $res->styleName = $row['styles.name'];
+    $res->trainerName = $row['trainers.name'];
+    $res->email = $row['trainers.email'];
+    $res->tellNumber = $row['trainers.tellNumber'];
+    $res->password = $row['trainers.password'];
+    $res->trainerDescription = $row['trainers.description'];
+    $res->photoLink = $row['trainers.photoLink'];
     
     array_push($JSONres,$res);
     }

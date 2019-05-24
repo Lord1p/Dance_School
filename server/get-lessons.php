@@ -19,11 +19,11 @@
     while($row = $projects->fetch(PDO::FETCH_ASSOC)){
 
     $res = new R();
-    $res->lessons->courseId = $row['lessons.courseId'];
-    $res->lessons->lessonId = $row['lessons.lessonId'];
-    $res->lessons->date = $row['lessons.date'];
-    $res->lessons->roomId = $row['lessons.roomId'];
-    $res->rooms->roomNumber = $row['rooms.roomNumber'];
+    $res->courseId = $row['lessons.courseId'];
+    $res->lessonId = $row['lessons.lessonId'];
+    $res->date = $row['lessons.date'];
+    $res->roomId = $row['lessons.roomId'];
+    $res->roomNumber = $row['rooms.roomNumber'];
     
     array_push($JSONres,$res);
     }
