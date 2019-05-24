@@ -91,15 +91,15 @@
     $Select->bindValue(':id',$data->trainerId);
     $Select->execute();
 
-    $cl=$Select->fetch(PDO::FETCH_ASSOC)[0];
+    $cl=$Select->fetch(PDO::FETCH_ASSOC);
 
     $res = new R();
-    $res->name = $cl['trainers.name'];
-    $res->email = $cl['trainers.email'];
-    $res->tellNumber = $cl['trainers.tellNumber'];
-    $res->trainerId = $cl['trainers.trainerId'];
-    $res->avatarLink = $cl['trainers.photoLink'];
-    $res->description = $cl['trainers.description'];
+    $res->name = $cl['name'];
+    $res->email = $cl['email'];
+    $res->tellNumber = $cl['tellNumber'];
+    $res->trainerId = $cl['trainerId'];
+    $res->avatarLink = $cl['photoLink'];
+    $res->description = $cl['description'];
     
     echo json_encode($res);
     }

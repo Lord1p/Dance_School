@@ -34,11 +34,11 @@
     {
     
     $res = new R();
-    $res->lessonId = $row['lessons.lessonId'];
-    $res->date = $row['lessons.date'];
-    $res->courseId = $row['lessons.courseId'];
-    $res->roomId = $row['rooms.roomId'];
-    $res->roomNumber = $row['rooms.roomNumber'];
+    $res->lessonId = $row['lessonId'];
+    $res->date = $row['date'];
+    $res->courseId = $row['courseId'];
+    $res->roomId = $row['roomId'];
+    $res->roomNumber = $row['roomNumber'];
     
     array_push($JSONres,$res);
     }
