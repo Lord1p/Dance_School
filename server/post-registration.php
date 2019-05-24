@@ -13,7 +13,6 @@
     $Insert->bindValue(':p',$data->password);
     $Insert->bindValue(':m',$data->mailSending);
     $Insert->execute();
-    $clientId = $Insert->insert_id;
 
     $Select = $dbh->prepare("SELECT
     name,
@@ -25,9 +24,9 @@
     FROM
     clients
     WHERE
-    clientId = :id
+    email = :id
     ");
-    $Select->bindValue(':id',$clientId);
+    $Select->bindValue(':id',$data->email);
     $Select->execute();
 
     $cl=$Select->fetch(PDO::FETCH_ASSOC)[0];
