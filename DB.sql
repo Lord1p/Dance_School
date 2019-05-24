@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Май 24 2019 г., 18:28
+-- Время создания: Май 24 2019 г., 20:00
 -- Версия сервера: 10.1.38-MariaDB
 -- Версия PHP: 7.3.4
 
@@ -44,14 +44,14 @@ CREATE TABLE `admins` (
 --
 
 CREATE TABLE `clients` (
-  `name` varchar(100) COLLATE cp1251_bin NOT NULL,
-  `email` varchar(50) COLLATE cp1251_bin NOT NULL,
-  `tellNumber` varchar(15) COLLATE cp1251_bin NOT NULL,
-  `password` varchar(30) COLLATE cp1251_bin NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `tellNumber` varchar(15) NOT NULL,
+  `password` varchar(30) NOT NULL,
   `clientId` int(11) NOT NULL,
-  `avatarLink` varchar(60) COLLATE cp1251_bin NOT NULL,
+  `avatarLink` varchar(60) NOT NULL,
   `mailSending` bit(1) NOT NULL DEFAULT b'0'
-) ENGINE=InnoDB DEFAULT CHARSET=cp1251 COLLATE=cp1251_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 -- --------------------------------------------------------
 
@@ -66,7 +66,7 @@ CREATE TABLE `courses` (
   `countOfPlaces` int(11) NOT NULL,
   `price` int(11) NOT NULL,
   `styleId` int(11) NOT NULL,
-  `description` text NOT NULL,
+  `description` mediumtext NOT NULL,
   `duration` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
@@ -92,9 +92,16 @@ CREATE TABLE `lessons` (
 CREATE TABLE `news` (
   `newsId` int(11) NOT NULL,
   `date` date NOT NULL,
-  `header` text COLLATE cp1251_bin NOT NULL,
-  `text` text COLLATE cp1251_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=cp1251 COLLATE=cp1251_bin;
+  `header` mediumtext NOT NULL,
+  `text` mediumtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+--
+-- Дамп данных таблицы `news`
+--
+
+INSERT INTO `news` (`newsId`, `date`, `header`, `text`) VALUES
+(1, '2019-05-24', 'У нас появился сайт!', 'Доброго всем денёчка! У нас наконец-то появился сайт! Скоро вы сможете увидеть много нового функционала на нём');
 
 -- --------------------------------------------------------
 
@@ -106,8 +113,8 @@ CREATE TABLE `orders` (
   `orderId` int(11) NOT NULL,
   `clientId` int(11) NOT NULL,
   `courseId` int(11) NOT NULL,
-  `code` varchar(20) COLLATE cp1251_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=cp1251 COLLATE=cp1251_bin;
+  `code` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 -- --------------------------------------------------------
 
@@ -128,8 +135,8 @@ CREATE TABLE `rooms` (
 
 CREATE TABLE `styles` (
   `styleId` int(11) NOT NULL,
-  `name` varchar(50) COLLATE cp1251_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=cp1251 COLLATE=cp1251_bin;
+  `name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 -- --------------------------------------------------------
 
@@ -138,14 +145,14 @@ CREATE TABLE `styles` (
 --
 
 CREATE TABLE `trainers` (
-  `name` varchar(100) COLLATE cp1251_bin NOT NULL,
-  `email` varchar(50) COLLATE cp1251_bin NOT NULL,
-  `tellNumber` varchar(15) COLLATE cp1251_bin NOT NULL,
-  `password` varchar(30) COLLATE cp1251_bin NOT NULL,
-  `description` text COLLATE cp1251_bin NOT NULL,
-  `photoLink` varchar(200) COLLATE cp1251_bin NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `tellNumber` varchar(15) NOT NULL,
+  `password` varchar(30) NOT NULL,
+  `description` mediumtext NOT NULL,
+  `photoLink` varchar(200) NOT NULL,
   `trainerId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=cp1251 COLLATE=cp1251_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 --
 -- Индексы сохранённых таблиц
@@ -237,7 +244,7 @@ ALTER TABLE `lessons`
 -- AUTO_INCREMENT для таблицы `news`
 --
 ALTER TABLE `news`
-  MODIFY `newsId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `newsId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT для таблицы `orders`

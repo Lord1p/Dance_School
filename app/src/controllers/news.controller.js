@@ -12,7 +12,7 @@
     init();
 
     function init() {
-      $http.get('/get-news.php')
+      $http.get('./server/get-news.php')
         .then(res => {
           console.log(res.data.news);
           $scope.news = res.data.news;

@@ -1,4 +1,5 @@
 <?php
+    header('Content-Type: text/html; charset=utf8');
     header("Content-type","application/x-www-form-urlencoded");
     $db_driver = "mysql";
     $host = "localhost";
@@ -17,3 +18,4 @@
     }
     class R{};
     $res = new R();
+    $dbh->query("set names utf8");
