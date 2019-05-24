@@ -1,11 +1,28 @@
 (function(){
   angular
     .module('main', ['ngRoute'])
-    .config(Routs);
+    .config(Routs)
+    .run(rootInit);
+
+rootInit.$inject = ['$rootScope'];
+function rootInit($rootScope) {
+  $rootScope.userType = {
+    anonim: -1,
+    client: 0,
+    teacher: 1,
+    admin: 2,
+  };
+
+  $rootScope.isAuthorizated = false;
+  $rootScope.currentUser = {
+    type: $rootScope.userType.anonim,
+  };
+}
 
 Routs.$inject = ['$routeProvider'];
 function Routs( $routeProvider ) {
-  $routeProvider.when('/', {
+  $routeProvider
+  .when('/', {
     redirectTo: '/news'
   })
   .when('/news', {
@@ -23,6 +40,10 @@ function Routs( $routeProvider ) {
   .when('/styles', {
     templateUrl: './app/src/views/styles.html',
     controller: 'StylesController',
+  })
+  .when('/sign-up', {
+    templateUrl: './app/src/views/sign-up.html',
+    controller: 'SignUpController',
   });
 }
 })();

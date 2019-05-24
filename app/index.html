@@ -4,9 +4,9 @@
     <title>
       Laba 3
     </title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="./app/styles/bootstrap.min.css">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <link rel="stylesheet" href="./app/styles/bootstrap.min.css"/>
     <link rel="stylesheet" href="./app/styles/main.css" />
   </head>
   <body>
@@ -25,6 +25,14 @@
           <li class="nav-item">
             <a class="nav-link" href="#!styles">Стили</a>
           </li>
+          <li class="nav-item" ng-if="$rootScope.currentUser.type != $rootScope.userType.anonim">
+            <a class="nav-link" href="#">Мои курсы</a>
+          </li>
+          <li class="nav-item" ng-if="$rootScope.currentUser.type == $rootScope.userType.anonim">
+            <span class="row right">
+              <a class="nav-link" href="#!signin">Вход</a><a class="nav-link" href="#!sign-up">Регистрация</a>
+            </span>
+          </li>
         </ul>
       </div>
     </nav>
@@ -37,4 +45,5 @@
   <script src="./app/src/controllers/styles.controller.js"></script>
   <script src="./app/src/controllers/courses.controller.js"></script>
   <script src="./app/src/controllers/trainers.controller.js"></script>
+  <script src="./app/src/controllers/sign-up.controller.js"></script>
 </hrml>
