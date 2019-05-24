@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Май 24 2019 г., 20:00
+-- Время создания: Май 24 2019 г., 20:15
 -- Версия сервера: 10.1.38-MariaDB
 -- Версия PHP: 7.3.4
 
@@ -34,7 +34,7 @@ CREATE TABLE `admins` (
   `name` varchar(40) NOT NULL,
   `email` varchar(20) NOT NULL,
   `password` varchar(60) NOT NULL,
-  `avatarLink` varchar(60) NOT NULL
+  `avatarLink` varchar(60) NOT NULL DEFAULT './avatars/admins/default.jpg'
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 -- --------------------------------------------------------
@@ -49,7 +49,7 @@ CREATE TABLE `clients` (
   `tellNumber` varchar(15) NOT NULL,
   `password` varchar(30) NOT NULL,
   `clientId` int(11) NOT NULL,
-  `avatarLink` varchar(60) NOT NULL,
+  `avatarLink` varchar(60) NOT NULL DEFAULT './avatars/clients/default.jpg',
   `mailSending` bit(1) NOT NULL DEFAULT b'0'
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
@@ -150,9 +150,16 @@ CREATE TABLE `trainers` (
   `tellNumber` varchar(15) NOT NULL,
   `password` varchar(30) NOT NULL,
   `description` mediumtext NOT NULL,
-  `photoLink` varchar(200) NOT NULL,
+  `photoLink` varchar(200) NOT NULL DEFAULT './avatars/trainers/default.jpg',
   `trainerId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+--
+-- Дамп данных таблицы `trainers`
+--
+
+INSERT INTO `trainers` (`name`, `email`, `tellNumber`, `password`, `description`, `photoLink`, `trainerId`) VALUES
+('Иванов Иван Иванович', 'ivan.ivanich1986@gmail.com', '+380541234567', '00000000', 'Родился и вырос в городе Харьков. Обучался и истинных мастеров своего дела. Участвовал в различных конкурсах и занимал призовые места. Знает о танцах всё.', './avatars/trainers/default.jpg', 1);
 
 --
 -- Индексы сохранённых таблиц
@@ -268,7 +275,7 @@ ALTER TABLE `styles`
 -- AUTO_INCREMENT для таблицы `trainers`
 --
 ALTER TABLE `trainers`
-  MODIFY `trainerId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `trainerId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
