@@ -4,7 +4,3 @@ server.js
 package.json
 package-lock.json
 copy.sh
-app/
-server/
-avatars/
-DB.sql

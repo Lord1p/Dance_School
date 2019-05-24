@@ -29,16 +29,18 @@
     $Select->bindValue(':id',$data->email);
     $Select->execute();
 
-    $cl=$Select->fetch(PDO::FETCH_ASSOC)[0];
+    while($row = $Select->fetch(PDO::FETCH_ASSOC)){
 
-    $res = new R();
-    $res->name = $cl['clients.name'];
-    $res->email = $cl['clients.email'];
-    $res->tellNumber = $cl['clients.tellNumber'];
-    $res->clientId = $cl['clients.clientId'];
-    $res->avatarLink = $cl['clients.avatarLink'];
-    $res->mailSending = $cl['clients.mailSending'];
-    
+        $res = new R();
+        $res->name = $row['name'];
+        $res->email = $row['email'];
+        $res->tellNumber = $row['tellNumber'];
+        $res->clientId = $row['clientId'];
+        $res->avatarLink = $row['avatarLink'];
+        $res->mailSending = $row['mailSending'];
+        }
+
+
     echo json_encode($res);
     
 ?>
