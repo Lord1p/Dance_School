@@ -2,10 +2,10 @@
 -- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: May 14, 2019 at 11:24 AM
--- Server version: 10.1.39-MariaDB
--- PHP Version: 7.3.5
+-- Хост: 127.0.0.1
+-- Время создания: Май 24 2019 г., 18:28
+-- Версия сервера: 10.1.38-MariaDB
+-- Версия PHP: 7.3.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,26 +19,28 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `dance_school`
+-- База данных: `dance_school`
 --
+CREATE DATABASE IF NOT EXISTS `dance_school` DEFAULT CHARACTER SET cp1251 COLLATE cp1251_general_ci;
+USE `dance_school`;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admins`
+-- Структура таблицы `admins`
 --
 
 CREATE TABLE `admins` (
   `name` varchar(40) NOT NULL,
   `email` varchar(20) NOT NULL,
-  `pass` varchar(60) NOT NULL,
+  `password` varchar(60) NOT NULL,
   `avatarLink` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `clients`
+-- Структура таблицы `clients`
 --
 
 CREATE TABLE `clients` (
@@ -46,18 +48,19 @@ CREATE TABLE `clients` (
   `email` varchar(50) COLLATE cp1251_bin NOT NULL,
   `tellNumber` varchar(15) COLLATE cp1251_bin NOT NULL,
   `password` varchar(30) COLLATE cp1251_bin NOT NULL,
-  `id` int(11) NOT NULL,
-  `avatarLink` varchar(60) COLLATE cp1251_bin NOT NULL
+  `clientId` int(11) NOT NULL,
+  `avatarLink` varchar(60) COLLATE cp1251_bin NOT NULL,
+  `mailSending` bit(1) NOT NULL DEFAULT b'0'
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251 COLLATE=cp1251_bin;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `courses`
+-- Структура таблицы `courses`
 --
 
 CREATE TABLE `courses` (
-  `id` int(11) NOT NULL,
+  `courseId` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `teacherId` int(11) NOT NULL,
   `countOfPlaces` int(11) NOT NULL,
@@ -70,11 +73,11 @@ CREATE TABLE `courses` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `lessons`
+-- Структура таблицы `lessons`
 --
 
 CREATE TABLE `lessons` (
-  `id` int(11) NOT NULL,
+  `lessonId` int(11) NOT NULL,
   `date` date NOT NULL,
   `courseId` int(11) NOT NULL,
   `roomID` int(11) NOT NULL
@@ -83,11 +86,11 @@ CREATE TABLE `lessons` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `news`
+-- Структура таблицы `news`
 --
 
 CREATE TABLE `news` (
-  `id` int(11) NOT NULL,
+  `newsId` int(11) NOT NULL,
   `date` date NOT NULL,
   `header` text COLLATE cp1251_bin NOT NULL,
   `text` text COLLATE cp1251_bin NOT NULL
@@ -96,11 +99,11 @@ CREATE TABLE `news` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orders`
+-- Структура таблицы `orders`
 --
 
 CREATE TABLE `orders` (
-  `id` int(11) NOT NULL,
+  `orderId` int(11) NOT NULL,
   `clientId` int(11) NOT NULL,
   `courseId` int(11) NOT NULL,
   `code` varchar(20) COLLATE cp1251_bin NOT NULL
@@ -109,29 +112,29 @@ CREATE TABLE `orders` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rooms`
+-- Структура таблицы `rooms`
 --
 
 CREATE TABLE `rooms` (
-  `id` int(11) NOT NULL,
+  `roomId` int(11) NOT NULL,
   `roomNumber` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `styles`
+-- Структура таблицы `styles`
 --
 
 CREATE TABLE `styles` (
-  `id` int(11) NOT NULL,
+  `styleId` int(11) NOT NULL,
   `name` varchar(50) COLLATE cp1251_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251 COLLATE=cp1251_bin;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `trainers`
+-- Структура таблицы `trainers`
 --
 
 CREATE TABLE `trainers` (
@@ -141,96 +144,149 @@ CREATE TABLE `trainers` (
   `password` varchar(30) COLLATE cp1251_bin NOT NULL,
   `description` text COLLATE cp1251_bin NOT NULL,
   `photoLink` varchar(200) COLLATE cp1251_bin NOT NULL,
-  `id` int(11) NOT NULL
+  `trainerId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251 COLLATE=cp1251_bin;
 
 --
--- Indexes for dumped tables
+-- Индексы сохранённых таблиц
 --
 
 --
--- Indexes for table `admins`
+-- Индексы таблицы `admins`
 --
 ALTER TABLE `admins`
   ADD PRIMARY KEY (`email`);
 
 --
--- Indexes for table `clients`
+-- Индексы таблицы `clients`
 --
 ALTER TABLE `clients`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`clientId`);
 
 --
--- Indexes for table `courses`
+-- Индексы таблицы `courses`
 --
 ALTER TABLE `courses`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`courseId`),
   ADD KEY `Tid` (`teacherId`),
   ADD KEY `Sid` (`styleId`);
 
 --
--- Indexes for table `lessons`
+-- Индексы таблицы `lessons`
 --
 ALTER TABLE `lessons`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `Coid` (`courseId`);
+  ADD PRIMARY KEY (`lessonId`),
+  ADD KEY `Coid` (`courseId`),
+  ADD KEY `lessons_ibfk_2` (`roomID`);
 
 --
--- Indexes for table `news`
+-- Индексы таблицы `news`
 --
 ALTER TABLE `news`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`newsId`);
 
 --
--- Indexes for table `orders`
+-- Индексы таблицы `orders`
 --
 ALTER TABLE `orders`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`orderId`),
   ADD KEY `Clid` (`clientId`),
   ADD KEY `Coid` (`courseId`);
 
 --
--- Indexes for table `rooms`
+-- Индексы таблицы `rooms`
 --
 ALTER TABLE `rooms`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`roomId`);
 
 --
--- Indexes for table `styles`
+-- Индексы таблицы `styles`
 --
 ALTER TABLE `styles`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`styleId`);
 
 --
--- Indexes for table `trainers`
+-- Индексы таблицы `trainers`
 --
 ALTER TABLE `trainers`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`trainerId`);
 
 --
--- Constraints for dumped tables
+-- AUTO_INCREMENT для сохранённых таблиц
 --
 
 --
--- Constraints for table `courses`
+-- AUTO_INCREMENT для таблицы `clients`
+--
+ALTER TABLE `clients`
+  MODIFY `clientId` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT для таблицы `courses`
 --
 ALTER TABLE `courses`
-  ADD CONSTRAINT `courses_ibfk_1` FOREIGN KEY (`teacherId`) REFERENCES `trainers` (`id`),
-  ADD CONSTRAINT `courses_ibfk_2` FOREIGN KEY (`styleId`) REFERENCES `styles` (`id`);
+  MODIFY `courseId` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Constraints for table `lessons`
+-- AUTO_INCREMENT для таблицы `lessons`
 --
 ALTER TABLE `lessons`
-  ADD CONSTRAINT `lessons_ibfk_1` FOREIGN KEY (`courseId`) REFERENCES `courses` (`id`),
-  ADD CONSTRAINT `lessons_ibfk_2` FOREIGN KEY (`roomID`) REFERENCES `rooms` (`id`);
+  MODIFY `lessonId` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Constraints for table `orders`
+-- AUTO_INCREMENT для таблицы `news`
+--
+ALTER TABLE `news`
+  MODIFY `newsId` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT для таблицы `orders`
 --
 ALTER TABLE `orders`
-  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`clientId`) REFERENCES `clients` (`id`),
-  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`courseId`) REFERENCES `courses` (`id`);
+  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT для таблицы `rooms`
+--
+ALTER TABLE `rooms`
+  MODIFY `roomId` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT для таблицы `styles`
+--
+ALTER TABLE `styles`
+  MODIFY `styleId` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT для таблицы `trainers`
+--
+ALTER TABLE `trainers`
+  MODIFY `trainerId` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Ограничения внешнего ключа сохраненных таблиц
+--
+
+--
+-- Ограничения внешнего ключа таблицы `courses`
+--
+ALTER TABLE `courses`
+  ADD CONSTRAINT `courses_ibfk_1` FOREIGN KEY (`teacherId`) REFERENCES `trainers` (`trainerId`),
+  ADD CONSTRAINT `courses_ibfk_2` FOREIGN KEY (`styleId`) REFERENCES `styles` (`styleId`);
+
+--
+-- Ограничения внешнего ключа таблицы `lessons`
+--
+ALTER TABLE `lessons`
+  ADD CONSTRAINT `lessons_ibfk_1` FOREIGN KEY (`courseId`) REFERENCES `courses` (`courseId`),
+  ADD CONSTRAINT `lessons_ibfk_2` FOREIGN KEY (`roomID`) REFERENCES `rooms` (`roomId`);
+
+--
+-- Ограничения внешнего ключа таблицы `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`clientId`) REFERENCES `clients` (`clientId`),
+  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`courseId`) REFERENCES `courses` (`courseId`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
