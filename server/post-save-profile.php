@@ -53,7 +53,7 @@
     
     echo json_encode($res);
     }
-
+    else{
     if($data->type == 'trainer')
     {
     $Update = $dbh->prepare("UPDATE
@@ -103,4 +103,7 @@
     
     echo json_encode($res);
     }
+    else{
+        echo json_encode(array('error'=>array('msg'=>'Учетная запись неизвестного типа')));
+    }}
 ?>

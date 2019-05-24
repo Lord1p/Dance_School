@@ -2,7 +2,7 @@
     include("connect.php");
     $id = $_REQUEST['id'];
 
-    $test = $dbh->prepare("SELECT Count(name) FROM admins WHERE email=:id");
+    $test = $dbh->prepare("SELECT Count(email) FROM admins WHERE email=:id");
     $test->bindValue('id',$id);
     $test->execute();
     
@@ -66,5 +66,9 @@
     }
     $Res=array('allLessons'=>$JSONres);
     echo json_encode($Res);
+    }
+    else
+    {
+        echo json_encode(array('error'=>array('msg'=>'Такого администратора не существует')));
     }
 ?>

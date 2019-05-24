@@ -18,7 +18,7 @@
 
     $cl=$Select->fetch(PDO::FETCH_NUM)[0];
 
-    if($cl != null)
+    if($cl != null && $cl==$data->password)
     {
     $Select = $dbh->prepare("SELECT
     name,
@@ -48,6 +48,7 @@
     
     echo json_encode($res);
     }
+    else{
     //
     //Search in trainers
     //
@@ -63,7 +64,7 @@
 
     $cl=$Select->fetch(PDO::FETCH_NUM)[0];
 
-    if($cl != null)
+    if($cl != null && $cl==$data->password)
     {
     $Select = $dbh->prepare("SELECT
     name,
@@ -93,6 +94,7 @@
     
     echo json_encode($res);
     }
+    else{
     //
     //Search in admins
     //
@@ -108,7 +110,7 @@
 
     $cl=$Select->fetch(PDO::FETCH_NUM)[0];
 
-    if($cl != null)
+    if($cl != null && $cl==$data->password)
     {
     $Select = $dbh->prepare("SELECT
     name,
@@ -131,5 +133,9 @@
     $res->avatarLink = $cl['avatarLink'];
     
     echo json_encode($res);
-    }
+    } 
+    else
+    {
+        echo json_encode(array('error'=>array('msg'=>'Ошибка авторизации. Данные введены не верно')));
+    }}}
 ?>
