@@ -44,6 +44,10 @@ function Routs( $routeProvider ) {
   .when('/sign-up', {
     templateUrl: './app/src/views/sign-up.html',
     controller: 'SignUpController',
+  })
+  .when('/sign-in', {
+    templateUrl: './app/src/views/sign-in.html',
+    controller: 'SignInController',
   });
 }
 })();

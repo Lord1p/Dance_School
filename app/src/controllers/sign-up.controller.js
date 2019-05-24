@@ -23,7 +23,7 @@
 
     function registration() {
       let preparedData = {
-        name: $scope.user.firstName + $scope.user.lastName,
+        name: $scope.user.firstName + ' ' + $scope.user.lastName,
         email: $scope.user.email,
         tellNumber: $scope.user.tellNumber,
         password: $scope.user.password,

@@ -1,0 +1,16 @@
+<div class="container">
+  <form name="login">
+    <label>
+      Email:
+      <input type="email" name="email" ng-model="user.email" />
+    </label>
+    <div class="error" ng-if="login.email.$invalid">
+      Не верный email!
+    </div>
+    <label>
+      Пароль:
+      <input type="password" name="password" ng-model="user.password" />
+    </label>
+    <button ng-if="login.email.$valid" ng-click="logIn()">Регистрация</button>
+  </form>
+</div>
