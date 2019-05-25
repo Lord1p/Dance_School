@@ -5,7 +5,12 @@
     $data = json_decode($json);
 
     if (isset($_FILES['file']) && $_FILES['file']['error'] == 0) {
-        $link = 'avatars/'.$data->type.'s/'. $id;
+        
+        if($data->type = "client")
+            $link = 'avatars/'.$data->type.'s/'. $data->clientId;
+        else  
+            $link = 'avatars/'.$data->type.'s/'. $data->trainerId;
+        
         move_uploaded_file($_FILES['file']['tmp_name'], $link);
     
     // give callback to your angular code with the image src name

@@ -6,7 +6,7 @@
     orders.orderId,
     orders.code,
     orders.courseId,
-    clients.name,
+    clients.clientName,
     clients.email,
     clients.tellNumber,
     clients.clientId,
@@ -25,15 +25,15 @@
     while($row = $projects->fetch(PDO::FETCH_ASSOC)){
 
     $res = new R();
-    $res->orderId = $row['orders.orderId'];
-    $res->code = $row['orders.code'];
-    $res->courseId = $row['orders.courseId'];
-    $res->name = $row['clients.name'];
-    $res->email = $row['clients.email'];
-    $res->tellNumber = $row['clients.tellNumber'];
-    $res->clientId = $row['clients.clientId'];
-    $res->avatarLink = $row['clients.avatarLink'];
-    $res->mailSending = $row['clients.mailSending'];
+    $res->orderId = $row['orderId'];
+    $res->code = $row['code'];
+    $res->courseId = $row['courseId'];
+    $res->name = $row['clientName'];
+    $res->email = $row['email'];
+    $res->tellNumber = $row['tellNumber'];
+    $res->clientId = $row['clientId'];
+    $res->avatarLink = $row['avatarLink'];
+    $res->mailSending = $row['mailSending'];
 
     array_push($JSONres,$res);
     }

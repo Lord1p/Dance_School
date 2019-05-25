@@ -7,7 +7,7 @@
     while($row = $projects->fetch(PDO::FETCH_ASSOC)){
     $res = new R();
     $res->styleId = $row['styleId'];
-    $res->name = $row['name'];
+    $res->styleName = $row['styleName'];
     array_push($JSONres,$res);
     }
     $Res=array('styles'=>$JSONres);

@@ -10,30 +10,30 @@
     {
     $projects = $dbh->prepare("SELECT 
     courses.courseId,
-    courses.name,
-    courses.teacherId,
-    courses.countOfPlace,
+    courses.courseName,
+    courses.trainerId,
+    courses.countOfPlaces,
     courses.price,
-    courses.description,
+    courses.courseDescription,
     courses.duration,
-    style.name,
-    style.id,
-    trainers.name,
+    styles.styeName,
+    styles.styleId,
+    trainers.tainerName,
     trainers.email,
     trainers.tellNumber,
     trainers.password,
-    trainers.description,
-    trainers.photoLink,
+    trainers.trainerDescription,
+    trainers.avatarLink,
     lessons.lessonId,
     lessons.date,
     rooms.roomId,
     rooms.roomNumber FROM
     trainers,courses,styles,lessons,rooms
     WHERE
-    courses.teacherId = trainers.trainerId and
+    courses.trainerId = trainers.trainerId and
     styles.styleId = courses.styleId and
     courses.courseId = lessons.courseId and
-    lessons.roomID = rooms.roomId
+    lessons.roomId = rooms.roomId
     ");
     $projects->execute();
     $JSONres=array();
@@ -41,25 +41,25 @@
     while($row = $projects->fetch(PDO::FETCH_ASSOC)){
 
     $res = new R();
-    $res->courseId = $row['courses.courseId'];
-    $res->courseName = $row['courses.name'];
-    $res->teacherId = $row['courses.teacherId'];
-    $res->countOfPlace = $row['courses.countOfPlace'];
-    $res->price = $row['courses.price'];
-    $res->courseDescription = $row['courses.description'];
-    $res->duration = $row['courses.duration'];
-    $res->styleId = $row['styles.styleId'];
-    $res->styleName = $row['styles.name'];
-    $res->trainerName = $row['trainers.name'];
-    $res->email = $row['trainers.email'];
-    $res->tellNumber = $row['trainers.tellNumber'];
-    $res->password = $row['trainers.password'];
-    $res->trainerDescription = $row['trainers.description'];
-    $res->avatarLink = $row['trainers.photoLink'];
-    $res->lessonId = $row['lessons.lessonId'];
-    $res->date = $row['lessons.date'];
-    $res->roomId = $row['rooms.roomId'];
-    $res->roomNumber = $row['rooms.roomNumber'];
+    $res->courseId = $row['courseId'];
+    $res->courseName = $row['courseName'];
+    $res->trainerId = $row['trainerId'];
+    $res->countOfPlaces = $row['countOfPlaces'];
+    $res->price = $row['price'];
+    $res->courseDescription = $row['courseDescription'];
+    $res->duration = $row['duration'];
+    $res->styleId = $row['styleId'];
+    $res->styleName = $row['styleName'];
+    $res->trainerName = $row['trainerName'];
+    $res->email = $row['email'];
+    $res->tellNumber = $row['tellNumber'];
+    $res->password = $row['password'];
+    $res->trainerDescription = $row['trainerDescription'];
+    $res->avatarLink = $row['avatarLink'];
+    $res->lessonId = $row['lessonId'];
+    $res->date = $row['date'];
+    $res->roomId = $row['roomId'];
+    $res->roomNumber = $row['roomNumber'];
     
 
     array_push($JSONres,$res);

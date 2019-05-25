@@ -21,7 +21,7 @@
     if($cl != null && $cl==$data->password)
     {
     $Select = $dbh->prepare("SELECT
-    name,
+    clientName,
     email,
     tellNumber,
     clientId,
@@ -39,7 +39,7 @@
 
     $res = new R();
     $res->type = "client";
-    $res->name = $cl['name'];
+    $res->clientName = $cl['clientName'];
     $res->email = $cl['email'];
     $res->tellNumber = $cl['tellNumber'];
     $res->clientId = $cl['clientId'];
@@ -67,11 +67,11 @@
     if($cl != null && $cl==$data->password)
     {
     $Select = $dbh->prepare("SELECT
-    name,
+    trainerName,
     email,
     tellNumber,
-    description,
-    photoLink,
+    trainerDescription,
+    avatarLink,
     trainerId
     FROM
     trainers
@@ -85,12 +85,12 @@
 
     $res = new R();
     $res->type = "trainer";
-    $res->name = $cl['name'];
+    $res->trainerName = $cl['trainerName'];
     $res->email = $cl['email'];
     $res->tellNumber = $cl['tellNumber'];
     $res->trainerId = $cl['trainerId'];
-    $res->avatarLink = $cl['photoLink'];
-    $res->description = $cl['description'];
+    $res->avatarLink = $cl['avatarLink'];
+    $res->trainerDescription = $cl['trainerDescription'];
     
     echo json_encode($res);
     }
@@ -113,7 +113,7 @@
     if($cl != null && $cl==$data->password)
     {
     $Select = $dbh->prepare("SELECT
-    name,
+    adminName,
     email,
     avatarLink
     FROM
@@ -128,7 +128,7 @@
 
     $res = new R();
     $res->type = "admin";
-    $res->name = $cl['name'];
+    $res->adminName = $cl['adminName'];
     $res->email = $cl['email'];
     $res->avatarLink = $cl['avatarLink'];
     

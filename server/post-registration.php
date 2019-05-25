@@ -15,9 +15,9 @@
     if($r[0]==0)
     {
         $Insert = $dbh->prepare("INSERT INTO
-        clients(name,email,tellNumber,password,mailSending)
+        clients(clientName,email,tellNumber,password,mailSending)
         VALUES(:n,:e,:t,:p,:m)");
-        $Insert->bindValue(':n',$data->name);
+        $Insert->bindValue(':n',$data->clientName);
         $Insert->bindValue(':e',$data->email);
         $Insert->bindValue(':t',$data->tellNumber);
         $Insert->bindValue(':p',$data->password);
@@ -25,7 +25,7 @@
         $Insert->execute();
 
         $Select = $dbh->prepare("SELECT
-        name,
+        clientName,
         email,
         tellNumber,
         clientId,
@@ -41,7 +41,7 @@
 
         $row = $Select->fetch(PDO::FETCH_ASSOC);
         $res = new R();
-        $res->name = $row['name'];
+        $res->clientName = $row['clientName'];
         $res->email = $row['email'];
         $res->tellNumber = $row['tellNumber'];
         $res->clientId = $row['clientId'];

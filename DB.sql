@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Май 25 2019 г., 03:33
+-- Время создания: Май 25 2019 г., 08:47
 -- Версия сервера: 10.1.38-MariaDB
 -- Версия PHP: 7.3.4
 
@@ -33,7 +33,7 @@ USE `dance_school`;
 
 DROP TABLE IF EXISTS `admins`;
 CREATE TABLE `admins` (
-  `name` varchar(40) NOT NULL,
+  `adminName` varchar(40) NOT NULL,
   `email` varchar(20) NOT NULL,
   `password` varchar(60) NOT NULL,
   `avatarLink` varchar(60) NOT NULL DEFAULT './avatars/admins/default.jpg'
@@ -48,7 +48,7 @@ TRUNCATE TABLE `admins`;
 -- Дамп данных таблицы `admins`
 --
 
-INSERT INTO `admins` (`name`, `email`, `password`, `avatarLink`) VALUES
+INSERT INTO `admins` (`adminName`, `email`, `password`, `avatarLink`) VALUES
 ('Петрова Елизавета Сидоровна', 'sid.el@mail.ru', 'root', './avatars/admins/default.jpg'),
 (' Костар Владислав Владиславович', 'vlad.kost@gmail.com', 'root', './avatars/admins/default.jpg');
 
@@ -60,7 +60,7 @@ INSERT INTO `admins` (`name`, `email`, `password`, `avatarLink`) VALUES
 
 DROP TABLE IF EXISTS `clients`;
 CREATE TABLE `clients` (
-  `name` varchar(100) NOT NULL,
+  `clientName` varchar(100) NOT NULL,
   `email` varchar(50) NOT NULL,
   `tellNumber` varchar(15) NOT NULL,
   `password` varchar(30) NOT NULL,
@@ -78,7 +78,7 @@ TRUNCATE TABLE `clients`;
 -- Дамп данных таблицы `clients`
 --
 
-INSERT INTO `clients` (`name`, `email`, `tellNumber`, `password`, `clientId`, `avatarLink`, `mailSending`) VALUES
+INSERT INTO `clients` (`clientName`, `email`, `tellNumber`, `password`, `clientId`, `avatarLink`, `mailSending`) VALUES
 ('олег скоромный', 'olehonator1@mail.ru', '45', '45', 14, './avatars/clients/default.jpg', b'1'),
 ('олег скоромный', 'olehonator2@mail.ru', '1', '1', 15, './avatars/clients/default.jpg', b'1'),
 ('Колода Виктория Петровна', 'coloda228@mail.ru', '123456789', '1111', 16, './avatars/clients/default.jpg', b'0');
@@ -92,12 +92,12 @@ INSERT INTO `clients` (`name`, `email`, `tellNumber`, `password`, `clientId`, `a
 DROP TABLE IF EXISTS `courses`;
 CREATE TABLE `courses` (
   `courseId` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `teacherId` int(11) NOT NULL,
+  `courseName` varchar(100) NOT NULL,
+  `trainerId` int(11) NOT NULL,
   `countOfPlaces` int(11) NOT NULL,
   `price` int(11) NOT NULL,
   `styleId` int(11) NOT NULL,
-  `description` mediumtext NOT NULL,
+  `courseDescription` mediumtext NOT NULL,
   `duration` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
@@ -110,7 +110,7 @@ TRUNCATE TABLE `courses`;
 -- Дамп данных таблицы `courses`
 --
 
-INSERT INTO `courses` (`courseId`, `name`, `teacherId`, `countOfPlaces`, `price`, `styleId`, `description`, `duration`) VALUES
+INSERT INTO `courses` (`courseId`, `courseName`, `trainerId`, `countOfPlaces`, `price`, `styleId`, `courseDescription`, `duration`) VALUES
 (1, 'Бальные танцы для 10 классов', 1, 20, 100, 1, 'В следующем году выпускной, а вы ещё не умеете танцевать? Не отчаивайтесь, у нас вы быстро освоите бальные танцы на мастерском уровне и никто более не сможет вас упрекнуть.', 10),
 (2, 'Специальное предложение!', 2, 15, 200, 2, 'Только у нас и только сейчас курс по breakdance-у от легендарной личности. Такого вы больше нигде не найдёте. Спешите предложение ограничено.', 10);
 
@@ -125,7 +125,7 @@ CREATE TABLE `lessons` (
   `lessonId` int(11) NOT NULL,
   `date` date NOT NULL,
   `courseId` int(11) NOT NULL,
-  `roomID` int(11) NOT NULL
+  `roomId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 --
@@ -204,7 +204,7 @@ TRUNCATE TABLE `rooms`;
 DROP TABLE IF EXISTS `styles`;
 CREATE TABLE `styles` (
   `styleId` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL
+  `styleName` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 --
@@ -216,7 +216,7 @@ TRUNCATE TABLE `styles`;
 -- Дамп данных таблицы `styles`
 --
 
-INSERT INTO `styles` (`styleId`, `name`) VALUES
+INSERT INTO `styles` (`styleId`, `styleName`) VALUES
 (1, 'Бальные танцы'),
 (2, 'Breakdance');
 
@@ -228,12 +228,12 @@ INSERT INTO `styles` (`styleId`, `name`) VALUES
 
 DROP TABLE IF EXISTS `trainers`;
 CREATE TABLE `trainers` (
-  `name` varchar(100) NOT NULL,
+  `trainerName` varchar(100) NOT NULL,
   `email` varchar(50) NOT NULL,
   `tellNumber` varchar(15) NOT NULL,
   `password` varchar(30) NOT NULL,
-  `description` mediumtext NOT NULL,
-  `photoLink` varchar(200) NOT NULL DEFAULT './avatars/trainers/default.jpg',
+  `trainerDescription` mediumtext NOT NULL,
+  `avatarLink` varchar(200) NOT NULL DEFAULT './avatars/trainers/default.jpg',
   `trainerId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
@@ -246,7 +246,7 @@ TRUNCATE TABLE `trainers`;
 -- Дамп данных таблицы `trainers`
 --
 
-INSERT INTO `trainers` (`name`, `email`, `tellNumber`, `password`, `description`, `photoLink`, `trainerId`) VALUES
+INSERT INTO `trainers` (`trainerName`, `email`, `tellNumber`, `password`, `trainerDescription`, `avatarLink`, `trainerId`) VALUES
 ('Иванов Иван Иванович', 'ivan.ivanich1986@gmail.com', '+380541234567', '00000000', 'Родился и вырос в городе Харьков. Обучался и истинных мастеров своего дела. Участвовал в различных конкурсах и занимал призовые места. Знает о танцах всё.', './avatars/trainers/default.jpg', 1),
 ('Зубенко Михаил Петрович', 'zubenko.michail@gmail.com', '2211334455', '123', 'ФИО: Зубенко Михаил Петрович.\r\nКем являетесь: Вор в законе.\r\nГде именно: Сумиловский городок.\r\nКличка: Мафиозник.', './avatars/trainers/2.jpg', 2);
 
@@ -272,7 +272,7 @@ ALTER TABLE `clients`
 --
 ALTER TABLE `courses`
   ADD PRIMARY KEY (`courseId`),
-  ADD KEY `Tid` (`teacherId`),
+  ADD KEY `Tid` (`trainerId`),
   ADD KEY `Sid` (`styleId`);
 
 --
@@ -281,7 +281,7 @@ ALTER TABLE `courses`
 ALTER TABLE `lessons`
   ADD PRIMARY KEY (`lessonId`),
   ADD KEY `Coid` (`courseId`),
-  ADD KEY `lessons_ibfk_2` (`roomID`);
+  ADD KEY `lessons_ibfk_2` (`roomId`);
 
 --
 -- Индексы таблицы `news`
@@ -376,22 +376,22 @@ ALTER TABLE `trainers`
 -- Ограничения внешнего ключа таблицы `courses`
 --
 ALTER TABLE `courses`
-  ADD CONSTRAINT `courses_ibfk_1` FOREIGN KEY (`teacherId`) REFERENCES `trainers` (`trainerId`)ON DELETE CASCADE,
-  ADD CONSTRAINT `courses_ibfk_2` FOREIGN KEY (`styleId`) REFERENCES `styles` (`styleId`)ON DELETE CASCADE;
+  ADD CONSTRAINT `courses_ibfk_1` FOREIGN KEY (`trainerId`) REFERENCES `trainers` (`trainerId`),
+  ADD CONSTRAINT `courses_ibfk_2` FOREIGN KEY (`styleId`) REFERENCES `styles` (`styleId`);
 
 --
 -- Ограничения внешнего ключа таблицы `lessons`
 --
 ALTER TABLE `lessons`
-  ADD CONSTRAINT `lessons_ibfk_1` FOREIGN KEY (`courseId`) REFERENCES `courses` (`courseId`)ON DELETE CASCADE,
-  ADD CONSTRAINT `lessons_ibfk_2` FOREIGN KEY (`roomID`) REFERENCES `rooms` (`roomId`)ON DELETE CASCADE;
+  ADD CONSTRAINT `lessons_ibfk_1` FOREIGN KEY (`courseId`) REFERENCES `courses` (`courseId`),
+  ADD CONSTRAINT `lessons_ibfk_2` FOREIGN KEY (`roomID`) REFERENCES `rooms` (`roomId`);
 
 --
 -- Ограничения внешнего ключа таблицы `orders`
 --
 ALTER TABLE `orders`
-  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`clientId`) REFERENCES `clients` (`clientId`)ON DELETE CASCADE,
-  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`courseId`) REFERENCES `courses` (`courseId`)ON DELETE CASCADE;
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`clientId`) REFERENCES `clients` (`clientId`),
+  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`courseId`) REFERENCES `courses` (`courseId`);
 SET FOREIGN_KEY_CHECKS=1;
 COMMIT;
 

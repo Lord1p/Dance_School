@@ -12,10 +12,10 @@
       init();
   
       function init() {
-        $http.get('./server/get-teachers.php')
+        $http.get('./server/get-trainers.php')
           .then(res => {
-            console.log(res.data.teachers);
-            $scope.teachers = res.data.teachers;
+            console.log(res.data.trainers);
+            $scope.trainers = res.data.trainers;
           });
       }
     }

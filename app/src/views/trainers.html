@@ -2,14 +2,14 @@
     <h1>
         Наши тренеры!
     </h1>
-    <h2 ng-if="teachers.length == 0">{{empty}}</h2>
+    <h2 ng-if="trainers.length == 0">{{empty}}</h2>
     <ul>
-        <li ng-repeat="i in teachers">
-            <img src="{{ i.photoLink }}">
-            <h2>{{ i.name }}</h2>
+        <li ng-repeat="i in trainers">
+            <img src="{{ i.avatarLink }}">
+            <h2>{{ i.trainerName }}</h2>
             <h6>{{ i.email }}/{{i.tellNumber}}</h6>
             <p>О себе: </p>
-            <span>{{ i.description }}</span>
+            <span>{{ i.trainerDescription }}</span>
         </li>
     </ul>
 </div>

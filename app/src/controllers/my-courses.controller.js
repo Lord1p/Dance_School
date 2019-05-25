@@ -11,10 +11,16 @@
 
     function init() {
       if ($rootScope.currentUser.type != $rootScope.userType.anonim) {
-        $http.get("./server/get-client-courses.php/"+"?id="+$rootScope.currentUser.id).then(res => {
-          console.log(res.data.clCourses);
-          $scope.courses = res.data.clCourses;
-        });
+          if($rootScope.currentUser.type == "client"){
+            $http.get("./server/get-client-courses.php"+"?id="+$rootScope.currentUser.clientId).then(res => {
+            console.log(res.data.clCourses);
+            $scope.courses = res.data.clCourses;
+        })}
+        if($rootScope.currentUser.type == "trainer"){
+          $http.get("./server/get-trainer-courses.php"+"?id="+$rootScope.currentUser.trainerId).then(res => {
+          console.log(res.data.trCourses);
+          $scope.courses = res.data.trCourses;
+        })};
       }
     }
   }

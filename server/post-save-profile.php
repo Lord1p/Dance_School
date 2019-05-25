@@ -8,7 +8,7 @@
     {
     $Update = $dbh->prepare("UPDATE
     clients SET
-    name=:n,
+    clientName=:n,
     email=:e,
     tellNumber=:t,
     password=:p,
@@ -17,7 +17,7 @@
     WHERE
     clientId=:id
     ");
-    $Update->bindValue(':n',$data->name);
+    $Update->bindValue(':n',$data->clientName);
     $Update->bindValue(':e',$data->email);
     $Update->bindValue(':t',$data->tellNumber);
     $Update->bindValue(':p',$data->password);
@@ -27,7 +27,7 @@
     $Update->execute();
 
     $Select = $dbh->prepare("SELECT
-    name,
+    clientName,
     email,
     tellNumber,
     clientId,
@@ -44,12 +44,12 @@
     $cl=$Select->fetch(PDO::FETCH_ASSOC)[0];
 
     $res = new R();
-    $res->name = $cl['clients.name'];
-    $res->email = $cl['clients.email'];
-    $res->tellNumber = $cl['clients.tellNumber'];
-    $res->clientId = $cl['clients.clientId'];
-    $res->avatarLink = $cl['clients.avatarLink'];
-    $res->mailSending = $cl['clients.mailSending'];
+    $res->clientName = $cl['clientName'];
+    $res->email = $cl['email'];
+    $res->tellNumber = $cl['tellNumber'];
+    $res->clientId = $cl['clientId'];
+    $res->avatarLink = $cl['avatarLink'];
+    $res->mailSending = $cl['mailSending'];
     
     echo json_encode($res);
     }
@@ -58,31 +58,31 @@
     {
     $Update = $dbh->prepare("UPDATE
     trainers SET
-    name=:n,
+    trainerName=:n,
     email=:e,
     tellNumber=:t,
     password=:p,
-    photoLink=:a,
-    description=:d
+    avatarLink=:a,
+    trainerDescription=:d
     WHERE
     trainerId=:id
     ");
-    $Update->bindValue(':n',$data->name);
+    $Update->bindValue(':n',$data->trainerName);
     $Update->bindValue(':e',$data->email);
     $Update->bindValue(':t',$data->tellNumber);
     $Update->bindValue(':p',$data->password);
     $Update->bindValue(':a',$data->avatarLink);
-    $Update->bindValue(':d',$data->description);
+    $Update->bindValue(':d',$data->trainerDescription);
     $Update->bindValue(':id',$data->clientId);
     $Update->execute();
 
     $Select = $dbh->prepare("SELECT
-    name,
+    trainerName,
     email,
     tellNumber,
     trainerId,
-    photoLink,
-    description
+    avatarLink,
+    trainerDescription
     FROM
     trainers
     WHERE
@@ -94,12 +94,12 @@
     $cl=$Select->fetch(PDO::FETCH_ASSOC);
 
     $res = new R();
-    $res->name = $cl['name'];
+    $res->name = $cl['trainerName'];
     $res->email = $cl['email'];
     $res->tellNumber = $cl['tellNumber'];
     $res->trainerId = $cl['trainerId'];
-    $res->avatarLink = $cl['photoLink'];
-    $res->description = $cl['description'];
+    $res->avatarLink = $cl['avatarLink'];
+    $res->trainerDescription = $cl['trainerDescription'];
     
     echo json_encode($res);
     }
