@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Май 24 2019 г., 23:11
+-- Время создания: Май 25 2019 г., 02:07
 -- Версия сервера: 10.1.38-MariaDB
 -- Версия PHP: 7.3.4
 
@@ -44,6 +44,14 @@ CREATE TABLE `admins` (
 --
 
 TRUNCATE TABLE `admins`;
+--
+-- Дамп данных таблицы `admins`
+--
+
+INSERT INTO `admins` (`name`, `email`, `password`, `avatarLink`) VALUES
+('Петрова Елизавета Сидоровна', 'sid.el@mail.ru', 'root', './avatars/admins/default.jpg'),
+(' Костар Владислав Владиславович', 'vlad.kost@gmail.com', 'root', './avatars/admins/default.jpg');
+
 -- --------------------------------------------------------
 
 --
@@ -66,6 +74,15 @@ CREATE TABLE `clients` (
 --
 
 TRUNCATE TABLE `clients`;
+--
+-- Дамп данных таблицы `clients`
+--
+
+INSERT INTO `clients` (`name`, `email`, `tellNumber`, `password`, `clientId`, `avatarLink`, `mailSending`) VALUES
+('олег скоромный', 'olehonator1@mail.ru', '45', '45', 14, './avatars/clients/default.jpg', b'1'),
+('олег скоромный', 'olehonator2@mail.ru', '1', '1', 15, './avatars/clients/default.jpg', b'1'),
+('Колода Виктория Петровна', 'coloda228@mail.ru', '123456789', '1111', 16, './avatars/clients/default.jpg', b'0');
+
 -- --------------------------------------------------------
 
 --
@@ -94,7 +111,8 @@ TRUNCATE TABLE `courses`;
 --
 
 INSERT INTO `courses` (`courseId`, `name`, `teacherId`, `countOfPlaces`, `price`, `styleId`, `description`, `duration`) VALUES
-(1, 'Бальные танцы для 10 классов', 1, 20, 100, 1, 'В следующем году выпускной, а вы ещё не умеете танцевать? Не отчаивайтесь, у нас вы быстро освоите бальные танцы на мастерском уровне и никто более не сможет вас упрекнуть.', 10);
+(1, 'Бальные танцы для 10 классов', 1, 20, 100, 1, 'В следующем году выпускной, а вы ещё не умеете танцевать? Не отчаивайтесь, у нас вы быстро освоите бальные танцы на мастерском уровне и никто более не сможет вас упрекнуть.', 10),
+(2, 'Специальное предложение!', 2, 15, 200, 2, 'Только у нас и только сейчас курс по breakdance-у от легендарной личности. Такого вы больше нигде не найдёте. Спешите предложение ограничено.', 10);
 
 -- --------------------------------------------------------
 
@@ -199,7 +217,8 @@ TRUNCATE TABLE `styles`;
 --
 
 INSERT INTO `styles` (`styleId`, `name`) VALUES
-(1, 'Бальные танцы');
+(1, 'Бальные танцы'),
+(2, 'Breakdance');
 
 -- --------------------------------------------------------
 
@@ -228,7 +247,8 @@ TRUNCATE TABLE `trainers`;
 --
 
 INSERT INTO `trainers` (`name`, `email`, `tellNumber`, `password`, `description`, `photoLink`, `trainerId`) VALUES
-('Иванов Иван Иванович', 'ivan.ivanich1986@gmail.com', '+380541234567', '00000000', 'Родился и вырос в городе Харьков. Обучался и истинных мастеров своего дела. Участвовал в различных конкурсах и занимал призовые места. Знает о танцах всё.', './avatars/trainers/default.jpg', 1);
+('Иванов Иван Иванович', 'ivan.ivanich1986@gmail.com', '+380541234567', '00000000', 'Родился и вырос в городе Харьков. Обучался и истинных мастеров своего дела. Участвовал в различных конкурсах и занимал призовые места. Знает о танцах всё.', './avatars/trainers/default.jpg', 1),
+('Зубенко Михаил Петрович', 'zubenko.michail@gmail.com', '2211334455', '123', 'ФИО: Зубенко Михаил Петрович.\r\nКем являетесь: Вор в законе.\r\nГде именно: Сумиловский городок.\r\nКличка: Мафиозник.', './avatars/trainers/2.jpg', 2);
 
 --
 -- Индексы сохранённых таблиц
@@ -304,13 +324,13 @@ ALTER TABLE `trainers`
 -- AUTO_INCREMENT для таблицы `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `clientId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `clientId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT для таблицы `courses`
 --
 ALTER TABLE `courses`
-  MODIFY `courseId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `courseId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT для таблицы `lessons`
@@ -340,13 +360,13 @@ ALTER TABLE `rooms`
 -- AUTO_INCREMENT для таблицы `styles`
 --
 ALTER TABLE `styles`
-  MODIFY `styleId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `styleId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT для таблицы `trainers`
 --
 ALTER TABLE `trainers`
-  MODIFY `trainerId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `trainerId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
