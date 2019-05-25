@@ -1,3 +1,20 @@
 <div>
-    <h1>Курсы!</h1>
+  <h1>Курсы!</h1>
+  <h2 ng-if="courses.length == 0">{{ empty }}</h2>
+  <ul>
+    <li ng-repeat="i in courses">
+      <h2>{{ i.courseName }}</h2>
+      <h6>{{ i.countOfPlace }} доступных мест, всего за {{ price }} грн.</h6>
+      <span>{{ i.courseDescription }}</span>
+      <p>длительность курса {{ duration }} занятий</p>
+      <p>стиль: {{ styleName }}</p>
+      <div>
+        <h2>{{ i.trainerName }}</h2>
+        <img src="{{ i.photoLink }}" />
+        <h6>{{ i.email }}/{{ i.tellNumber }}</h6>
+        <p>О себе:</p>
+        <span>{{ i.trainerDescription }}</span>
+      </div>
+    </li>
+  </ul>
 </div>

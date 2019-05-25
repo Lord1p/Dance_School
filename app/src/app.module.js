@@ -7,10 +7,10 @@
 rootInit.$inject = ['$rootScope'];
 function rootInit($rootScope) {
   $rootScope.userType = {
-    anonim: -1,
-    client: 0,
-    teacher: 1,
-    admin: 2,
+    anonim: "anonim",
+    client: "client",
+    teacher: "trainer",
+    admin: "admin",
   };
 
   $rootScope.isAuthorizated = false;
@@ -48,6 +48,10 @@ function Routs( $routeProvider ) {
   .when('/sign-in', {
     templateUrl: './app/src/views/sign-in.html',
     controller: 'SignInController',
+  })
+  .when('/mycourses', {
+    templateUrl: './app/src/views/mycourses.html',
+    controller: 'MyCoursesController',
   });
 }
 })();

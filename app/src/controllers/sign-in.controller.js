@@ -1,27 +1,28 @@
 (function() {
   "use strict";
 
-  angular
-    .module("main")
-    .controller("SignUpController", SignUpController);
+  angular.module("main").controller("SignInController", SignInController);
 
-  SignUpController.$inject = ["$rootScope", "$scope", "$http"];
-  function SignUpController($rootScope, $scope, $http) {
+  SignInController.$inject = ["$rootScope", "$scope", "$http"];
+  function SignInController($rootScope, $scope, $http) {
     $scope.user = {
       email: "",
-      password: "",
+      password: ""
     };
     $scope.logIn = logIn;
-
-    init();
-
-    function init() {}
+    $scope.isOk = true;
 
     function logIn() {
       $http.post("./server/post-signin.php", $scope.user).then(res => {
         console.log(res.data);
-        $rootScope.isAuthorizated = true;
-        $rootScope.currentUser = res.data.client;
+        if (res.data.email) {
+          $rootScope.isAuthorizated = true;
+          $rootScope.currentUser = res.data;
+          $rootScope.currentUser.type = res.data.type;
+        }
+        else {
+          $scope.isOk = false;
+        }
       });
     }
   }
