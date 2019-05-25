@@ -11,7 +11,7 @@
 
     function init() {
       if ($rootScope.currentUser.type != $rootScope.userType.anonim) {
-        $http.get("./server/get-client-courses.php/"+$rootScope.currentUser.id).then(res => {
+        $http.get("./server/get-client-courses.php/"+"?id="+$rootScope.currentUser.id).then(res => {
           console.log(res.data.clCourses);
           $scope.courses = res.data.clCourses;
         });
