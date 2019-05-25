@@ -6,7 +6,7 @@
 
     while($row = $projects->fetch(PDO::FETCH_ASSOC)){
     $res = new R();
-    $res->name = $row['name'];
+    $res->clientName = $row['clientName'];
     $res->email = $row['email'];
     $res->tellNumber = $row['tellNumber'];
     $res->password = $row['password'];

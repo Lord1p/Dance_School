@@ -6,10 +6,10 @@
 
     $Insert = $dbh->prepare("INSERT INTO
     admins(
-    name,email,password,avatarLink)
+    adminName,email,password,avatarLink)
     VALUES(
     :n,:e,:p,:a)");
-    $Insert->bindValue(':n',$data->name);
+    $Insert->bindValue(':n',$data->adminName);
     $Insert->bindValue(':e',$data->email);
     $Insert->bindValue(':p',$data->password);
     $Insert->bindValue(':a',$data->avatarLink);

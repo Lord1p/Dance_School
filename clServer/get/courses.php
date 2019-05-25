@@ -7,12 +7,12 @@
     while($row = $projects->fetch(PDO::FETCH_ASSOC)){
     $res = new R();
     $res->courseId = $row['courseId'];
-    $res->name = $row['name'];
-    $res->teacherId = $row['teacherId'];
+    $res->courseName = $row['courseName'];
+    $res->trainerId = $row['trainerId'];
     $res->countOfPlaces = $row['countOfPlaces'];
     $res->price = $row['price'];
     $res->styleId = $row['styleId'];
-    $res->description = $row['description'];
+    $res->courseDescription = $row['courseDescription'];
     $res->duration = $row['duration'];
     array_push($JSONres,$res);
     }

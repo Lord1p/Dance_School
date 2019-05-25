@@ -6,11 +6,11 @@
 
     $Insert = $dbh->prepare("INSERT INTO
     clients(
-    name,email,tellNumber,
+    clientName,email,tellNumber,
     password,avatarLink,mailSending)
     VALUES(
     :n,:e,:t,:p,:a,:m)");
-    $Insert->bindValue(':n',$data->name);
+    $Insert->bindValue(':n',$data->clientName);
     $Insert->bindValue(':e',$data->email);
     $Insert->bindValue(':t',$data->tellNumber);
     $Insert->bindValue(':p',$data->password);

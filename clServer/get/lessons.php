@@ -9,7 +9,7 @@
     $res->lessonId = $row['lessonId'];
     $res->date = $row['date'];
     $res->courseId = $row['courseId'];
-    $res->roomId = $row['roomID'];
+    $res->roomId = $row['roomId'];
     array_push($JSONres,$res);
     }
     $Res=array('lessons'=>$JSONres);

@@ -6,13 +6,13 @@
 
     while($row = $projects->fetch(PDO::FETCH_ASSOC)){
     $res = new R();
-    $res->name = $row['name'];
+    $res->trainerName = $row['trainerName'];
     $res->email = $row['email'];
     $res->tellNumber = $row['tellNumber'];
     $res->password = $row['password'];
     $res->trainerId = $row['trainerId'];
-    $res->avatarLink = $row['photoLink'];
-    $res->description = $row['description'];
+    $res->avatarLink = $row['avatarLink'];
+    $res->trainerDescription = $row['trainerDescription'];
     array_push($JSONres,$res);
     }
     $Res=array('trainers'=>$JSONres);

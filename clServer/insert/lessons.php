@@ -6,7 +6,7 @@
 
     $Insert = $dbh->prepare("INSERT INTO
     lessons(
-    date,courseId,roomID)
+    date,courseId,roomId)
     VALUES(
     :d,:c,:r)");
     $Insert->bindValue(':d',$data->date);

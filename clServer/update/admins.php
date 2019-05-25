@@ -9,14 +9,14 @@
     UPDATE 
         admins
     SET
-        name = :n,
+        adminName = :n,
         password = :p,
         avatarLink =:a
     WHERE
         email = :e
     ");
 
-    $Insert->bindValue(':n',$data->name);
+    $Insert->bindValue(':n',$data->adminName);
     $Insert->bindValue(':e',$data->email);
     $Insert->bindValue(':p',$data->password);
     $Insert->bindValue(':a',$data->avatarLink);

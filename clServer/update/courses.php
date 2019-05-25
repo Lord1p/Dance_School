@@ -8,23 +8,23 @@
     UPDATE 
         courses
     SET
-        name = :n,
-        teacherId = :t,
+        courseName = :n,
+        trainerId = :t,
         countOfPlaces =:c,
         price = :p,
         styleId =:s,
-        description =:de,
+        courseDescription =:de,
         duration =:du
     WHERE
         courseId = :i
     ");
 
-    $Insert->bindValue(':n',$data->name);
-    $Insert->bindValue(':t',$data->teacherId);
+    $Insert->bindValue(':n',$data->courseName);
+    $Insert->bindValue(':t',$data->trainerId);
     $Insert->bindValue(':c',$data->countOfPlaces);
     $Insert->bindValue(':p',$data->price);
     $Insert->bindValue(':s',$data->styleId);
-    $Insert->bindValue(':de',$data->description);
+    $Insert->bindValue(':de',$data->courseDescription);
     $Insert->bindValue(':du',$data->duration);
     $Insert->bindValue(':i',$data->courseId);
     $Insert->execute();

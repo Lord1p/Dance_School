@@ -9,7 +9,7 @@
     UPDATE 
         clients
     SET
-        name = :n,
+        clientName = :n,
         email = :e,
         tellNumber =:t,
         password = :p,
@@ -19,7 +19,7 @@
         clientId = :i
     ");
     
-    $Insert->bindValue(':n',$data->name);
+    $Insert->bindValue(':n',$data->clientName);
     $Insert->bindValue(':e',$data->email);
     $Insert->bindValue(':t',$data->tellNumber);
     $Insert->bindValue(':p',$data->password);

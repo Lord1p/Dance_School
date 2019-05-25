@@ -6,10 +6,10 @@
 
     $Insert = $dbh->prepare("INSERT INTO
     styles(
-    name)
+    styleName)
     VALUES(
     :r)");
-    $Insert->bindValue(':r',$data->name);
+    $Insert->bindValue(':r',$data->styleName);
     $Insert->execute();
     
 ?>

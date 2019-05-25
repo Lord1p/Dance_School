@@ -8,11 +8,11 @@
     UPDATE 
         styles
     SET
-        name = :r
+        styleName = :r
     WHERE
         styleId = :i
     ");
-    $Insert->bindValue(':r',$data->name);
+    $Insert->bindValue(':r',$data->styleName);
     $Insert->bindValue(':i',$data->styleId);
     $Insert->execute();
     

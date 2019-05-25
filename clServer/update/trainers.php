@@ -8,21 +8,21 @@
     UPDATE 
         trainers
     SET
-        name = :n,
+        trainerName = :n,
         email = :e,
         tellNumber =:t,
         password = :p,
-        description = :d,
-        photoLink =:a
+        trainerDescription = :d,
+        avatarLink =:a
     WHERE
         trainerId = :i
     ");
 
-    $Insert->bindValue(':n',$data->name);
+    $Insert->bindValue(':n',$data->trainerName);
     $Insert->bindValue(':e',$data->email);
     $Insert->bindValue(':t',$data->tellNumber);
     $Insert->bindValue(':p',$data->password);
-    $Insert->bindValue(':d',$data->description);
+    $Insert->bindValue(':d',$data->trainerDescription);
     $Insert->bindValue(':a',$data->avatarLink);
     $Insert->bindValue(':i',$data->trainerId);
     $Insert->execute();

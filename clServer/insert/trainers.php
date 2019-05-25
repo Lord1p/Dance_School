@@ -6,15 +6,15 @@
 
     $Insert = $dbh->prepare("INSERT INTO
     trainers(
-    name,email,tellNumber,
-    password,description,photoLink)
+    trainerName,email,tellNumber,
+    password,trainerDescription,avatarLink)
     VALUES(
     :n,:e,:t,:p,:d,:a)");
-    $Insert->bindValue(':n',$data->name);
+    $Insert->bindValue(':n',$data->trainerName);
     $Insert->bindValue(':e',$data->email);
     $Insert->bindValue(':t',$data->tellNumber);
     $Insert->bindValue(':p',$data->password);
-    $Insert->bindValue(':d',$data->description);
+    $Insert->bindValue(':d',$data->trainerDescription);
     $Insert->bindValue(':a',$data->avatarLink);
     $Insert->execute();
     

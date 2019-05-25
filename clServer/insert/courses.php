@@ -6,16 +6,16 @@
 
     $Insert = $dbh->prepare("INSERT INTO
     courses(
-    name,teacherId,countOfPlaces
-    price,styleId,description,duration)
+    courseName,trainerId,countOfPlaces
+    price,styleId,courseDescription,duration)
     VALUES(
     :n,:t,:c,:p,:s,:de,:du)");
-    $Insert->bindValue(':n',$data->name);
-    $Insert->bindValue(':t',$data->teacherId);
+    $Insert->bindValue(':n',$data->courseName);
+    $Insert->bindValue(':t',$data->trainerId);
     $Insert->bindValue(':c',$data->countOfPlaces);
     $Insert->bindValue(':p',$data->price);
     $Insert->bindValue(':s',$data->styleId);
-    $Insert->bindValue(':de',$data->description);
+    $Insert->bindValue(':de',$data->courseDescription);
     $Insert->bindValue(':du',$data->duration);
     $Insert->execute();
     
