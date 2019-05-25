@@ -5,8 +5,8 @@
     .module("main")
     .controller("SignUpController", SignUpController);
 
-  SignUpController.$inject = ["$rootScope", "$scope", "$http", "encryptor"];
-  function SignUpController($rootScope, $scope, $http, encryptor) {
+  SignUpController.$inject = ["$rootScope", "$scope", "$http", "encryptor", "$location"];
+  function SignUpController($rootScope, $scope, $http, encryptor, $location) {
     $scope.user = {
       firstName: "",
       lastName: "",
@@ -24,7 +24,7 @@
 
     function registration() {
       if ($scope.user.firstName.length == 0) {
-        
+
       }
       let preparedData = {
         name: $scope.user.firstName + " " + $scope.user.lastName,
@@ -39,9 +39,11 @@
           $rootScope.isAuthorizated = true;
           $rootScope.currentUser = res.data;
           $rootScope.currentUser.type = $rootScope.userType.client;
+          $location.url(['/mycourses']);
         }
         else {
           $scope.isOk = false;
+          console.log("error");
         }
       });
     }

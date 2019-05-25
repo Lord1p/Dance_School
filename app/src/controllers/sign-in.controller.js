@@ -3,8 +3,8 @@
 
   angular.module("main").controller("SignInController", SignInController);
 
-  SignInController.$inject = ["$rootScope", "$scope", "$http"];
-  function SignInController($rootScope, $scope, $http) {
+  SignInController.$inject = ["$rootScope", "$scope", "$http", "$location"];
+  function SignInController($rootScope, $scope, $http, $location) {
     $scope.user = {
       email: "",
       password: ""
@@ -19,9 +19,11 @@
           $rootScope.isAuthorizated = true;
           $rootScope.currentUser = res.data;
           $rootScope.currentUser.type = res.data.type;
+          $location.url(['/mycourses']);
         }
         else {
           $scope.isOk = false;
+          console.log("error");
         }
       });
     }
