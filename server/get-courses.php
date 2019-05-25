@@ -1,21 +1,8 @@
 <?php
     include("connect.php");
 
-    $json = file_get_contents('php://input');
-    $data = json_decode($json);
-
-    $Select = $dbh->prepare("DELETE
-    FROM
-    orders
-    WHERE
-    clientId = :clid and 
-    courseId = :coid
-    ");
-    $Select->bindValue(':clid',$data->clientId);
-    $Select->bindValue(':coid',$data->courseId);
-    $Select->execute();
-
-    $projects = $dbh->prepare("SELECT courses.courseId,
+    $projects = $dbh->prepare("SELECT 
+    courses.courseId,
     courses.name,
     courses.teacherId,
     courses.countOfPlace,
@@ -30,14 +17,11 @@
     trainers.password,
     trainers.description,
     trainers.photoLink FROM
-    orders,trainers,courses,styles
+    trainers,courses,styles
     WHERE
-    orders.clientId = :id and
-    orders.courseId = Courses.courseId and
-    styles.styleId = courses.styleId and
-    courses.teacherId = trainers.teacherId
+    courses.teacherId = trainers.trainerId and
+    styles.styleId = courses.styleId
     ");
-    $projects->bindValue('id',$data->clientId);
     $projects->execute();
     $JSONres=array();
 
@@ -60,8 +44,10 @@
     $res->trainerDescription = $row['trainers.description'];
     $res->avatarLink = $row['trainers.photoLink'];
     
+
     array_push($JSONres,$res);
     }
-    $Res=array('clCourses'=>$JSONres);
+    $Res=array('courses'=>$JSONres);
     echo json_encode($Res);
+    
 ?>

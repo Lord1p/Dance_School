@@ -43,7 +43,7 @@
     $res->tellNumber = $row['trainers.tellNumber'];
     $res->password = $row['trainers.password'];
     $res->trainerDescription = $row['trainers.description'];
-    $res->photoLink = $row['trainers.photoLink'];
+    $res->avatarLink = $row['trainers.photoLink'];
     
     array_push($JSONres,$res);
     }

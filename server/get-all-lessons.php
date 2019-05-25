@@ -55,7 +55,7 @@
     $res->tellNumber = $row['trainers.tellNumber'];
     $res->password = $row['trainers.password'];
     $res->trainerDescription = $row['trainers.description'];
-    $res->photoLink = $row['trainers.photoLink'];
+    $res->avatarLink = $row['trainers.photoLink'];
     $res->lessonId = $row['lessons.lessonId'];
     $res->date = $row['lessons.date'];
     $res->roomId = $row['rooms.roomId'];
