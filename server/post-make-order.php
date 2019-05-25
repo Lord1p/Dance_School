@@ -11,7 +11,6 @@
     $Insert->bindValue(':coI',$data->courseId);
     $Insert->bindValue(':co',$data->code);
     $Insert->execute();
-    $clientId = $Insert->insert_id;
 
     $Select = $dbh->prepare("SELECT
     lessonId,
