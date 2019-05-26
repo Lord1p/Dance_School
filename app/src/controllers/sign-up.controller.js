@@ -27,18 +27,17 @@
 
       }
       let preparedData = {
-        name: $scope.user.firstName + " " + $scope.user.lastName,
+        clientName: $scope.user.firstName + " " + $scope.user.lastName,
         email: $scope.user.email,
         tellNumber: $scope.user.tellNumber,
         password: encryptor.enctypt("abcdefghijclmnopqrstwxyz6157480932" ,$scope.user.password),
         mailSending: $scope.user.mailSending
       };
       $http.post("./server/post-registration.php", preparedData).then(res => {
-        console.log(res.data);
-        if (res.data.email) {
+        console.dir(res.data.error);
+        if (!res.data.error) {
           $rootScope.isAuthorizated = true;
           $rootScope.currentUser = res.data;
-          $rootScope.currentUser.type = $rootScope.userType.client;
           $location.url(['/mycourses']);
         }
         else {

@@ -25,7 +25,7 @@
           <li class="nav-item">
             <a class="nav-link" href="#!styles">Стили</a>
           </li>
-          <li class="nav-item" ng-if="$rootScope.currentUser.type != $rootScope.userType.anonim">
+          <li class="nav-item" ng-if="$rootScope.currentUser.type == $rootScope.userType.anonim">
             <a class="nav-link" href="#!mycourses">Мои курсы</a>
           </li>
           <li class="nav-item" ng-if="$rootScope.currentUser.type == $rootScope.userType.anonim">

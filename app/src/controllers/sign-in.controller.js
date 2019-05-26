@@ -18,7 +18,6 @@
         if (res.data.email) {
           $rootScope.isAuthorizated = true;
           $rootScope.currentUser = res.data;
-          $rootScope.currentUser.type = res.data.type;
           $location.url(['/mycourses']);
         }
         else {

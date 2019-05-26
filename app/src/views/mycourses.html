@@ -1,4 +1,4 @@
-<div>
+<div class="container">
   <h1>Ваши Курсы</h1>
   <h2 ng-if="courses.length == 0">{{ empty }}</h2>
   <ul>
@@ -8,7 +8,7 @@
       <span>{{ i.courseDescription }}</span>
       <p>длительность курса {{ i.duration }} занятий</p>
       <p>стиль: {{ i.styleName }}</p>
-      <div>
+      <div ng-if="$rootScope.currentUser.type != $rootScope.userType.trainer">
         <h2>{{ i.trainerName }}</h2>
         <img src="{{ i.avatarLink }}" />
         <h6>{{ i.email }}/{{ i.tellNumber }}</h6>
