@@ -17,7 +17,7 @@
         console.log(res.data);
         if (res.data.email) {
           $rootScope.isAuthorizated = true;
-          $rootScope.currentUser.profile = res.data;
+          $rootScope.currentUser = res.data;
           $location.url(['/mycourses']);
         }
         else {

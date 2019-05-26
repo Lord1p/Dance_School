@@ -16,20 +16,20 @@
     init();
 
     function init() {
-      console.log($rootScope.currentUser.profile);
-      if ($rootScope.isAuthorizated && $rootScope.currentUser.profile) {
+      console.log($rootScope.currentUser);
+      if ($rootScope.isAuthorizated && $rootScope.currentUser) {
         let name = "";
-        if ($rootScope.currentUser.profile.type == $rootScope.userType.client) {
-          name = $rootScope.currentUser.profile.clientName;
+        if ($rootScope.currentUser.type == $rootScope.userType.client) {
+          name = $rootScope.currentUser.clientName;
         }
-        if ($rootScope.currentUser.profile.type == $rootScope.userType.teacher) {
-          name = $rootScope.currentUser.profile.trainerName;
+        if ($rootScope.currentUser.type == $rootScope.userType.teacher) {
+          name = $rootScope.currentUser.trainerName;
         }
 
         name = name.split(" ");
         $scope.firstName = name[0];
         $scope.lastName = name[1];
-        $scope.user = $rootScope.currentUser.profile;
+        $scope.user = $rootScope.currentUser;
         console.log($scope.user);
       }
     }
@@ -37,16 +37,16 @@
     function save() {
       console.log($rootScope.isAuthorizated);
       if ($rootScope.isAuthorizated) {
-        if ($rootScope.currentUser.profile.type == $rootScope.userType.client) {
+        if ($rootScope.currentUser.type == $rootScope.userType.client) {
           $scope.user.clientName = $scope.firstName + " " + $scope.lastName;
         }
-        if ($rootScope.currentUser.profile.type == $rootScope.userType.teacher) {
+        if ($rootScope.currentUser.type == $rootScope.userType.teacher) {
           $scope.user.trainerName = $scope.firstName + " " + $scope.lastName;
         }
         console.log($scope.user);
         $http.post("./server/post-save-profile.php", $scope.user).then(res => {
           console.log(res.data);
-          $rootScope.currentUser.profile = res.data;
+          $rootScope.currentUser = res.data;
           init();
         });
       }

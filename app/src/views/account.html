@@ -10,7 +10,7 @@
     <input type="email" ng-model="user.email" />
     Номер телефона:
     <input type="tel" ng-model="user.tellNumber" />
-    <span ng-if=" currentUser.profile.type == userType.client">
+    <span ng-if=" currentUser.type == userType.client">
       Рассылка писем
       <input type="checkbox" ng-model="user.mailSending" />
     </span>
