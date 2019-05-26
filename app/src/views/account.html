@@ -1,0 +1,19 @@
+<div class="container">
+  <h1>Настройки аккаунта</h1>
+  <img ng-src="{{ user.avatarLink }}" />
+  <form name="save">
+    Имя:
+    <input type="text" ng-model="firstName" />
+    Фамилия:
+    <input type="text" ng-model="lastName" />
+    Email:
+    <input type="email" ng-model="user.email" />
+    Номер телефона:
+    <input type="tel" ng-model="user.tellNumber" />
+    <span ng-if="user.type=$rootScope.userType.client">
+      Рассылка писем
+      <input type="checkbox" ng-model="user.mailSending" />
+    </span>
+    <button ng-click="save()">Сохранить новые данные</button>
+  </form>
+</div>

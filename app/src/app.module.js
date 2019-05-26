@@ -52,6 +52,10 @@ function Routs( $routeProvider ) {
   .when('/mycourses', {
     templateUrl: './app/src/views/mycourses.html',
     controller: 'MyCoursesController',
+  })
+  .when('/account', {
+    templateUrl: './app/src/views/account.html',
+    controller: 'AccountController',
   });
 }
 })();
