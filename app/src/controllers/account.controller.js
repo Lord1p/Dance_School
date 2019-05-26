@@ -17,7 +17,7 @@
 
     function init() {
       console.log($rootScope.currentUser);
-      if ($rootScope.isAuthorizated) {
+      if ($rootScope.isAuthorizated && $rootScope.currentUser) {
         let name = "";
         if ($rootScope.currentUser.type == $rootScope.userType.client) {
           name = $rootScope.currentUser.clientName;
