@@ -17,7 +17,7 @@
 
     function init() {
       console.log($rootScope.currentUser);
-      if ($rootScope.isAuthorizated) {
+      if ($rootScope.isAuthorizated && $rootScope.currentUser) {
         let name = "";
         if ($rootScope.currentUser.type == $rootScope.userType.client) {
           name = $rootScope.currentUser.clientName;
@@ -45,7 +45,7 @@
 
         $http.post("./server/post-save-profile.php", $scope.user).then(res => {
           console.log(res.data);
-          $rootScope.currentUser = res.data.client;
+          $rootScope.currentUser = res.data;
           init();
         });
       }
