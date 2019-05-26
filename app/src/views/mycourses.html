@@ -8,7 +8,7 @@
       <span>{{ i.courseDescription }}</span>
       <p>длительность курса {{ i.duration }} занятий</p>
       <p>стиль: {{ i.styleName }}</p>
-      <div ng-if="$rootScope.currentUser.type != $rootScope.userType.trainer">
+      <div ng-if=" currentUser.profile.type == userType.client">
         <h2>{{ i.trainerName }}</h2>
         <img src="{{ i.avatarLink }}" />
         <h6>{{ i.email }}/{{ i.tellNumber }}</h6>

@@ -62,6 +62,7 @@
     $cl=$Select->fetch(PDO::FETCH_ASSOC)[0];
 
     $res = new R();
+    $res->type = "client";
     $res->clientName = $cl['clientName'];
     $res->email = $cl['email'];
     $res->tellNumber = $cl['tellNumber'];
@@ -131,6 +132,7 @@
     $cl=$Select->fetch(PDO::FETCH_ASSOC);
 
     $res = new R();
+    $res->type = "trainer";
     $res->trainerName = $cl['trainerName'];
     $res->email = $cl['email'];
     $res->tellNumber = $cl['tellNumber'];

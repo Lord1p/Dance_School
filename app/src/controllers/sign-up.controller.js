@@ -37,7 +37,7 @@
         console.dir(res.data.error);
         if (!res.data.error) {
           $rootScope.isAuthorizated = true;
-          $rootScope.currentUser = res.data;
+          $rootScope.currentUser.profile = res.data;
           $location.url(['/mycourses']);
         }
         else {

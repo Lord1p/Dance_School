@@ -15,6 +15,9 @@ function rootInit($rootScope) {
 
   $rootScope.isAuthorizated = false;
   $rootScope.currentUser = {
+    profile: "",
+  };
+  $rootScope.currentUser.profile = {
     type: $rootScope.userType.anonim,
   };
 }
