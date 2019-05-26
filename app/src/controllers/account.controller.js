@@ -35,6 +35,9 @@
     }
 
     function save() {
+      console.log($rootScope.isAuthorizated);
+      console.log($rootScope.currentUser);
+      console.log($scope.user);
       if ($rootScope.isAuthorizated) {
         if ($rootScope.currentUser.type == $rootScope.userType.client) {
           $scope.user.clientName = $scope.firstName + " " + $scope.lastName;
@@ -42,10 +45,10 @@
         if ($rootScope.currentUser.type == $rootScope.userType.teacher) {
           $scope.user.trainerName = $scope.firstName + " " + $scope.lastName;
         }
-
+        console.log($scope.user);
         $http.post("./server/post-save-profile.php", $scope.user).then(res => {
           console.log(res.data);
-          $rootScope.currentUser = res.data.client;
+          $rootScope.currentUser = res.data;
           init();
         });
       }
