@@ -36,8 +36,6 @@
 
     function save() {
       console.log($rootScope.isAuthorizated);
-      console.log($rootScope.currentUser);
-      console.log($scope.user);
       if ($rootScope.isAuthorizated) {
         if ($rootScope.currentUser.type == $rootScope.userType.client) {
           $scope.user.clientName = $scope.firstName + " " + $scope.lastName;
