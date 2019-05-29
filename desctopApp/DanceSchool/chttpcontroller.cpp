@@ -35,6 +35,15 @@ void CHttpController::printResult(QNetworkReply* reply){
 		qDebug() << reply->errorString();
 		return;
 	}
+	QString asnwer = reply->readAll();
+	QJsonParseError jsonError;
 	QString answer = reply->readAll();
-	qDebug() << answer;
+	QJsonDocument doc = QJsonDocument::fromJson(asnwer.toUtf8(),&jsonError);
+	if(jsonError.error != QJsonParseError::NoError){
+		qDebug() << jsonError.errorString();
+		return;
+	}
+	//QList<QVariant> list = doc.toVariant().toList();
+	//QMap<QString, QVariant> map = list[0].toMap();
+	qDebug() << asnwer;
 }
