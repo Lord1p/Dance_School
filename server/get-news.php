@@ -1,6 +1,6 @@
 <?php
     include("connect.php");
-    $projects = $dbh->prepare("SELECT * FROM news");
+    $projects = $dbh->prepare("SELECT * FROM news ORDER BY date DESC");
     $projects->execute();
     $JSONres=array();
 
