@@ -25,12 +25,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
-        csocket.cpp \
+        chttpcontroller.cpp \
         main.cpp \
         mainwindow.cpp
 
 HEADERS += \
-        csocket.h \
+        chttpcontroller.h \
         mainwindow.h
 
 FORMS += \
