@@ -1,5 +1,5 @@
 <?php
-    include("./server/connect.php");
+    include("../../server/connect.php");
     $projects = $dbh->prepare("SELECT * FROM admins");
     $projects->execute();
     $JSONres=array();

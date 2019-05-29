@@ -1,5 +1,5 @@
 <?php
-    include("./server/connect.php");
+    include("../../server/connect.php");
 
     $json = file_get_contents('php://input');
     $data = json_decode($json);
