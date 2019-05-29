@@ -1,69 +1,70 @@
-<div id="dance-header">
-  <div
-    id="carouselExampleCaptions"
-    class="carousel slide header"
-    data-ride="carousel"
-  >
-    <ol class="carousel-indicators">
-      <li
-        data-target="#carouselExampleCaptions"
-        data-slide-to="0"
-        class="active"
-      ></li>
-      <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-      <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="./photos/1.jpg" class="d-block w-100" alt="..." />
-        <div class="carousel-caption d-none d-md-block">
-          <h4>Лучшие в стране преподаватели</h4>
-          <p>Учись у лучших преподавателей, с огромным опытом!</p>
+<div id="news">
+  <div id="dance-header">
+    <div
+      id="carouselExampleCaptions"
+      class="carousel slide header"
+      data-ride="carousel"
+    >
+      <ol class="carousel-indicators">
+        <li
+          data-target="#carouselExampleCaptions"
+          data-slide-to="0"
+          class="active"
+        ></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="./photos/1.jpg" class="d-block w-100" alt="..." />
+          <div class="carousel-caption d-none d-md-block">
+            <h4>Лучшие в стране преподаватели</h4>
+            <p>Учись у лучших преподавателей, с огромным опытом!</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="./photos/2.jpg" class="d-block w-100" alt="..." />
+          <div class="carousel-caption d-none d-md-block">
+            <h4>Большие залы для тренировок</h4>
+            <p>Большие, професиональные залы для тренировок!</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="./photos/3.jpg" class="d-block w-100" alt="..." />
+          <div class="carousel-caption d-none d-md-block">
+            <h4>Уникальные методы обучения</h4>
+            <p>
+              Опробуйте на себе лучшие методы обучения, от лучших
+              преподавателей!
+            </p>
+          </div>
         </div>
       </div>
-      <div class="carousel-item">
-        <img src="./photos/2.jpg" class="d-block w-100" alt="..." />
-        <div class="carousel-caption d-none d-md-block">
-          <h4>Большие залы для тренировок</h4>
-          <p>Большие, професиональные залы для тренировок!</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="./photos/3.jpg" class="d-block w-100" alt="..." />
-        <div class="carousel-caption d-none d-md-block">
-          <h4>Уникальные методы обучения</h4>
-          <p>
-            Опробуйте на себе лучшие методы обучения, от лучших преподавателей!
-          </p>
-        </div>
-      </div>
+      <button
+        class="carousel-control-prev-icon"
+        href="#carouselExampleCaptions"
+        role="button"
+        data-slide="prev"
+      ></button>
+      <button
+        class="carousel-control-next-icon"
+        href="#carouselExampleCaptions"
+        role="button"
+        data-slide="next"
+      ></button>
     </div>
-    <button
-      class="carousel-control-prev-icon"
-      href="#carouselExampleCaptions"
-      role="button"
-      data-slide="prev"
-    >
-    </button>
-    <button
-      class="carousel-control-next-icon"
-      href="#carouselExampleCaptions"
-      role="button"
-      data-slide="next"
-    >
-    </button>
   </div>
-</div>
-<div class="container">
-  <h1>
-    Последние новости!
-  </h1>
-  <h2 ng-if="news.length == 0">{{ empty }}</h2>
-  <ul>
-    <li ng-repeat="i in news">
-      <h2>{{ i.header }}</h2>
-      <h6>{{ i.date }}</h6>
-      <span>{{ i.text }}</span>
-    </li>
-  </ul>
+  <div class="container">
+    <h1>
+      Последние новости!
+    </h1>
+    <h2 ng-if="news.length == 0">{{ empty }}</h2>
+    <ul>
+      <li ng-repeat="i in news">
+        <h2>{{ i.header }}</h2>
+        <h6>{{ i.date }}</h6>
+        <span>{{ i.text }}</span>
+      </li>
+    </ul>
+  </div>
 </div>
