@@ -1,5 +1,5 @@
 <?php
-    include("connect.php");
+    include("./server/connect.php");
     $projects = $dbh->prepare("SELECT * FROM courses");
     $projects->execute();
     $JSONres=array();
