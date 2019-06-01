@@ -12,6 +12,9 @@
     init();
 
     function init() {
+      $('.carousel').carousel({
+        interval: 4000
+      });
       $http.get('./server/get-news.php')
         .then(res => {
           console.log(res.data.news);
