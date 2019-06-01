@@ -3,7 +3,7 @@
   <h2 ng-if="courses.length == 0">{{ empty }}</h2>
   <ul class="container">
     <div class="row justify-content-around">
-      <li class="card" style="width: 18rem;" ng-repeat="i in courses">
+      <li class="course card" style="width: 21rem;" ng-repeat="i in courses">
         <div>
           <h2 class="card-header">{{ i.courseName }}</h2>
           <div class="card-body">
@@ -14,14 +14,21 @@
               <span>{{ i.courseDescription }}</span>
               <p>длительность курса {{ i.duration }} занятий</p>
               <p>стиль: {{ i.styleName }}</p>
-              <a href="#" class="btn btn-primary">Мне интересно!</a>
-            </div>
-            <div class="mt-2">
-              <h5 class="card-title">Преподаватель: {{ i.trainerName }}</h5>
-              <img class="card-img" src="{{ i.avatarLink }}" />
-              <h6 class="card-title">{{ i.email }}/{{ i.tellNumber }}</h6>
-              <p>О себе:</p>
-              <span class="card-text">{{ i.trainerDescription }}</span>
+              <div class="row">
+              <a href="javascript:void(0)" class="btn btn-primary mr-3">Мне интересно!</a>
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Преподаватель
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <p class="dropdown-elem row">
+                    <img class="l-avatar" src="{{i.avatarLink}}" />
+                    <span class="l-title">{{ i.trainerName }}</span></p>
+                  <p class="dropdown-elem">{{ i.email }} / {{ i.tellNumber }}</p>
+                  <p class="dropdown-elem">О себе: {{ i.trainerDescription }}</p>
+                </div>
+              </div>
+              </div>
             </div>
           </div>
         </div>

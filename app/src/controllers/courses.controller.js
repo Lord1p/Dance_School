@@ -12,6 +12,7 @@
     init();
 
     function init() {
+      $('.dropdown-toggle').dropdown();
       $http.get('./server/get-courses.php')
         .then(res => {
           console.log(res.data.courses);
