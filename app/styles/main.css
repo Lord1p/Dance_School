@@ -44,7 +44,7 @@ body {
   background-color: rgb(250, 250, 250);
   padding-bottom: 2em;
   margin-top: 4em;
-  min-height: 50em;
+  min-height: 25em;
   width: 90%;
   margin: auto;
 }
@@ -136,4 +136,8 @@ ul {
   padding: 1em;
   max-height: 30em;
   width: 24em;
+}
+
+.style-card {
+  margin: 2em;
 }

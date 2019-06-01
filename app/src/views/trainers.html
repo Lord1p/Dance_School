@@ -3,8 +3,8 @@
     Наши тренеры!
   </h1>
   <h2 ng-if="trainers.length == 0">{{ empty }}</h2>
-  <div class="card m-3" ng-repeat="i in trainers">
-    <div class="row no-gutters m-2">
+  <div class="card m-5" ng-repeat="i in trainers">
+    <div class="row no-gutters m-3">
       <div class="col-md-4">
         <img src="{{ i.avatarLink }}" class="card-img" alt="teacher photo" />
       </div>
