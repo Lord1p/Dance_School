@@ -36,12 +36,19 @@ body {
     opacity: 0.6;
 }
 
-.page {
+.main {
   background-color: rgb(250, 250, 250);
   width: 90%;
   margin: auto;
   padding-bottom: 2em;
-  margin-top: 5em;
+  margin-top: 4em;
+  min-height: 50em;
+}
+
+.page {
+  min-height: 100%;
+  width: 90%;
+  margin: auto;
 }
 
 #dance-header {
@@ -51,17 +58,11 @@ body {
   width: 100%;
 }
 
-.container {
-  padding-top: 5em;
-}
-
-footer {
-  margin-top: 5em;
+.footer {
+  margin-top: 0;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 0.75em;
-  background-color: black;
-  color: azure;
-  padding-bottom: 0;
+  width: 90%;
 }
 
 .company {
@@ -70,6 +71,8 @@ footer {
 
 .title {
   text-align: center;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
 }
 
 .hide {
