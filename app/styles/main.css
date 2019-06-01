@@ -141,3 +141,18 @@ ul {
 .style-card {
   margin: 2em;
 }
+
+.xl-avatar {
+  max-height: 300px;
+  max-width: 300px;
+}
+
+.sign-in {
+  width: 30em;
+  margin: auto;
+}
+
+.sign-up {
+  width: 40em;
+  margin: auto;
+}
