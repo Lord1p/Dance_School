@@ -105,3 +105,11 @@ ul {
 .news-page {
   margin-top: 0;
 }
+
+.avatar {
+  margin: auto;
+  width: 25px;
+  height: 25px;
+  border: 0 solid black;
+  border-radius: 50%;
+}

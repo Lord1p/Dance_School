@@ -31,18 +31,18 @@
           <li id="myCourses" class="nav-item">
             <a class="nav-link" href="#!mycourses">Мои курсы</a>
           </li>
-          <li class="nav-item">
-            <span class="row right">
+          <li id="sign" class="nav-item">
+            <span class="row">
               <a class="nav-link" href="#!sign-in">Вход</a>
               <a class="nav-link" href="#!sign-up">Регистрация</a>
             </span>
           </li>
-          <li id="account" class="nav-item row">
-            <img src="{{ currentUser.avatarLink }}" />
-            <a class="nav-link" href="#!account">Аккаунт</a>
-          </li>
         </ul>
       </div>
+      <span id="account" class="row">
+          <img class="avatar" src="{{ currentUser.avatarLink }}" />
+          <a class="nav-link" href="#!account">Аккаунт</a>
+      </span>
     </nav>
     <div class="main">
       <ng-view></ng-view>

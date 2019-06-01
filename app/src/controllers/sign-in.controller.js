@@ -19,6 +19,9 @@
           $rootScope.isAuthorizated = true;
           $rootScope.currentUser = res.data;
           $location.url(['/mycourses']);
+          showById('account');
+          showById('myCourses');
+          hideByID('sign');
         }
         else {
           $scope.isOk = false;
