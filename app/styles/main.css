@@ -142,6 +142,11 @@ ul {
   margin: 2em;
 }
 
+.xl-avatar {
+  max-height: 300px;
+  max-width: 300px;
+}
+
 .sign-in {
   width: 30em;
   margin: auto;
