@@ -28,16 +28,16 @@
           <li class="nav-item">
             <a class="nav-link" href="#!styles">Стили</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link hide" href="#!mycourses">Мои курсы</a>
+          <li id="myCourses" class="nav-item">
+            <a class="nav-link" href="#!mycourses">Мои курсы</a>
           </li>
           <li class="nav-item">
             <span class="row right">
-              <a class="nav-link" onclick="hideHeader()" href="#!sign-in">Вход</a>
-              <a class="nav-link" onclick="hideHeader()" href="#!sign-up">Регистрация</a>
+              <a class="nav-link" href="#!sign-in">Вход</a>
+              <a class="nav-link" href="#!sign-up">Регистрация</a>
             </span>
           </li>
-          <li class="nav-item row hide">
+          <li id="account" class="nav-item row">
             <img src="{{ currentUser.avatarLink }}" />
             <a class="nav-link" href="#!account">Аккаунт</a>
           </li>
@@ -70,6 +70,7 @@
   <script src="./app/libs/angular-route.min.js"></script>
   <script src="./app/libs/jquery-3.4.1.slim.min.js"></script>
   <script src="./app/libs/bootstrap.min.js"></script>
+  <script src="./app/src/jq/additional.js"></script>
   <script src="./app/src/app.module.js"></script>
   <script src="./app/src/services/encryptor.service.js"></script>
   <script src="./app/src/controllers/news.controller.js"></script>

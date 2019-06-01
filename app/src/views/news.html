@@ -1,5 +1,4 @@
-<div id="news">
-  <div id="dance-header">
+<div id="dance-header">
     <div
       id="carouselExampleCaptions"
       class="carousel slide header"
@@ -53,14 +52,15 @@
         data-slide="next"
       ></button>
     </div>
-  </div>
+</div>
+<div class="page news-page">
   <div class="container">
     <h1>
       Последние новости!
     </h1>
     <h2 ng-if="news.length == 0">{{ empty }}</h2>
     <ul>
-      <li ng-repeat="i in news">
+      <li class="news" ng-repeat="i in news">
         <h2>{{ i.header }}</h2>
         <h6>{{ i.date }}</h6>
         <span>{{ i.text }}</span>
@@ -68,4 +68,3 @@
     </ul>
   </div>
 </div>
-<script src="./app/src/jq/additional.js"></script>
