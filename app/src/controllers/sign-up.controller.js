@@ -40,7 +40,7 @@
           $rootScope.currentUser = res.data;
           $location.url(['/mycourses']);
           showById('account');
-          showById('myCourses');
+          //showById('myCourses');
           hideByID('sign');
         }
         else {

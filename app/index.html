@@ -28,21 +28,30 @@
           <li class="nav-item">
             <a class="nav-link" href="#!styles">Стили</a>
           </li>
-          <li id="myCourses" class="nav-item">
-            <a class="nav-link" href="#!mycourses">Мои курсы</a>
-          </li>
           <li id="sign" class="nav-item">
-            <span class="row">
-              <a class="nav-link" href="#!sign-in">Вход</a>
-              <a class="nav-link" href="#!sign-up">Регистрация</a>
-            </span>
+            <a class="nav-link" href="#!sign-in">Вход</a>
           </li>
         </ul>
       </div>
-      <span id="account" class="row">
-          <img class="avatar" src="{{ currentUser.avatarLink }}" />
-          <a class="nav-link" href="#!account">Аккаунт</a>
-      </span>
+      <div id="account" class="dropdown">
+        <img class="avatar" src="{{$rootScope.currentUser.avatarLink}}" />
+        <a
+          class="btn btn-secondary btn-sm dropdown-toggle"
+          href="javaScript:void(0)"
+          role="button"
+          id="dropdownMenuLink"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+          ng-model="$rootScope.currentUser.trainerName"
+        >
+        </a>
+
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <a class="dropdown-item" href="#!account">Аккаунт</a>
+          <a class="dropdown-item" href="#!mycourses">Мои курсы</a>
+        </div>
+      </div>
     </nav>
     <div class="main">
       <ng-view></ng-view>

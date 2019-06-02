@@ -32,4 +32,4 @@ function showById(id) {
 }
 
 hideByID('account');
-hideByID('myCourses');
+//hideByID('myCourses');
