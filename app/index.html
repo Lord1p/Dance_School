@@ -34,17 +34,17 @@
         </ul>
       </div>
       <div id="account" class="dropdown">
-        <img class="avatar" src="{{$rootScope.currentUser.avatarLink}}" />
+        <img class="avatar" src="{{currentUser.avatarLink}}" />
         <a
-          class="btn btn-secondary btn-sm dropdown-toggle"
+          class="btn btn-sm dropdown-toggle text-light"
           href="javaScript:void(0)"
           role="button"
           id="dropdownMenuLink"
           data-toggle="dropdown"
           aria-haspopup="true"
           aria-expanded="false"
-          ng-model="$rootScope.currentUser.trainerName"
         >
+        {{currentUser.trainerName||currentUser.clientName||currentUser.adminName}}
         </a>
 
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
