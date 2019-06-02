@@ -10,6 +10,7 @@
       password: ""
     };
     $scope.logIn = logIn;
+    $scope.signUp = signUp;
     $scope.isOk = true;
 
     function logIn() {
@@ -20,7 +21,7 @@
           $rootScope.currentUser = res.data;
           $location.url(['/mycourses']);
           showById('account');
-          showById('myCourses');
+          //showById('myCourses');
           hideByID('sign');
         }
         else {
@@ -28,6 +29,10 @@
           console.log("error");
         }
       });
+    }
+
+    function signUp() {
+      $location.url(['/sign-up']);
     }
   }
 })();

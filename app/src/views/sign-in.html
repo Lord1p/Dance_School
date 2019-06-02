@@ -38,6 +38,14 @@
       >
         Вход
       </button>
+      <button
+        type="submit"
+        class="btn btn-primary"
+        ng-if="login.email.$valid"
+        ng-click="signUp()"
+      >
+      Регистрация
+      </button>
     </form>
     <div ng-if="!isOk" class="error">
       Воу воу, похоже данные введены не верно. Повторите ввод.

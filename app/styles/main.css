@@ -49,6 +49,11 @@ body {
   margin: auto;
 }
 
+.account-page {
+  max-width: 50em;
+  margin: auto;
+}
+
 .footer-page {
   min-height: 1em;
 }
@@ -112,8 +117,8 @@ ul {
 
 .avatar {
   margin: auto;
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
   border: 0 solid black;
   border-radius: 50%;
 }
