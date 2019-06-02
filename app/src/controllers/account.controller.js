@@ -16,6 +16,7 @@
     init();
 
     function init() {
+      hideByID('suc-alert');
       console.log($rootScope.currentUser);
       if ($rootScope.isAuthorizated && $rootScope.currentUser) {
         let name = "";
@@ -47,7 +48,17 @@
         $http.post("./server/post-save-profile.php", $scope.user).then(res => {
           console.log(res.data);
           $rootScope.currentUser = res.data;
-          init();
+          $http.post("./server/post-signin.php", $scope.user).then(res => {
+            console.log(res.data);
+            if (res.data.email) {
+              $rootScope.isAuthorizated = true;
+              $rootScope.currentUser = res.data;
+              showById('account');
+              hideByID('sign');
+              init();
+              showById('suc-alert');
+            }
+          });
         });
       }
     }

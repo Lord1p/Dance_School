@@ -49,6 +49,11 @@ body {
   margin: auto;
 }
 
+.account-page {
+  max-width: 50em;
+  margin: auto;
+}
+
 .footer-page {
   min-height: 1em;
 }

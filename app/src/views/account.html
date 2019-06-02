@@ -1,19 +1,38 @@
 <div class="page">
-  <h1 class="title">Настройки аккаунта</h1>
-  <img ng-src="{{ user.avatarLink }}" />
-  <form name="save-form">
-    Имя:
-    <input type="text" ng-model="firstName" />
-    Фамилия:
-    <input type="text" ng-model="lastName" />
-    Email:
-    <input type="email" ng-model="user.email" />
-    Номер телефона:
-    <input type="tel" ng-model="user.tellNumber" />
-    <span ng-if=" currentUser.type == userType.client">
-      Рассылка писем
-      <input type="checkbox" ng-model="user.mailSending" />
-    </span>
-    <button ng-click="save()">Сохранить новые данные</button>
-  </form>
+  <h1 class="title m-1">Настройки аккаунта</h1>
+  <div class="card mb-3 account-page" style="max-width: 540px;">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img ng-src="{{ user.avatarLink }}" class="card-img" alt="Фото пользователя" />
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <p class="card-text">
+            <form name="save-form">
+              Имя:
+              <input class="form-control" type="text" ng-model="firstName" />
+              Фамилия:
+              <input class="form-control" type="text" ng-model="lastName" />
+              Email:
+              <input class="form-control" type="email" ng-model="user.email" />
+              Номер телефона:
+              <input class="form-control" type="tel" ng-model="user.tellNumber" />
+              Пароль:
+              <input class="form-control" type="password" ng-model="user.password" />
+              <span ng-if=" currentUser.type == userType.client">
+                <input class="form-check-input" type="checkbox" ng-model="user.mailSending" id="defaultCheck1"/>
+                <label class="form-check-label" for="defaultCheck1">
+                  Рассылка писем
+                </label>
+              </span>
+            </form>
+          </p>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-primary m-2 align-self-center" ng-click="save()">Сохранить новые данные</button>
+    <div id="suc-alert" class="alert alert-success m-5 row" role="alert">
+      Успешно обновлено!
+    </div>
+  </div>
 </div>
