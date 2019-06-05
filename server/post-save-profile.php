@@ -59,7 +59,7 @@
     $Select->bindValue(':id',$data->clientId);
     $Select->execute();
 
-    $cl=$Select->fetch(PDO::FETCH_ASSOC)[0];
+    $cl=$Select->fetch(PDO::FETCH_ASSOC);
 
     $res = new R();
     $res->type = "client";
