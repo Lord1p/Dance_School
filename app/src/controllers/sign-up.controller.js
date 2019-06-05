@@ -30,7 +30,7 @@
         clientName: $scope.user.firstName + " " + $scope.user.lastName,
         email: $scope.user.email,
         tellNumber: $scope.user.tellNumber,
-        password: encryptor.enctypt("abcdefghijclmnopqrstwxyz6157480932" ,$scope.user.password),
+        password: encryptor.enctypt($scope.user.password),
         mailSending: $scope.user.mailSending
       };
       $http.post("./server/post-registration.php", preparedData).then(res => {

@@ -4,3 +4,4 @@ server.js
 package.json
 package-lock.json
 copy.sh
+.vscode/*

@@ -5,8 +5,8 @@
     .module("main")
     .controller("AccountController", AccountController);
 
-  AccountController.$inject = ["$rootScope", "$scope", "$http"];
-  function AccountController($rootScope, $scope, $http) {
+  AccountController.$inject = ["$rootScope", "$scope", "$http", "encryptor"];
+  function AccountController($rootScope, $scope, $http, encryptor) {
     $scope.user = {};
     $scope.firstName = "";
     $scope.lastName = "";
@@ -45,6 +45,7 @@
           $scope.user.trainerName = $scope.firstName + " " + $scope.lastName;
         }
         console.log($scope.user);
+        $scope.user.password = encryptor.enctypt($scope.user.password);
         $http.post("./server/post-save-profile.php", $scope.user).then(res => {
           console.log(res.data);
           $rootScope.currentUser = res.data;

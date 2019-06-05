@@ -3,8 +3,8 @@
 
   angular.module("main").controller("SignInController", SignInController);
 
-  SignInController.$inject = ["$rootScope", "$scope", "$http", "$location"];
-  function SignInController($rootScope, $scope, $http, $location) {
+  SignInController.$inject = ["$rootScope", "$scope", "$http", "$location", "encryptor"];
+  function SignInController($rootScope, $scope, $http, $location, encryptor) {
     $scope.user = {
       email: "",
       password: ""
@@ -14,6 +14,7 @@
     $scope.isOk = true;
 
     function logIn() {
+      $scope.user.password = encryptor.enctypt($scope.user.password);
       $http.post("./server/post-signin.php", $scope.user).then(res => {
         console.log(res.data);
         if (res.data.email) {
