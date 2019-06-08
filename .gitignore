@@ -1,7 +1,4 @@
 # server for testing frontend, it's not nesassary for  project
 server.js
 /node_modules/*
-package.json
-package-lock.json
-copy.sh
 .vscode/*

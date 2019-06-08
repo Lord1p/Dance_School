@@ -1,0 +1,31 @@
+{
+  "name": "dance_school",
+  "version": "1.0.0",
+  "description": "\"Dance School web app\"",
+  "main": "index.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "./copy.sh",
+    "demo": "npm-run-all -p -n dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lord1p/Dance_School.git"
+  },
+  "keywords": [
+    "\"dance",
+    "school",
+    "angularJS",
+    "bootstrap",
+    "JQ\""
+  ],
+  "author": "\"Andrew Ryban\"",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lord1p/Dance_School/issues"
+  },
+  "homepage": "https://github.com/Lord1p/Dance_School#readme",
+  "dependencies": {
+    "npm-run-all": "^4.1.5"
+  }
+}
