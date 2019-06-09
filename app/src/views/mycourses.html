@@ -10,7 +10,7 @@
       <p>стиль: {{ i.styleName }}</p>
       <div ng-if=" currentUser.type == userType.client">
         <h2>{{ i.trainerName }}</h2>
-        <img src="{{ i.avatarLink }}" />
+        <img ng-src="{{ i.avatarLink }}" />
         <h6>{{ i.email }}/{{ i.tellNumber }}</h6>
         <p>О себе:</p>
         <span>{{ i.trainerDescription }}</span>
