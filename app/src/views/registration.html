@@ -1,0 +1,28 @@
+<div class="page">
+  <h1 ng-if="flag" class="title">Оформление регистрации</h1>
+  <h1 ng-if="!flag" class="title">Оформление отписки</h1>
+  <div class="container">
+    <div id="make-order" class="hide col">
+      <button
+        class="m-5 btn btn-primary"
+        ng-click="makeOrder()">
+        Записаться
+      </button>
+      <span class="container">
+        В Демо версии отсутствует возможность реальной оплаты занятий. Поэтому
+        просто нажмите Записаться
+      </span>
+    </div>
+    <div id="delete-order" class="hide">
+      <button
+        class="m-5 btn btn-primary"
+        ng-click="deleteOrder()">
+        Отписаться
+      </button>
+      <p>* Деньги за оставшиеся занятия будут возвращены в течении 2-х дней</p>
+    </div>
+    <div id="suc-alert" class="alert alert-success m-5 row hide" role="alert">
+      Успешно обновлено!
+    </div>
+  </div>
+</div>

@@ -64,7 +64,7 @@ function Routs( $routeProvider ) {
     templateUrl: './app/src/views/get-course.html',
     controller: 'GetCourseController',
   })
-  .when('/registration/:flag', {
+  .when('/registration/:id/:flag', {
     templateUrl: './app/src/views/registration.html',
     controller: 'RegistrationController',
   });

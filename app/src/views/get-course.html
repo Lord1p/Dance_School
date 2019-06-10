@@ -18,6 +18,12 @@
         <p>{{ admin }}</p>
       </div>
       <div ng-if="lessons && currentUser.type != userType.anonim">
+        <a
+          ng-if="currentUser.type == userType.client"
+          class="btn btn-primary m-2 align-content-center"
+          href="#!registration/{{ courseId }}/{{ true }}">
+          Регистрация на курс
+        </a>
         <p>
           *
           <span style="color: green">Предстоящие занятия</span>
@@ -35,11 +41,6 @@
             <th>{{ i.roomNumber }}</th>
           </tr>
         </table>
-        <a
-          class="btn btn-primary"
-          href="#!registration/{{true}}">
-          Регистрация на курс
-        </a>
       </div>
     </div>
   </div>
