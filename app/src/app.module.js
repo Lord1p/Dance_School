@@ -59,6 +59,14 @@ function Routs( $routeProvider ) {
   .when('/account', {
     templateUrl: './app/src/views/account.html',
     controller: 'AccountController',
+  })
+  .when('/get-course/:id', {
+    templateUrl: './app/src/views/get-course.html',
+    controller: 'GetCourseController',
+  })
+  .when('/registration/:flag', {
+    templateUrl: './app/src/views/registration.html',
+    controller: 'RegistrationController',
   });
 }
 })();

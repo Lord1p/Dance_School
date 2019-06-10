@@ -3,8 +3,8 @@
 
   angular.module("main").controller("MyCoursesController", MyCoursesController);
 
-  MyCoursesController.$inject = ["$rootScope", "$scope", "$http"];
-  function MyCoursesController($rootScope, $scope, $http) {
+  MyCoursesController.$inject = ["$rootScope", "$scope", "$http", "$location"];
+  function MyCoursesController($rootScope, $scope, $http, $location) {
     $scope.courses = [];
     $scope.empty = "Пока ничего нового :(";
     init();
@@ -14,6 +14,9 @@
         $http.get("./server/get-client-courses.php" + "?id=" + $rootScope.currentUser.clientId).then(res => {
           console.log(res.data.clCourses);
           $scope.courses = res.data.clCourses;
+          if ($scope.courses.length == 0) {
+            $location.url(['/courses']);
+          }
         })
       };
       if ($rootScope.currentUser.type == "trainer") {
@@ -23,10 +26,7 @@
         })
       };
       if ($rootScope.currentUser.type == "admin") {
-        $http.get("./server/get-client-courses.php" + "?id=" + $rootScope.currentUser.clientId).then(res => {
-          console.log(res.data.clCourses);
-          $scope.courses = res.data.clCourses;
-        })
+        $location.url(['/courses']);
       };
     }
   }

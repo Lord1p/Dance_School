@@ -20,7 +20,10 @@
         if (res.data.email) {
           $rootScope.isAuthorizated = true;
           $rootScope.currentUser = res.data;
-          $location.url(['/mycourses']);
+          if ($rootScope.currentUser.type != $rootScope.userType.admin)
+            $location.url(['/mycourses']);
+          else
+            $location.url(['/courses']);
           showById('account');
           //showById('myCourses');
           hideByID('sign');

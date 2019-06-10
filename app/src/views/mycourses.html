@@ -15,6 +15,18 @@
         <p>О себе:</p>
         <span>{{ i.trainerDescription }}</span>
       </div>
+      <div class="row">
+      <a href="#!get-course/{{ i.courseId }}" class="btn btn-primary mr-3">
+        Рассписание</a
+      >
+      <div ng-if="currentUser.type == userType.client">
+        <a
+          href="#!registration/{{false}}"
+          class="btn btn-primary mr-3">
+          Отписаться от курса
+          </a>
+      </div>
+      </div>
     </li>
   </ul>
 </div>

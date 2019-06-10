@@ -1,4 +1,4 @@
-(function() {
+(function () {
   "use strict";
 
   angular
@@ -18,21 +18,20 @@
     function init() {
       hideByID('suc-alert');
       console.log($rootScope.currentUser);
-      if ($rootScope.isAuthorizated && $rootScope.currentUser) {
-        let name = "";
-        if ($rootScope.currentUser.type == $rootScope.userType.client) {
-          name = $rootScope.currentUser.clientName;
-        }
-        if ($rootScope.currentUser.type == $rootScope.userType.teacher) {
-          name = $rootScope.currentUser.trainerName;
-        }
-
-        name = name.split(" ");
-        $scope.firstName = name[0];
-        $scope.lastName = name[1];
-        $scope.user = $rootScope.currentUser;
-        console.log($scope.user);
+      let name = "";
+      if ($rootScope.currentUser.type == $rootScope.userType.client) {
+        name = $rootScope.currentUser.clientName;
       }
+      if ($rootScope.currentUser.type == $rootScope.userType.teacher) {
+        name = $rootScope.currentUser.trainerName;
+      }
+
+      name = name.split(" ");
+      $scope.firstName = name[0];
+      $scope.lastName = name[1];
+      $scope.user = $rootScope.currentUser;
+      console.log($scope.user);
+
     }
 
     function save() {

@@ -1,0 +1,46 @@
+<div class="page">
+  <div class="form-group">
+    <div class="container m-5">
+      <h1 class="title m-1">Запись на курс</h1>
+      <div ng-if="currentUser.type == userType.anonim">
+        <p>{{ empty }}</p>
+        <a class="btn btn-primary" href="#!sign-in">
+          Вход
+        </a>
+        <a class="btn btn-primary" href="#!sign-up">
+          Регистрация
+        </a>
+      </div>
+      <div ng-if="currentUser.type == userType.teacher">
+        <p>{{ teacher }}</p>
+      </div>
+      <div ng-if="currentUser.type == userType.admin">
+        <p>{{ admin }}</p>
+      </div>
+      <div ng-if="lessons && currentUser.type != userType.anonim">
+        <p>
+          *
+          <span style="color: green">Предстоящие занятия</span>
+          <span style="color: red">Прошедшие занятия</span>
+        </p>
+        <table class="table w-75 m-3">
+          <tr>
+            <th>Дата и время</th>
+            <th>Комната</th>
+          </tr>
+          <tr ng-repeat="i in lessons">
+            <th style="color:{{ i.color }}">
+              {{ i.date | date: "MMMM dd yyyy HH:mm" | dateTranslate }}
+            </th>
+            <th>{{ i.roomNumber }}</th>
+          </tr>
+        </table>
+        <a
+          class="btn btn-primary"
+          href="#!registration/{{true}}">
+          Регистрация на курс
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
