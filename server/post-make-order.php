@@ -4,19 +4,35 @@
     $json = file_get_contents('php://input');
     $data = json_decode($json);
 
-    $Insert = $dbh->prepare("INSERT INTO
-    orders(clientId,courseId,code)
-    VALUES(:clI,:coI,:co)");
-    $Insert->bindValue(':clI',$data->clientId);
-    $Insert->bindValue(':coI',$data->courseId);
-    $Insert->bindValue(':co',$data->code);
-    $Insert->execute();
+    $Select = $dbh->prepare("SELECT
+    COUNT(code)
+    FROM
+    orders
+    WHERE
+    clientId = :clI and
+    courseId = :coI
+    ");
+    $Select->bindValue(':clI',$data->clientId);
+    $Select->bindValue(':coI',$data->courseId);
+    $Select->execute();
+    $count = $Select->fetch(PDO::FETCH_NUM);
+    
+    if($count[0] == 0)
+    {
+        $Insert = $dbh->prepare("INSERT INTO
+        orders(clientId,courseId,code)
+        VALUES(:clI,:coI,:co)");
+        $Insert->bindValue(':clI',$data->clientId);
+        $Insert->bindValue(':coI',$data->courseId);
+        $Insert->bindValue(':co',$data->code);
+        $Insert->execute();
+    
 
     $Select = $dbh->prepare("SELECT
     lessonId,
     date,
     courseId,
-    roomId,
+    rooms.roomId,
     roomNumber
     FROM
     lessons,rooms
@@ -29,7 +45,7 @@
     
     $JSONres=array();
 
-    while($row = $projects->fetch(PDO::FETCH_ASSOC))
+    while($row = $Select->fetch(PDO::FETCH_ASSOC))
     {
     
     $res = new R();
@@ -43,5 +59,9 @@
     }
     $Res=array('lessons'=>$JSONres);
     echo json_encode($Res);
-    
+    }
+    else
+    {
+    echo json_encode(array('error'=>array('msg'=>'"Заказ уже был сделан!"')));
+    }
 ?>
