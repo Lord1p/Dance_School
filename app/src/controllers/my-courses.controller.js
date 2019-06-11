@@ -12,6 +12,7 @@
     function init() {
       if ($rootScope.currentUser.type == "client") {
         $http.get("./server/get-client-courses.php" + "?id=" + $rootScope.currentUser.clientId).then(res => {
+          console.log(res.data);
           console.log(res.data.clCourses);
           $scope.courses = res.data.clCourses;
           if ($scope.courses.length == 0) {

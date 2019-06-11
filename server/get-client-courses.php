@@ -19,7 +19,7 @@
     orders,trainers,courses,styles
     WHERE
     orders.clientId = :id and
-    orders.courseId = Courses.courseId and
+    orders.courseId = courses.courseId and
     styles.styleId = courses.styleId and
     courses.trainerId = trainers.trainerId
     ");
