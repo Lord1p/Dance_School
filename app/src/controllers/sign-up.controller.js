@@ -34,10 +34,11 @@
         mailSending: $scope.user.mailSending
       };
       $http.post("./server/post-registration.php", preparedData).then(res => {
-        console.dir(res.data.error);
+        console.dir(res.data);
         if (!res.data.error) {
           $rootScope.isAuthorizated = true;
           $rootScope.currentUser = res.data;
+          $rootScope.currentUser.type = $rootScope.userType.client;
           $location.url(['/mycourses']);
           showById('account');
           //showById('myCourses');
