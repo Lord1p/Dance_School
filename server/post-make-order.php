@@ -5,6 +5,21 @@
     $data = json_decode($json);
 
     $Select = $dbh->prepare("SELECT
+    COUNT(orders.courseId),
+    courses.countOfPlaces
+    FROM
+    orders,courses
+    WHERE
+    orders.courseId = courses.courseId and
+    orders.courseId = :coI
+    ");
+    $Select->bindValue(':coI',$data->courseId);
+    $Select->execute();
+    $limit = $Select->fetch(PDO::FETCH_NUM);
+
+    if($limit[0] != $limit[1])
+{
+    $Select = $dbh->prepare("SELECT
     COUNT(code)
     FROM
     orders
@@ -63,5 +78,10 @@
     else
     {
     echo json_encode(array('error'=>array('msg'=>'"Заказ уже был сделан!"')));
+    }
+} 
+else
+    {
+    echo json_encode(array('error'=>array('msg'=>'"Курс заполнен!"')));
     }
 ?>
