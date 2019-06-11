@@ -9,7 +9,8 @@
     $scope.flag = true;
     $scope.makeOrder = makeOrder;
     $scope.deleteOrder = deleteOrder;
-    
+    $scope.msg = "";
+
     $scope.regData = {
       clientId: -1,
       courseId: -1,
@@ -24,15 +25,15 @@
       $scope.regData.code = generateCode.get();
 
       $http.post('./server/post-make-order.php', $scope.regData)
-       .then((res) => {
-         console.dir(res.data);
-         if (res.data.lessons) {
-          showById("suc-alert");
-         }
-         else {
-          hideByID("suc-alert");
-         }
-       });
+        .then((res) => {
+          console.dir(res.data);
+          if (res.data.lessons) {
+            $scope.msg = 'Вы успешно записаны на курс, на указанный вами при регистрации email должно прийти письмо! При возникновении проблем свяжитесь с нами!'
+          }
+          if (res.data.error) {
+            $scope.msg = res.data.error.msg;
+          }
+        });
     }
 
     function deleteOrder() {
@@ -50,7 +51,7 @@
         showById("delete-order");
         hideByID("make-order");
       }
-      hideByID("suc-alert");
+      //hideByID("suc-alert");
     }
   }
 })();

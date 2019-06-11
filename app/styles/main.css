@@ -161,3 +161,7 @@ ul {
   width: 40em;
   margin: auto;
 }
+
+.center {
+  text-align: center;
+}
