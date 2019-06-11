@@ -2,7 +2,7 @@
     include("connect.php");
     $id = $_REQUEST['id'];
     $projects = $dbh->prepare("SELECT courses.courseId,
-    courses.coursName,
+    courses.courseName,
     courses.trainerId,
     courses.countOfPlaces,
     courses.price,
