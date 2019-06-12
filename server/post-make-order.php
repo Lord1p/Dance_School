@@ -41,7 +41,7 @@
         $Insert->bindValue(':coI',$data->courseId);
         $Insert->bindValue(':co',$data->code);
         $Insert->execute();
-    
+    #include('./mail-to-client.php');
 
     $Select = $dbh->prepare("SELECT
     lessonId,
