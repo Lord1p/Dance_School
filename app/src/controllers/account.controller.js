@@ -36,6 +36,16 @@
 
     }
 
+    function getUser() {
+      if ($rootScope.isAuthorizated) {
+        $http.post("./server/get-user.php", $scope.user).then(res => {
+          console.log(res.data);
+          $rootScope.currentUser = res.data;
+          init();
+        });
+      }
+    }
+
     function save() {
       console.log($rootScope.isAuthorizated);
       if ($rootScope.isAuthorizated) {
@@ -49,11 +59,12 @@
         $scope.user.password = encryptor.enctypt($scope.user.password);
         $http.post("./server/post-save-profile.php", $scope.user).then(res => {
           console.log(res.data);
-          $rootScope.currentUser = res.data;
-          init();
+          getUser();
         });
       }
     }
+
+    
 
     function logIn() {
       $http.post("./server/post-signin.php", $scope.user).then(res => {
@@ -97,8 +108,7 @@
       }).then(response => {
         console.log(response);
         if (response.ok) {
-          $rootScope.currentUser = res.data;
-          init();
+          getUser();
         }
       })
     }
