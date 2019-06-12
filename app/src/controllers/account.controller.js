@@ -50,7 +50,7 @@
         $http.post("./server/post-save-profile.php", $scope.user).then(res => {
           console.log(res.data);
           $rootScope.currentUser = res.data;
-          logIn();
+          init();
         });
       }
     }
@@ -82,13 +82,23 @@
     function sendAvatar(file) {
       const formData = new FormData();
       formData.append('file', file);
+      formData.append('UserType', $rootScope.currentUser.type);
+
+      if ($rootScope.currentUser.type == $rootScope.userType.client) {
+        formData.append('clientId', $rootScope.currentUser.clientId);
+      }
+      if ($rootScope.currentUser.type == $rootScope.userType.teacher) {
+        formData.append('trainerId', $rootScope.currentUser.trainerId);
+      }
+
       fetch("./server/post-set-avatar.php", {
         method: 'POST',
         body: formData,
       }).then(response => {
         console.log(response);
         if (response.ok) {
-          logIn();
+          $rootScope.currentUser = res.data;
+          init();
         }
       })
     }
