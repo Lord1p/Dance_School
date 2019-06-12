@@ -12,6 +12,8 @@
     $scope.lastName = "";
     $scope.password = "";
     $scope.save = save;
+    $scope.setAvatar = setAvatar;
+    $scope.fileName = "";
     console.log("!");
     init();
 
@@ -48,19 +50,47 @@
         $http.post("./server/post-save-profile.php", $scope.user).then(res => {
           console.log(res.data);
           $rootScope.currentUser = res.data;
-          $http.post("./server/post-signin.php", $scope.user).then(res => {
-            console.log(res.data);
-            if (res.data.email) {
-              $rootScope.isAuthorizated = true;
-              $rootScope.currentUser = res.data;
-              showById('account');
-              hideByID('sign');
-              init();
-              showById('suc-alert');
-            }
-          });
+          logIn();
         });
       }
+    }
+
+    function logIn() {
+      $http.post("./server/post-signin.php", $scope.user).then(res => {
+        console.log(res.data);
+        if (res.data.email) {
+          $rootScope.isAuthorizated = true;
+          $rootScope.currentUser = res.data;
+          showById('account');
+          hideByID('sign');
+          init();
+          showById('suc-alert');
+        }
+      });
+    }
+
+    function setAvatar() {
+      let input = document.getElementById("avatarFile");
+      input.click();
+      input.onchange = function() {
+        let file = input.files[0];
+        console.log(file);
+        sendAvatar(file);
+      };
+    }
+
+    function sendAvatar(file) {
+      const formData = new FormData();
+      formData.append('file', file);
+      fetch("./server/post-set-avatar.php", {
+        method: 'POST',
+        body: formData,
+      }).then(response => {
+        console.log(response);
+        if (response.ok) {
+          logIn();
+        }
+      })
     }
   }
 })();
