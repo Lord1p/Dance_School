@@ -34,34 +34,6 @@
                 $Insert->bindValue(':i',$_POST['clientId']);
                 $Insert->execute();
 
-                $Select = $dbh->prepare("SELECT
-                clientName,
-                email,
-                tellNumber,
-                clientId,
-                avatarLink,
-                mailSending
-                FROM
-                clients
-                WHERE
-                clientId = :id
-                ");
-
-                $Select->bindValue(':id',$_POST['clientId']);
-                $Select->execute();
-            
-                $cl=$Select->fetch(PDO::FETCH_ASSOC);
-            
-                $res = new R();
-                $res->type = "client";
-                $res->clientName = $cl['clientName'];
-                $res->email = $cl['email'];
-                $res->tellNumber = $cl['tellNumber'];
-                $res->clientId = $cl['clientId'];
-                $res->avatarLink = $cl['avatarLink'];
-                $res->mailSending = $cl['mailSending'];
-                
-                echo json_encode($res);
                 }
                 else
                 {
@@ -78,33 +50,6 @@
                     $Insert->bindValue(':i',$_POST['trainerId']);
                     $Insert->execute();
 
-                    $Select = $dbh->prepare("SELECT
-                    trainerName,
-                    email,
-                    tellNumber,
-                    trainerDescription,
-                    avatarLink,
-                    trainerId
-                    FROM
-                    trainers
-                    WHERE
-                    trainerId = :id
-                    ");
-                    $Select->bindValue(':id',$_POST['trainerId']);
-                    $Select->execute();
-                
-                    $cl=$Select->fetch(PDO::FETCH_ASSOC);
-                
-                    $res = new R();
-                    $res->type = "trainer";
-                    $res->trainerName = $cl['trainerName'];
-                    $res->email = $cl['email'];
-                    $res->tellNumber = $cl['tellNumber'];
-                    $res->trainerId = $cl['trainerId'];
-                    $res->avatarLink = $cl['avatarLink'];
-                    $res->trainerDescription = $cl['trainerDescription'];
-                    
-                    echo json_encode($res);
                 }
             }
             else
