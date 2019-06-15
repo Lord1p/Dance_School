@@ -3,6 +3,26 @@ body {
   background-image: url(../../photos/bg.jpg);
 }
 
+nav {
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.75);
+}
+
+button {
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.75);
+}
+
+a.btn {
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.75);
+}
+
+.card {
+  box-shadow: 1px 2px 5px 0 rgba(0,0,0,0.75);
+}
+
+.dropdown-menu {
+  box-shadow: 0 5px 10px 0 rgba(0,0,0,0.75);
+}
+
 .carousel-control-prev-icon {
     position: absolute;
     top: 50%;
@@ -48,6 +68,7 @@ body {
   min-height: 25em;
   width: 90%;
   margin: auto;
+  box-shadow: 1px 5px 10px 0px rgba(0,0,0,0.75);
 }
 
 .account-page {
@@ -156,6 +177,7 @@ ul {
   max-height: 300px;
   max-width: 300px;
   border-radius: 2%;
+  box-shadow: 0 3px 10px 0 rgba(0,0,0,0.75);
 }
 
 .sign-in {
