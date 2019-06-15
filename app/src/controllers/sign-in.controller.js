@@ -3,8 +3,8 @@
 
   angular.module("main").controller("SignInController", SignInController);
 
-  SignInController.$inject = ["$rootScope", "$scope", "$http", "$location", "encryptor"];
-  function SignInController($rootScope, $scope, $http, $location, encryptor) {
+  SignInController.$inject = ["$rootScope", "$scope", "$http", "$location", "encryptor", "makeActive"];
+  function SignInController($rootScope, $scope, $http, $location, encryptor, makeActive) {
     $scope.user = {
       email: "",
       password: ""
@@ -12,6 +12,13 @@
     $scope.logIn = logIn;
     $scope.signUp = signUp;
     $scope.isOk = true;
+    init();
+
+
+    function init() {
+      makeActive.activate(['login-link']);
+      makeActive.deactivate(['courses-link', 'trainers-link', 'styles-link', 'news-link']);
+    }
 
     function logIn() {
       $scope.user.password = encryptor.enctypt($scope.user.password);

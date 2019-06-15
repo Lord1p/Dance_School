@@ -5,8 +5,8 @@
     .module("main")
     .controller("SignUpController", SignUpController);
 
-  SignUpController.$inject = ["$rootScope", "$scope", "$http", "encryptor", "$location"];
-  function SignUpController($rootScope, $scope, $http, encryptor, $location) {
+  SignUpController.$inject = ["$rootScope", "$scope", "$http", "encryptor", "$location", "makeActive"];
+  function SignUpController($rootScope, $scope, $http, encryptor, $location, makeActive) {
     $scope.user = {
       firstName: "",
       lastName: "",
@@ -20,7 +20,9 @@
 
     init();
 
-    function init() {}
+    function init() {
+      makeActive.deactivate(['news-link', 'courses-link', 'trainers-link', 'styles-link', 'login-link']);
+    }
 
     function registration() {
       if ($scope.user.firstName.length == 0) {

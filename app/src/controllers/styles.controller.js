@@ -5,8 +5,8 @@
     .module("main")
     .controller("StylesController", StylesController);
 
-  StylesController.$inject = ['$scope', '$http'];
-  function StylesController($scope, $http) {
+  StylesController.$inject = ['$scope', '$http', 'makeActive'];
+  function StylesController($scope, $http, makeActive) {
     $scope.styles = [];
     $scope.empty = "А стилей, то нет";
     var counter = 0;
@@ -14,6 +14,8 @@
     init();
 
     function init() {
+      makeActive.activate(['styles-link']);
+      makeActive.deactivate(['courses-link', 'trainers-link', 'news-link', 'login-link']);
       $http.get('./server/get-styles.php')
         .then(res => {
           console.log(res.data.styles);

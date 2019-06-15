@@ -3,13 +3,14 @@
 
   angular.module("main").controller("MyCoursesController", MyCoursesController);
 
-  MyCoursesController.$inject = ["$rootScope", "$scope", "$http", "$location"];
-  function MyCoursesController($rootScope, $scope, $http, $location) {
+  MyCoursesController.$inject = ["$rootScope", "$scope", "$http", "$location", "makeActive"];
+  function MyCoursesController($rootScope, $scope, $http, $location, makeActive) {
     $scope.courses = [];
     $scope.empty = "Пока ничего нового :(";
     init();
 
     function init() {
+      makeActive.deactivate(['news-link', 'courses-link', 'trainers-link', 'styles-link', 'login-link']);
       if ($rootScope.currentUser.type == "client") {
         $http.get("./server/get-client-courses.php" + "?id=" + $rootScope.currentUser.clientId).then(res => {
           console.log(res.data);

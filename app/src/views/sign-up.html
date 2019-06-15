@@ -79,6 +79,7 @@
           ng-if="reg.email.$valid && reg.phoneNumber.$valid"
           ng-click="registration()"
           class="btn btn-primary"
+          ng-show="user.password && user.email && user.tellNumber && user.firstName && user.lastName"
         >
           Зарегистрироваться
         </button>

@@ -5,8 +5,8 @@
     .module("main")
     .controller("AccountController", AccountController);
 
-  AccountController.$inject = ["$rootScope", "$scope", "$http", "encryptor"];
-  function AccountController($rootScope, $scope, $http, encryptor) {
+  AccountController.$inject = ["$rootScope", "$scope", "$http", "encryptor", "makeActive"];
+  function AccountController($rootScope, $scope, $http, encryptor, makeActive) {
     $scope.user = {};
     $scope.firstName = "";
     $scope.lastName = "";
@@ -15,10 +15,11 @@
     $scope.setAvatar = setAvatar;
     $scope.fileName = "";
     console.log("!");
+    hideByID('suc-alert');
     init();
 
     function init() {
-      hideByID('suc-alert');
+      makeActive.deactivate(['news-link', 'courses-link', 'trainers-link', 'styles-link', 'login-link']);
       console.log($rootScope.currentUser);
       let name = "";
       if ($rootScope.currentUser.type == $rootScope.userType.client) {
@@ -40,6 +41,10 @@
       if ($rootScope.isAuthorizated) {
         $http.post("./server/get-user.php", $scope.user).then(res => {
           console.log(res.data);
+          if (res.data.error) {
+            alert("Извините произошла ошибка при обновлении данных, перезагркзите страницу");
+          }
+          
           $rootScope.currentUser = res.data;
           init();
         });
@@ -59,29 +64,20 @@
         $scope.user.password = encryptor.enctypt($scope.user.password);
         $http.post("./server/post-save-profile.php", $scope.user).then(res => {
           console.log(res.data);
+          if (res.data.error) {
+            alert("Извините произошла ошибка при сохранении, перезагркзите страницу");
+          }
+          else {
+            showById("suc-alert");
+          }
           getUser();
         });
       }
     }
 
-    
-
-    function logIn() {
-      $http.post("./server/post-signin.php", $scope.user).then(res => {
-        console.log(res.data);
-        if (res.data.email) {
-          $rootScope.isAuthorizated = true;
-          $rootScope.currentUser = res.data;
-          showById('account');
-          hideByID('sign');
-          init();
-          showById('suc-alert');
-        }
-      });
-    }
-
     function setAvatar() {
       let input = document.getElementById("avatarFile");
+      input.accept = ".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*";
       input.click();
       input.onchange = function() {
         let file = input.files[0];

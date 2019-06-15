@@ -1,5 +1,6 @@
 body {
   background-color: rgb(235, 235, 235);
+  background-image: url(../../photos/bg.jpg);
 }
 
 .carousel-control-prev-icon {
@@ -37,7 +38,7 @@ body {
 }
 
 .main {
-  margin-top: 3.5em;
+  margin-top: 5em;
 }
 
 .page {
@@ -56,12 +57,16 @@ body {
 
 .footer-page {
   min-height: 1em;
+  margin-bottom: 2em;
 }
 
 #dance-header {
+  position: absolute;
+  top: 3.5em;
   margin: 0;
   padding: 0;
   width: 100%;
+
 }
 
 .footer {
@@ -97,7 +102,7 @@ body {
 
 .header {
   height: 20%;
-  width: 90%;
+  width: 100%;
   margin: auto;
 }
 
@@ -150,6 +155,7 @@ ul {
 .xl-avatar {
   max-height: 300px;
   max-width: 300px;
+  border-radius: 2%;
 }
 
 .sign-in {
@@ -164,4 +170,8 @@ ul {
 
 .center {
   text-align: center;
+}
+
+.header-spacer {
+  margin-top: 40%;
 }

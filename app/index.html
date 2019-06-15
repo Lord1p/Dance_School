@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<hrml ng-app="main">
+<html ng-app="main">
   <head>
     <title>
       Dance School
@@ -17,19 +17,19 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="#!news">D / S</a>
+            <a class="nav-link" id="news-link" href="#!news">D / S</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#!courses">Курсы</a>
+            <a class="nav-link" id="courses-link" href="#!courses">Курсы</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#!trainers">Учителя</a>
+            <a class="nav-link" id="trainers-link" href="#!trainers">Учителя</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#!styles">Стили</a>
+            <a class="nav-link" id="styles-link" href="#!styles">Стили</a>
           </li>
           <li id="sign" class="nav-item">
-            <a class="nav-link" href="#!sign-in">Вход</a>
+            <a class="nav-link" id="login-link" href="#!sign-in">Вход</a>
           </li>
         </ul>
       </div>
@@ -56,14 +56,14 @@
     <div class="main">
       <ng-view></ng-view>
     </div>
-    <footer class="page footer-page bg-dark text-light p-2 footer">
+    <footer class="page footer-page bg-dark text-light p-4 footer">
       <div class="row">
-        <a class="nav-link" href="#!news">НОВОСТИ</a>
-        <a class="nav-link" href="#!courses">КУРСЫ</a>
-        <a class="nav-link" href="#!trainers">УЧИТЕЛЯ</a>
-        <a class="nav-link" href="#!styles">СТИЛИ</a>
-        <a class="nav-link" href="#!sign-in">ВХОД</a>
-        <a class="nav-link" href="#!sign-up">РЕГИСТРАЦИЯ</a>
+        <a class="nav-link text-light" href="#!news">НОВОСТИ</a>
+        <a class="nav-link text-light" href="#!courses">КУРСЫ</a>
+        <a class="nav-link text-light" href="#!trainers">УЧИТЕЛЯ</a>
+        <a class="nav-link text-light" href="#!styles">СТИЛИ</a>
+        <a class="nav-link text-light" href="#!sign-in">ВХОД</a>
+        <a class="nav-link text-light" href="#!sign-up">РЕГИСТРАЦИЯ</a>
       </div>
       <p>
         По всем вопросам можете обращаться сюда: <br />
@@ -71,7 +71,7 @@
         Людвика-свободы 51, Харьков Украина
       </p>
       <p class="company">
-        Создано компанией dron_inc Сеул Украина <a href="">dron_inc.com</a>
+        Создано компанией dron_inc Сеул Украина <a class="text-light" href="">dron_inc.com</a>
       </p>
     </footer>
   </body>
@@ -86,6 +86,7 @@
   <script src="./app/src/services/encryptor.service.js"></script>
   <script src="./app/src/services/lessons.service.js"></script>
   <script src="./app/src/services/generate-code.service.js"></script>
+  <script src="./app/src/services/make-active.service.js"></script>
   <script src="./app/src/filters/date-translate.filter.js"></script>
   <script src="./app/src/services/date-color.service.js"></script>
   <script src="./app/src/controllers/news.controller.js"></script>
@@ -98,4 +99,4 @@
   <script src="./app/src/controllers/account.controller.js"></script>
   <script src="./app/src/controllers/get-course.controller.js"></script>
   <script src="./app/src/controllers/registration.controller.js"></script>
-</hrml>
+</html>

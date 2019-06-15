@@ -4,8 +4,8 @@
     .module('main')
     .controller('RegistrationController', Registration)
 
-  Registration.$inject = ['$scope', '$rootScope', '$routeParams', 'generateCode', '$http'];
-  function Registration($scope, $rootScope, $routeParams, generateCode, $http) {
+  Registration.$inject = ['$scope', '$rootScope', '$routeParams', 'generateCode', '$http', 'makeActive'];
+  function Registration($scope, $rootScope, $routeParams, generateCode, $http, makeActive) {
     $scope.flag = true;
     $scope.order = order;
     $scope.msg = "";
@@ -50,6 +50,7 @@
     }
 
     function init() {
+      makeActive.deactivate(['news-link', 'courses-link', 'trainers-link', 'styles-link', 'login-link']);
       console.log($rootScope.currentUser);
       $scope.flag = $routeParams.flag;
       console.dir($scope.flag);

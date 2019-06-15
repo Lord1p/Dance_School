@@ -4,8 +4,8 @@
       .module("main")
       .controller("GetCourseController", GetCourseController);
   
-      GetCourseController.$inject = ['$rootScope', '$scope', '$routeParams', 'lessons', 'dateColor'];
-    function GetCourseController($rootScope, $scope, $routeParams, lessons, dateColor) {
+      GetCourseController.$inject = ['$rootScope', '$scope', '$routeParams', 'lessons', 'dateColor', 'makeActive'];
+    function GetCourseController($rootScope, $scope, $routeParams, lessons, dateColor, makeActive) {
       $scope.courseId = null;
       $scope.loadLessons = loadLessons;
       $scope.empty = "Вы должны зарегистрироваться, или войти для того, чтобы записаться на курс";
@@ -15,6 +15,7 @@
       init();
   
       function init() {
+        makeActive.deactivate(['news-link', 'courses-link', 'trainers-link', 'styles-link', 'login-link']);
         console.log($rootScope.currentUser);
         $scope.courseId = $routeParams.id;
         console.dir($routeParams.id);

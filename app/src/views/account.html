@@ -3,7 +3,7 @@
   <div class="card mb-3 account-page" style="max-width: 540px;">
     <div class="row no-gutters">
       <div class="col-md-4">
-        <img ng-src="{{ user.avatarLink }}" class="card-img" alt="Фото пользователя" />
+        <img ng-src="{{ user.avatarLink }}" class="m-1 card-img xl-avatar" alt="Фото пользователя" />
         <div class="row">
           <input id="avatarFile" type="file" class="hide" ng-bind="fileName">
           <p>{{ fileName }}</p>
@@ -13,15 +13,18 @@
       <div class="col-md-8">
         <div class="card-body">
           <p class="card-text">
-            <form name="save-form">
+            <form name="saveForm">
               Имя:
               <input class="form-control" type="text" ng-model="firstName" />
               Фамилия:
               <input class="form-control" type="text" ng-model="lastName" />
               Email:
-              <input class="form-control" type="email" ng-model="user.email" />
+              <input name="email" class="form-control" type="email" ng-model="user.email" />
+              <div class="error" ng-if="saveForm.email.$invalid">
+                  Не верный email!
+              </div>
               Номер телефона:
-              <input class="form-control" type="tel" ng-model="user.tellNumber" />
+              <input name="phoneNumber" class="form-control" type="tel" ng-model="user.tellNumber" />
               Пароль:
               <input class="form-control" type="password" ng-model="user.password" />
               <span ng-if=" currentUser.type == userType.client">
@@ -30,12 +33,18 @@
                   Рассылка писем
                 </label>
               </span>
+              <button 
+                ng-if="saveForm.email.$valid && saveForm.phoneNumber.$valid" 
+                class="btn btn-primary m-2 align-self-center" 
+                ng-click="save()" 
+                ng-show="user.password && firstName && lastName && user.tellNumber && user.email">
+                Сохранить новые данные
+              </button>
             </form>
           </p>
         </div>
       </div>
     </div>
-    <button class="btn btn-primary m-2 align-self-center" ng-click="save()">Сохранить новые данные</button>
     <div id="suc-alert" class="alert alert-success m-5 row" role="alert">
       Успешно обновлено!
     </div>
