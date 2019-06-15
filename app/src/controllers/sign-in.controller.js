@@ -9,6 +9,8 @@
       email: "",
       password: ""
     };
+
+    let data = {};
     $scope.logIn = logIn;
     $scope.signUp = signUp;
     $scope.isOk = true;
@@ -21,8 +23,9 @@
     }
 
     function logIn() {
-      $scope.user.password = encryptor.enctypt($scope.user.password);
-      $http.post("./server/post-signin.php", $scope.user).then(res => {
+      data = Object.assign({}, $scope.user);
+      data.password = encryptor.enctypt($scope.user.password);
+      $http.post("./server/post-signin.php", data).then(res => {
         console.log(res.data);
         if (res.data.email) {
           $rootScope.isAuthorizated = true;

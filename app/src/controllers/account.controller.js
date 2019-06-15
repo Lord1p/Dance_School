@@ -61,8 +61,9 @@
           $scope.user.trainerName = $scope.firstName + " " + $scope.lastName;
         }
         console.log($scope.user);
-        $scope.user.password = encryptor.enctypt($scope.user.password);
-        $http.post("./server/post-save-profile.php", $scope.user).then(res => {
+        let data = Object.assign({}, $scope.user);
+        data.password = encryptor.enctypt($scope.user.password);
+        $http.post("./server/post-save-profile.php", data).then(res => {
           console.log(res.data);
           if (res.data.error) {
             alert("Извините произошла ошибка при сохранении, перезагркзите страницу");

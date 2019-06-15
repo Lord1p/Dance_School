@@ -15,6 +15,7 @@
       tellNumber: "",
       mailSending: true
     };
+  
     $scope.registration = registration;
     $scope.isOk = true;
 
