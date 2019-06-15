@@ -3,7 +3,7 @@
     Преподаваемые стили!
   </h1>
   <div class="row">
-  <h2 ng-if="styles.length == 0">{{ empty }}</h2>
+  <h2 class="title" ng-if="styles.length == 0">{{ empty }}</h2>
   <div class="card text-white {{i.color}} mb-3 style-card" ng-repeat="i in styles">
     <div class="card-header">{{ i.styleName }}</div>
   </div>

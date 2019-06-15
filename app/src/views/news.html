@@ -58,7 +58,7 @@
     <h1 class="title">
       Последние новости!
     </h1>
-    <h2 ng-if="news.length == 0">{{ empty }}</h2>
+    <h2 class="title" ng-if="news.length == 0">{{ empty }}</h2>
     <ul class="container">
       <li class="news card m-5" ng-repeat="i in news">
         <h2 class="card-header">{{ i.header }}</h2>

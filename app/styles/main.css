@@ -197,3 +197,7 @@ ul {
 .header-spacer {
   margin-top: 40%;
 }
+
+.user-name:hover {
+  text-decoration: none;
+}
