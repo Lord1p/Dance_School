@@ -1,7 +1,7 @@
 <?php
     include("connect.php");
 
-    $projects = $dbh->prepare("SELECT 
+    $projects = $dbh->prepare("SELECT
     courses.courseId,
     courses.courseName,
     courses.trainerId,
@@ -21,8 +21,10 @@
     trainers,courses,styles
     WHERE
     courses.trainerId = trainers.trainerId and
-    styles.styleId = courses.styleId
-    ");
+    styles.styleId = courses.styleId and
+    courses.countOfPlaces > (
+        SELECT COUNT(orders.courseId) FROM orders
+        WHERE courses.courseId = orders.courseId)");
     $projects->execute();
     $JSONres=array();
 
