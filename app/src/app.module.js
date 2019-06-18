@@ -67,6 +67,9 @@ function Routs( $routeProvider ) {
   .when('/registration/:id/:flag', {
     templateUrl: './app/src/views/registration.html',
     controller: 'RegistrationController',
+  })
+  .otherwise({
+    templateUrl: './app/src/views/error.html'
   });
 }
 })();
