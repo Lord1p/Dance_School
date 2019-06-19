@@ -10,7 +10,7 @@
     SET
         clientId = :d,
         courseId = :h,
-        code =:t,
+        code =:t
     WHERE
         orderId = :i
     ");

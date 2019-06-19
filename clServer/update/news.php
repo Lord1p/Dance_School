@@ -10,7 +10,7 @@
     SET
         date = :d,
         header = :h,
-        text =:t,
+        text =:t
     WHERE
         newsId = :i
     ");

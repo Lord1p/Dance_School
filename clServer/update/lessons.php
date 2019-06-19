@@ -10,7 +10,7 @@
     SET
         date = :n,
         courseId = :c,
-        roomID =:r,
+        roomID =:r
     WHERE
         lessonId = :i
     ");
