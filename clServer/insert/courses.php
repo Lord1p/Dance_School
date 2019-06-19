@@ -6,7 +6,7 @@
 
     $Insert = $dbh->prepare("INSERT INTO
     courses(
-    courseName,trainerId,countOfPlaces
+    courseName,trainerId,countOfPlaces,
     price,styleId,courseDescription,duration)
     VALUES(
     :n,:t,:c,:p,:s,:de,:du)");
