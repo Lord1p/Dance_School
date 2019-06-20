@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="courses">
      <attribute name="title">
@@ -553,7 +553,7 @@
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="addLesson">
        <attribute name="title">
@@ -571,20 +571,6 @@
         <layout class="QHBoxLayout" name="horizontalLayout_16">
          <item>
           <layout class="QVBoxLayout" name="courseSettingLayout_10">
-           <item>
-            <layout class="QHBoxLayout" name="courseLayout_10">
-             <item>
-              <widget class="QLabel" name="label_60">
-               <property name="text">
-                <string>Lesson name:</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="lessonAddName_3"/>
-             </item>
-            </layout>
-           </item>
            <item>
             <layout class="QHBoxLayout" name="trainerLayout_10">
              <item>
@@ -667,20 +653,6 @@
          <item>
           <layout class="QVBoxLayout" name="courseSettingLayout_14">
            <item>
-            <layout class="QHBoxLayout" name="courseLayout_17">
-             <item>
-              <widget class="QLabel" name="label_70">
-               <property name="text">
-                <string>Lesson name:</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QComboBox" name="lessonUpdateName"/>
-             </item>
-            </layout>
-           </item>
-           <item>
             <layout class="QHBoxLayout" name="trainerLayout_11">
              <item>
               <widget class="QLabel" name="label_71">
@@ -691,20 +663,6 @@
              </item>
              <item>
               <widget class="QComboBox" name="lessonUpdateCourse"/>
-             </item>
-            </layout>
-           </item>
-           <item>
-            <layout class="QHBoxLayout" name="styleLayout_11">
-             <item>
-              <widget class="QLabel" name="label_72">
-               <property name="text">
-                <string>Room:</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QComboBox" name="lessonUpdateRoom"/>
              </item>
             </layout>
            </item>
@@ -730,7 +688,35 @@
             </layout>
            </item>
            <item>
+            <layout class="QHBoxLayout" name="styleLayout_11">
+             <item>
+              <widget class="QLabel" name="label_72">
+               <property name="text">
+                <string>Room:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="lessonUpdateRoom"/>
+             </item>
+            </layout>
+           </item>
+           <item>
             <layout class="QVBoxLayout" name="descriptionLayout_13">
+             <item>
+              <layout class="QHBoxLayout" name="trainerLayout_12">
+               <item>
+                <widget class="QLabel" name="label_75">
+                 <property name="text">
+                  <string>New course name:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QComboBox" name="lessonUpdateCourse_2"/>
+               </item>
+              </layout>
+             </item>
              <item>
               <widget class="QPushButton" name="lessonUpdateButton">
                <property name="text">

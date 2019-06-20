@@ -135,9 +135,6 @@ public:
     QWidget *horizontalLayoutWidget_15;
     QHBoxLayout *horizontalLayout_16;
     QVBoxLayout *courseSettingLayout_10;
-    QHBoxLayout *courseLayout_10;
-    QLabel *label_60;
-    QLineEdit *lessonAddName_3;
     QHBoxLayout *trainerLayout_10;
     QLabel *label_61;
     QComboBox *lessonAddCourse_3;
@@ -153,19 +150,19 @@ public:
     QWidget *horizontalLayoutWidget_19;
     QHBoxLayout *horizontalLayout_20;
     QVBoxLayout *courseSettingLayout_14;
-    QHBoxLayout *courseLayout_17;
-    QLabel *label_70;
-    QComboBox *lessonUpdateName;
     QHBoxLayout *trainerLayout_11;
     QLabel *label_71;
     QComboBox *lessonUpdateCourse;
-    QHBoxLayout *styleLayout_11;
-    QLabel *label_72;
-    QComboBox *lessonUpdateRoom;
     QHBoxLayout *priceLayout_9;
     QLabel *label_73;
     QDateTimeEdit *lessonUpdateDate;
+    QHBoxLayout *styleLayout_11;
+    QLabel *label_72;
+    QComboBox *lessonUpdateRoom;
     QVBoxLayout *descriptionLayout_13;
+    QHBoxLayout *trainerLayout_12;
+    QLabel *label_75;
+    QComboBox *lessonUpdateCourse_2;
     QPushButton *lessonUpdateButton;
     QWidget *removeLesson;
     QWidget *horizontalLayoutWidget_20;
@@ -807,22 +804,6 @@ public:
         courseSettingLayout_10 = new QVBoxLayout();
         courseSettingLayout_10->setSpacing(6);
         courseSettingLayout_10->setObjectName(QString::fromUtf8("courseSettingLayout_10"));
-        courseLayout_10 = new QHBoxLayout();
-        courseLayout_10->setSpacing(6);
-        courseLayout_10->setObjectName(QString::fromUtf8("courseLayout_10"));
-        label_60 = new QLabel(horizontalLayoutWidget_15);
-        label_60->setObjectName(QString::fromUtf8("label_60"));
-
-        courseLayout_10->addWidget(label_60);
-
-        lessonAddName_3 = new QLineEdit(horizontalLayoutWidget_15);
-        lessonAddName_3->setObjectName(QString::fromUtf8("lessonAddName_3"));
-
-        courseLayout_10->addWidget(lessonAddName_3);
-
-
-        courseSettingLayout_10->addLayout(courseLayout_10);
-
         trainerLayout_10 = new QHBoxLayout();
         trainerLayout_10->setSpacing(6);
         trainerLayout_10->setObjectName(QString::fromUtf8("trainerLayout_10"));
@@ -900,22 +881,6 @@ public:
         courseSettingLayout_14 = new QVBoxLayout();
         courseSettingLayout_14->setSpacing(6);
         courseSettingLayout_14->setObjectName(QString::fromUtf8("courseSettingLayout_14"));
-        courseLayout_17 = new QHBoxLayout();
-        courseLayout_17->setSpacing(6);
-        courseLayout_17->setObjectName(QString::fromUtf8("courseLayout_17"));
-        label_70 = new QLabel(horizontalLayoutWidget_19);
-        label_70->setObjectName(QString::fromUtf8("label_70"));
-
-        courseLayout_17->addWidget(label_70);
-
-        lessonUpdateName = new QComboBox(horizontalLayoutWidget_19);
-        lessonUpdateName->setObjectName(QString::fromUtf8("lessonUpdateName"));
-
-        courseLayout_17->addWidget(lessonUpdateName);
-
-
-        courseSettingLayout_14->addLayout(courseLayout_17);
-
         trainerLayout_11 = new QHBoxLayout();
         trainerLayout_11->setSpacing(6);
         trainerLayout_11->setObjectName(QString::fromUtf8("trainerLayout_11"));
@@ -931,22 +896,6 @@ public:
 
 
         courseSettingLayout_14->addLayout(trainerLayout_11);
-
-        styleLayout_11 = new QHBoxLayout();
-        styleLayout_11->setSpacing(6);
-        styleLayout_11->setObjectName(QString::fromUtf8("styleLayout_11"));
-        label_72 = new QLabel(horizontalLayoutWidget_19);
-        label_72->setObjectName(QString::fromUtf8("label_72"));
-
-        styleLayout_11->addWidget(label_72);
-
-        lessonUpdateRoom = new QComboBox(horizontalLayoutWidget_19);
-        lessonUpdateRoom->setObjectName(QString::fromUtf8("lessonUpdateRoom"));
-
-        styleLayout_11->addWidget(lessonUpdateRoom);
-
-
-        courseSettingLayout_14->addLayout(styleLayout_11);
 
         priceLayout_9 = new QHBoxLayout();
         priceLayout_9->setSpacing(6);
@@ -965,9 +914,41 @@ public:
 
         courseSettingLayout_14->addLayout(priceLayout_9);
 
+        styleLayout_11 = new QHBoxLayout();
+        styleLayout_11->setSpacing(6);
+        styleLayout_11->setObjectName(QString::fromUtf8("styleLayout_11"));
+        label_72 = new QLabel(horizontalLayoutWidget_19);
+        label_72->setObjectName(QString::fromUtf8("label_72"));
+
+        styleLayout_11->addWidget(label_72);
+
+        lessonUpdateRoom = new QComboBox(horizontalLayoutWidget_19);
+        lessonUpdateRoom->setObjectName(QString::fromUtf8("lessonUpdateRoom"));
+
+        styleLayout_11->addWidget(lessonUpdateRoom);
+
+
+        courseSettingLayout_14->addLayout(styleLayout_11);
+
         descriptionLayout_13 = new QVBoxLayout();
         descriptionLayout_13->setSpacing(6);
         descriptionLayout_13->setObjectName(QString::fromUtf8("descriptionLayout_13"));
+        trainerLayout_12 = new QHBoxLayout();
+        trainerLayout_12->setSpacing(6);
+        trainerLayout_12->setObjectName(QString::fromUtf8("trainerLayout_12"));
+        label_75 = new QLabel(horizontalLayoutWidget_19);
+        label_75->setObjectName(QString::fromUtf8("label_75"));
+
+        trainerLayout_12->addWidget(label_75);
+
+        lessonUpdateCourse_2 = new QComboBox(horizontalLayoutWidget_19);
+        lessonUpdateCourse_2->setObjectName(QString::fromUtf8("lessonUpdateCourse_2"));
+
+        trainerLayout_12->addWidget(lessonUpdateCourse_2);
+
+
+        descriptionLayout_13->addLayout(trainerLayout_12);
+
         lessonUpdateButton = new QPushButton(horizontalLayoutWidget_19);
         lessonUpdateButton->setObjectName(QString::fromUtf8("lessonUpdateButton"));
 
@@ -1638,10 +1619,10 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(4);
+        tabWidget->setCurrentIndex(2);
         courseSettings->setCurrentIndex(1);
         removeStyle->setCurrentIndex(1);
-        lessonSettings->setCurrentIndex(0);
+        lessonSettings->setCurrentIndex(1);
         trainerSettings->setCurrentIndex(1);
         newsSettings->setCurrentIndex(1);
         roomsSettings->setCurrentIndex(0);
@@ -1686,18 +1667,17 @@ public:
         styleDeleteButton->setText(QApplication::translate("MainWindow", "Delete style", nullptr));
         removeStyle->setTabText(removeStyle->indexOf(removeStyle_2), QApplication::translate("MainWindow", "Remove", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(styles), QApplication::translate("MainWindow", "Styles", nullptr));
-        label_60->setText(QApplication::translate("MainWindow", "Lesson name:", nullptr));
         label_61->setText(QApplication::translate("MainWindow", "Course name:", nullptr));
         label_62->setText(QApplication::translate("MainWindow", "Room:", nullptr));
         label_64->setText(QApplication::translate("MainWindow", "Date:", nullptr));
         lessonAddDateTime_3->setDisplayFormat(QApplication::translate("MainWindow", "yyyy-mm-dd hh:mm:ss", nullptr));
         lessonAddbutton->setText(QApplication::translate("MainWindow", "Add new course", nullptr));
         lessonSettings->setTabText(lessonSettings->indexOf(addLesson), QApplication::translate("MainWindow", "Add new", nullptr));
-        label_70->setText(QApplication::translate("MainWindow", "Lesson name:", nullptr));
         label_71->setText(QApplication::translate("MainWindow", "Course name:", nullptr));
-        label_72->setText(QApplication::translate("MainWindow", "Room:", nullptr));
         label_73->setText(QApplication::translate("MainWindow", "Date:", nullptr));
         lessonUpdateDate->setDisplayFormat(QApplication::translate("MainWindow", "yyyy-mm-dd hh:mm:ss", nullptr));
+        label_72->setText(QApplication::translate("MainWindow", "Room:", nullptr));
+        label_75->setText(QApplication::translate("MainWindow", "New course name:", nullptr));
         lessonUpdateButton->setText(QApplication::translate("MainWindow", "Update lesson", nullptr));
         lessonSettings->setTabText(lessonSettings->indexOf(updateLesson), QApplication::translate("MainWindow", "Update", nullptr));
         label_74->setText(QApplication::translate("MainWindow", "Lesson name:", nullptr));
