@@ -26,11 +26,15 @@ CONFIG += c++11
 
 SOURCES += \
         chttpcontroller.cpp \
+        cjsondata.cpp \
+        cjsonparser.cpp \
         main.cpp \
         mainwindow.cpp
 
 HEADERS += \
         chttpcontroller.h \
+        cjsondata.h \
+        cjsonparser.h \
         mainwindow.h
 
 FORMS += \

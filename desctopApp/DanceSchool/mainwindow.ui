@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="courses">
      <attribute name="title">
@@ -71,7 +71,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="courseDescr"/>
+              <widget class="QLineEdit" name="courseName"/>
              </item>
             </layout>
            </item>
@@ -104,6 +104,20 @@
             </layout>
            </item>
            <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_3">
+             <item>
+              <widget class="QLabel" name="label_16">
+               <property name="text">
+                <string>Count of places:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="courseCountOfPalces"/>
+             </item>
+            </layout>
+           </item>
+           <item>
             <layout class="QHBoxLayout" name="priceLayout">
              <item>
               <widget class="QLabel" name="label_5">
@@ -113,30 +127,9 @@
               </widget>
              </item>
              <item>
-              <widget class="QSpinBox" name="price">
+              <widget class="QSpinBox" name="coursePrice">
                <property name="maximum">
                 <number>9999999</number>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-           <item>
-            <layout class="QHBoxLayout" name="startDateLayout">
-             <item>
-              <widget class="QLabel" name="label_2">
-               <property name="text">
-                <string>Date of start:</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QDateEdit" name="startDate">
-               <property name="displayFormat">
-                <string>MM-dd-yyyy</string>
-               </property>
-               <property name="calendarPopup">
-                <bool>true</bool>
                </property>
               </widget>
              </item>
@@ -147,17 +140,14 @@
              <item>
               <widget class="QLabel" name="label_6">
                <property name="text">
-                <string>Date of end:</string>
+                <string>Duration:</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QDateEdit" name="endDate">
-               <property name="displayFormat">
-                <string>MM-dd-yyyy</string>
-               </property>
-               <property name="calendarPopup">
-                <bool>true</bool>
+              <widget class="QSpinBox" name="courseDuration">
+               <property name="maximum">
+                <number>9999999</number>
                </property>
               </widget>
              </item>
@@ -182,7 +172,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QPlainTextEdit" name="description"/>
+            <widget class="QPlainTextEdit" name="courseDescription"/>
            </item>
            <item>
             <widget class="QPushButton" name="addCourse_2">
@@ -196,32 +186,1271 @@
         </layout>
        </widget>
       </widget>
+      <widget class="QWidget" name="updateCourse">
+       <attribute name="title">
+        <string>Update</string>
+       </attribute>
+       <widget class="QWidget" name="horizontalLayoutWidget_7">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>681</width>
+          <height>441</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <layout class="QVBoxLayout" name="courseSettingLayout_2">
+           <item>
+            <layout class="QHBoxLayout" name="courseLayout_2">
+             <item>
+              <widget class="QLabel" name="label_9">
+               <property name="text">
+                <string>Course</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="courseUpdateId"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="trainerLayout_2">
+             <item>
+              <widget class="QLabel" name="label_10">
+               <property name="text">
+                <string>Trainer:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="courseUpdateTrainer"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="styleLayout_2">
+             <item>
+              <widget class="QLabel" name="label_11">
+               <property name="text">
+                <string>Style:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="courseUpdateStyle"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="priceLayout_2">
+             <item>
+              <widget class="QLabel" name="label_12">
+               <property name="text">
+                <string>Price:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="courseUpdatePrice">
+               <property name="maximum">
+                <number>9999999</number>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_4">
+             <item>
+              <widget class="QLabel" name="label_17">
+               <property name="text">
+                <string>Count of places:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="courseUpdateCountOfPalces"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="startDateLayout_2">
+             <item>
+              <widget class="QLabel" name="label_13">
+               <property name="text">
+                <string>Duration:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="courseUpdateDuration"/>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="Line" name="line_2">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="descriptionLayout_2">
+           <item>
+            <widget class="QLabel" name="label_15">
+             <property name="text">
+              <string>Description:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPlainTextEdit" name="courseUpdateDescription"/>
+           </item>
+           <item>
+            <widget class="QPushButton" name="addCourse_3">
+             <property name="text">
+              <string>Update</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </widget>
       <widget class="QWidget" name="removeCourse">
        <attribute name="title">
         <string>Remove</string>
        </attribute>
+       <widget class="QWidget" name="verticalLayoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>681</width>
+          <height>441</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="removeCourseLayout">
+         <item>
+          <layout class="QHBoxLayout" name="courseNameLayout">
+           <item>
+            <widget class="QLabel" name="label_7">
+             <property name="text">
+              <string>Course:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="courseDeleteName"/>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnRemoveCourse">
+           <property name="text">
+            <string>Remove course</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
       </widget>
      </widget>
     </widget>
-    <widget class="QWidget" name="tab_2">
+    <widget class="QWidget" name="styles">
      <attribute name="title">
       <string>Styles</string>
      </attribute>
+     <widget class="QTabWidget" name="removeStyle">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>741</width>
+        <height>471</height>
+       </rect>
+      </property>
+      <property name="tabPosition">
+       <enum>QTabWidget::West</enum>
+      </property>
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
+      <widget class="QWidget" name="addStyle">
+       <attribute name="title">
+        <string>Add new</string>
+       </attribute>
+       <widget class="QWidget" name="horizontalLayoutWidget_16">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>691</width>
+          <height>451</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_17">
+         <item>
+          <layout class="QVBoxLayout" name="courseSettingLayout_11">
+           <item>
+            <layout class="QHBoxLayout" name="courseLayout_11">
+             <item>
+              <widget class="QLabel" name="label_63">
+               <property name="text">
+                <string>Style name:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="styleAddName"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="descriptionLayout_9">
+             <item>
+              <widget class="QPushButton" name="styleAddButton">
+               <property name="text">
+                <string>Add new style</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="updateStyle">
+       <attribute name="title">
+        <string>Update</string>
+       </attribute>
+       <widget class="QWidget" name="horizontalLayoutWidget_17">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>691</width>
+          <height>451</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_18">
+         <item>
+          <layout class="QVBoxLayout" name="courseSettingLayout_12">
+           <item>
+            <layout class="QHBoxLayout" name="courseLayout_12">
+             <item>
+              <widget class="QLabel" name="label_65">
+               <property name="text">
+                <string>Style:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="styleUpdateStyle"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="courseLayout_15">
+             <item>
+              <widget class="QLabel" name="label_68">
+               <property name="text">
+                <string>New style name:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="styleUpdateName_4"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="descriptionLayout_10">
+             <item>
+              <widget class="QPushButton" name="styleUpdateButton">
+               <property name="text">
+                <string>Update style</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="removeStyle_2">
+       <attribute name="title">
+        <string>Remove</string>
+       </attribute>
+       <widget class="QWidget" name="horizontalLayoutWidget_18">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>691</width>
+          <height>461</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_19">
+         <item>
+          <layout class="QVBoxLayout" name="courseSettingLayout_13">
+           <item>
+            <layout class="QHBoxLayout" name="courseLayout_16">
+             <item>
+              <widget class="QLabel" name="label_69">
+               <property name="text">
+                <string>Style:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="styleDeleteStyle"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="descriptionLayout_12">
+             <item>
+              <widget class="QPushButton" name="styleDeleteButton">
+               <property name="text">
+                <string>Delete style</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </widget>
     </widget>
-    <widget class="QWidget" name="tab_3">
+    <widget class="QWidget" name="lessons">
      <attribute name="title">
       <string>Lessons</string>
      </attribute>
+     <widget class="QTabWidget" name="lessonSettings">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>741</width>
+        <height>471</height>
+       </rect>
+      </property>
+      <property name="tabPosition">
+       <enum>QTabWidget::West</enum>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="addLesson">
+       <attribute name="title">
+        <string>Add new</string>
+       </attribute>
+       <widget class="QWidget" name="horizontalLayoutWidget_15">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>691</width>
+          <height>451</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_16">
+         <item>
+          <layout class="QVBoxLayout" name="courseSettingLayout_10">
+           <item>
+            <layout class="QHBoxLayout" name="courseLayout_10">
+             <item>
+              <widget class="QLabel" name="label_60">
+               <property name="text">
+                <string>Lesson name:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="lessonAddName_3"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="trainerLayout_10">
+             <item>
+              <widget class="QLabel" name="label_61">
+               <property name="text">
+                <string>Course name:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="lessonAddCourse_3"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="styleLayout_10">
+             <item>
+              <widget class="QLabel" name="label_62">
+               <property name="text">
+                <string>Room:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="lessonAddRoom_3"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="priceLayout_8">
+             <item>
+              <widget class="QLabel" name="label_64">
+               <property name="text">
+                <string>Date:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QDateTimeEdit" name="lessonAddDateTime_3">
+               <property name="displayFormat">
+                <string>yyyy-mm-dd hh:mm:ss</string>
+               </property>
+               <property name="calendarPopup">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="descriptionLayout_8">
+             <item>
+              <widget class="QPushButton" name="lessonAddbutton">
+               <property name="text">
+                <string>Add new course</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="updateLesson">
+       <attribute name="title">
+        <string>Update</string>
+       </attribute>
+       <widget class="QWidget" name="horizontalLayoutWidget_19">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>691</width>
+          <height>451</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_20">
+         <item>
+          <layout class="QVBoxLayout" name="courseSettingLayout_14">
+           <item>
+            <layout class="QHBoxLayout" name="courseLayout_17">
+             <item>
+              <widget class="QLabel" name="label_70">
+               <property name="text">
+                <string>Lesson name:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="lessonUpdateName"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="trainerLayout_11">
+             <item>
+              <widget class="QLabel" name="label_71">
+               <property name="text">
+                <string>Course name:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="lessonUpdateCourse"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="styleLayout_11">
+             <item>
+              <widget class="QLabel" name="label_72">
+               <property name="text">
+                <string>Room:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="lessonUpdateRoom"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="priceLayout_9">
+             <item>
+              <widget class="QLabel" name="label_73">
+               <property name="text">
+                <string>Date:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QDateTimeEdit" name="lessonUpdateDate">
+               <property name="displayFormat">
+                <string>yyyy-mm-dd hh:mm:ss</string>
+               </property>
+               <property name="calendarPopup">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="descriptionLayout_13">
+             <item>
+              <widget class="QPushButton" name="lessonUpdateButton">
+               <property name="text">
+                <string>Update lesson</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="removeLesson">
+       <attribute name="title">
+        <string>Remove</string>
+       </attribute>
+       <widget class="QWidget" name="horizontalLayoutWidget_20">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>691</width>
+          <height>451</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_21">
+         <item>
+          <layout class="QVBoxLayout" name="courseSettingLayout_15">
+           <item>
+            <layout class="QHBoxLayout" name="courseLayout_18">
+             <item>
+              <widget class="QLabel" name="label_74">
+               <property name="text">
+                <string>Lesson name:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="lessonDeleteName"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="descriptionLayout_14">
+             <item>
+              <widget class="QPushButton" name="lessonDeleteButton">
+               <property name="text">
+                <string>Delete lesson</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </widget>
     </widget>
-    <widget class="QWidget" name="tab_4">
+    <widget class="QWidget" name="trainers">
      <attribute name="title">
       <string>Trainers</string>
      </attribute>
+     <widget class="QTabWidget" name="trainerSettings">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>741</width>
+        <height>471</height>
+       </rect>
+      </property>
+      <property name="tabPosition">
+       <enum>QTabWidget::West</enum>
+      </property>
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
+      <widget class="QWidget" name="addTrainer">
+       <attribute name="title">
+        <string>Add new</string>
+       </attribute>
+       <widget class="QWidget" name="horizontalLayoutWidget_24">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>691</width>
+          <height>451</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_26">
+         <item>
+          <layout class="QVBoxLayout" name="courseSettingLayout_20">
+           <item>
+            <layout class="QHBoxLayout" name="courseLayout_23">
+             <item>
+              <widget class="QLabel" name="label_88">
+               <property name="text">
+                <string>Trainer name:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="trainerAddName"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="courseLayout_26">
+             <item>
+              <widget class="QLabel" name="label_89">
+               <property name="text">
+                <string>Email:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="trainerAddEmail"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="courseLayout_27">
+             <item>
+              <widget class="QLabel" name="label_90">
+               <property name="text">
+                <string>Number:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="trainerAddNmber"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="courseLayout_28">
+             <item>
+              <widget class="QLabel" name="label_91">
+               <property name="text">
+                <string>Password:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="trainerAddPassword"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="courseLayout_29">
+             <item>
+              <widget class="QLabel" name="label_97">
+               <property name="text">
+                <string>Avatar link:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="trainerAddAvatarLink"/>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_5">
+           <item>
+            <layout class="QVBoxLayout" name="descriptionLayout_19">
+             <item>
+              <widget class="QLabel" name="label_98">
+               <property name="text">
+                <string>Description:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QTextEdit" name="trainerAddDescription"/>
+             </item>
+             <item>
+              <widget class="QPushButton" name="trainerAddButton">
+               <property name="text">
+                <string>Add new trainer</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="updateLesson_3">
+       <attribute name="title">
+        <string>Update</string>
+       </attribute>
+       <widget class="QWidget" name="horizontalLayoutWidget_25">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>691</width>
+          <height>451</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_27">
+         <item>
+          <layout class="QVBoxLayout" name="courseSettingLayout_21">
+           <item>
+            <layout class="QHBoxLayout" name="courseLayout_24">
+             <item>
+              <widget class="QLabel" name="label_92">
+               <property name="text">
+                <string>Trainer name:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="trainerUpdateName"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="courseLayout_38">
+             <item>
+              <widget class="QLabel" name="label_109">
+               <property name="text">
+                <string>New trainer name:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="trainerUpdateNewName"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="courseLayout_30">
+             <item>
+              <widget class="QLabel" name="label_93">
+               <property name="text">
+                <string>Email:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="trainerUpdateEmain"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="courseLayout_31">
+             <item>
+              <widget class="QLabel" name="label_94">
+               <property name="text">
+                <string>Number:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="trainerUpdateNumber"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="courseLayout_32">
+             <item>
+              <widget class="QLabel" name="label_95">
+               <property name="text">
+                <string>Password:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="trainerUpdatePassword"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="courseLayout_33">
+             <item>
+              <widget class="QLabel" name="label_99">
+               <property name="text">
+                <string>Avatar link:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="trainerUpdateAvatarLink"/>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_6">
+           <item>
+            <layout class="QVBoxLayout" name="descriptionLayout_20">
+             <item>
+              <widget class="QLabel" name="label_100">
+               <property name="text">
+                <string>Description:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QTextEdit" name="trainerUpdateDescription"/>
+             </item>
+             <item>
+              <widget class="QPushButton" name="trainerUpdateButton">
+               <property name="text">
+                <string>Update trainer</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="removeLesson_3">
+       <attribute name="title">
+        <string>Remove</string>
+       </attribute>
+       <widget class="QWidget" name="horizontalLayoutWidget_26">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>691</width>
+          <height>451</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_28">
+         <item>
+          <layout class="QVBoxLayout" name="courseSettingLayout_22">
+           <item>
+            <layout class="QHBoxLayout" name="courseLayout_25">
+             <item>
+              <widget class="QLabel" name="label_96">
+               <property name="text">
+                <string>Trainer name:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="trainerDeleteName"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QPushButton" name="trainerDeleteButton">
+             <property name="text">
+              <string>Delete trainer</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </widget>
     </widget>
-    <widget class="QWidget" name="tab_5">
+    <widget class="QWidget" name="news">
      <attribute name="title">
       <string>News</string>
      </attribute>
+     <widget class="QTabWidget" name="newsSettings">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>741</width>
+        <height>471</height>
+       </rect>
+      </property>
+      <property name="tabPosition">
+       <enum>QTabWidget::West</enum>
+      </property>
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
+      <widget class="QWidget" name="addNews">
+       <attribute name="title">
+        <string>Add new</string>
+       </attribute>
+       <widget class="QWidget" name="horizontalLayoutWidget_27">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>691</width>
+          <height>451</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_30">
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_7">
+           <item>
+            <layout class="QVBoxLayout" name="descriptionLayout_21">
+             <item>
+              <layout class="QHBoxLayout" name="courseLayout_34">
+               <item>
+                <widget class="QLabel" name="label_101">
+                 <property name="text">
+                  <string>Header:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="newsAddHeader"/>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_106">
+               <property name="text">
+                <string>Description:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QTextEdit" name="newsAddBody"/>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_9">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_33">
+             <item>
+              <widget class="QLabel" name="label_102">
+               <property name="text">
+                <string>Date:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QDateEdit" name="newsAddDate">
+               <property name="displayFormat">
+                <string>yyyy-mm-dd</string>
+               </property>
+               <property name="calendarPopup">
+                <bool>true</bool>
+               </property>
+               <property name="currentSectionIndex">
+                <number>0</number>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QPushButton" name="newsAddButton">
+             <property name="text">
+              <string>Add new news</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="updateNew">
+       <attribute name="title">
+        <string>Update</string>
+       </attribute>
+       <widget class="QWidget" name="horizontalLayoutWidget_28">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>691</width>
+          <height>451</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_31">
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_8">
+           <item>
+            <layout class="QVBoxLayout" name="descriptionLayout_22">
+             <item>
+              <layout class="QHBoxLayout" name="courseLayout_35">
+               <item>
+                <widget class="QLabel" name="label_103">
+                 <property name="text">
+                  <string>News:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QComboBox" name="newsUpdateNews"/>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="courseLayout_36">
+               <item>
+                <widget class="QLabel" name="label_105">
+                 <property name="text">
+                  <string>Header:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="newsUpdateHeader"/>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_107">
+               <property name="text">
+                <string>Description:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QTextEdit" name="newsUpdateDescription"/>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_10">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_34">
+             <item>
+              <widget class="QLabel" name="label_104">
+               <property name="text">
+                <string>Date:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QDateEdit" name="newsUpdateDate">
+               <property name="displayFormat">
+                <string>yyyy-mm-dd</string>
+               </property>
+               <property name="calendarPopup">
+                <bool>true</bool>
+               </property>
+               <property name="currentSectionIndex">
+                <number>0</number>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QPushButton" name="newsUpdateButton">
+             <property name="text">
+              <string>Update news</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="removeNews">
+       <attribute name="title">
+        <string>Remove</string>
+       </attribute>
+       <widget class="QWidget" name="horizontalLayoutWidget_29">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>691</width>
+          <height>451</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_32">
+         <item>
+          <layout class="QVBoxLayout" name="courseSettingLayout_25">
+           <item>
+            <layout class="QHBoxLayout" name="courseLayout_44">
+             <item>
+              <widget class="QLabel" name="label_113">
+               <property name="text">
+                <string>News:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="newsDeleteName"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QPushButton" name="newsDeleteButton">
+             <property name="text">
+              <string>Delete news</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="rooms">
+     <attribute name="title">
+      <string>Rooms</string>
+     </attribute>
+     <widget class="QTabWidget" name="roomsSettings">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>741</width>
+        <height>471</height>
+       </rect>
+      </property>
+      <property name="tabPosition">
+       <enum>QTabWidget::West</enum>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="addRoom">
+       <attribute name="title">
+        <string>Add new</string>
+       </attribute>
+       <widget class="QWidget" name="horizontalLayoutWidget_30">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>691</width>
+          <height>451</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_35">
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_12">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_36">
+             <item>
+              <widget class="QLabel" name="label_110">
+               <property name="text">
+                <string>Room:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="roomsAddNumber"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QPushButton" name="roomsAddButton">
+             <property name="text">
+              <string>Add room</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="removeNews_2">
+       <attribute name="title">
+        <string>Remove</string>
+       </attribute>
+       <widget class="QWidget" name="horizontalLayoutWidget_32">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>691</width>
+          <height>451</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_39">
+         <item>
+          <layout class="QVBoxLayout" name="courseSettingLayout_28">
+           <item>
+            <layout class="QHBoxLayout" name="courseLayout_45">
+             <item>
+              <widget class="QLabel" name="label_116">
+               <property name="text">
+                <string>Rooms:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="roomDeleteNumber"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QPushButton" name="roomDeleteButton">
+             <property name="text">
+              <string>Delete room</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </widget>
     </widget>
    </widget>
   </widget>

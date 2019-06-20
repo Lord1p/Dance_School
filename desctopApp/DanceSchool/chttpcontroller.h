@@ -6,6 +6,10 @@
 #include <QNetworkAccessManager>
 #include <QNetworkRequest>
 #include <QNetworkReply>
+#include "cjsonparser.h"
+#include <QHttpMultiPart>
+#include <QHttpPart>
+#include <QUrl>
 
 class CHttpController : public QObject
 {
@@ -19,12 +23,13 @@ public:
 	CHttpController(const CHttpController&) = delete;
 	CHttpController& operator =(const CHttpController&) = delete;
 	static CHttpController* getInstatnce();
-	bool POST(const QString&);
+	bool POST(const QString&, const QJsonObject&);
 	bool GET(const QString&);
 signals:
-
+	void finished(QNetworkReply*);
 public slots:
-	void printResult(QNetworkReply*);
+	void getResult(QNetworkReply*);
+	void getPostRespone(QNetworkReply*);
 };
 
 #endif // CHTTPCONTROLLER_H

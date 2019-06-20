@@ -4,13 +4,12 @@ CHttpController* CHttpController::ms_instance;
 
 CHttpController::CHttpController(QObject *parent) : QObject(parent){
 	m_manager = new QNetworkAccessManager();
-	connect(m_manager,&QNetworkAccessManager::finished,this,&CHttpController::printResult);
-	qDebug("Create successfuly!");
+	connect(m_manager,&QNetworkAccessManager::finished,this,&CHttpController::getResult);
+	connect(m_manager,&QNetworkAccessManager::finished,this,&CHttpController::getPostRespone);
 }
 
 CHttpController::~CHttpController(){
 	delete m_manager;
-	qDebug("Delete successfuly!");
 }
 
 CHttpController* CHttpController::getInstatnce(){
@@ -30,11 +29,24 @@ bool CHttpController::GET(const QString & url){
 	return true;
 }
 
-void CHttpController::printResult(QNetworkReply* reply){
+bool CHttpController::POST(const QString & url, const QJsonObject& object){
+	request.setUrl(QUrl(url));
+	QJsonDocument doc(object);
+	request.setHeader(QNetworkRequest::ContentTypeHeader, "application/x-www-form-urlencoded");
+	auto text = doc.toJson();
+	m_manager->post(request,doc.toJson());
+	return true;
+}
+
+void CHttpController::getResult(QNetworkReply* reply){
 	if (reply->error()) {
 		qDebug() << reply->errorString();
 		return;
 	}
 	QString answer = reply->readAll();
-	qDebug() << answer;
+	CJsonParser::getParser()->setData(answer);
+}
+
+void CHttpController::getPostRespone(QNetworkReply* reply){
+	qDebug() << reply->readAll();
 }
