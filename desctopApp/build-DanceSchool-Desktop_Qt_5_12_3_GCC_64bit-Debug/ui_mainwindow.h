@@ -1639,7 +1639,7 @@ public:
         retranslateUi(MainWindow);
 
         tabWidget->setCurrentIndex(4);
-        courseSettings->setCurrentIndex(0);
+        courseSettings->setCurrentIndex(1);
         removeStyle->setCurrentIndex(1);
         lessonSettings->setCurrentIndex(0);
         trainerSettings->setCurrentIndex(1);
@@ -1735,7 +1735,7 @@ public:
         label_105->setText(QApplication::translate("MainWindow", "Header:", nullptr));
         label_107->setText(QApplication::translate("MainWindow", "Description:", nullptr));
         label_104->setText(QApplication::translate("MainWindow", "Date:", nullptr));
-        newsUpdateDate->setDisplayFormat(QApplication::translate("MainWindow", "yyyy-mm-dd", nullptr));
+        newsUpdateDate->setDisplayFormat(QApplication::translate("MainWindow", "yyyy-MM-dd", nullptr));
         newsUpdateButton->setText(QApplication::translate("MainWindow", "Update news", nullptr));
         newsSettings->setTabText(newsSettings->indexOf(updateNew), QApplication::translate("MainWindow", "Update", nullptr));
         label_113->setText(QApplication::translate("MainWindow", "News:", nullptr));

@@ -530,7 +530,7 @@ void MainWindow::on_trainerUpdateName_currentIndexChanged(int index)
 		auto trainerName = ui->trainerUpdateName->currentText();
 		ui->trainerUpdateNewName->setText(trainerName);
 		ui->trainerUpdateEmain->setText(CJsonParser::getParser()->findData("trainers",trainerName,"email"));
-		ui->trainerUpdateNumber->setText(CJsonParser::getParser()->findData("trainers",trainerName,"tellNamber"));
+		ui->trainerUpdateNumber->setText(CJsonParser::getParser()->findData("trainers",trainerName,"tellNumber"));
 		ui->trainerUpdatePassword->setText(CJsonParser::getParser()->findData("trainers",trainerName,"password"));
 		ui->trainerUpdateAvatarLink->setText(CJsonParser::getParser()->findData("trainers",trainerName,"avatarLink"));
 		ui->trainerUpdateDescription->setText(CJsonParser::getParser()->findData("trainers",trainerName,"trainerDescription"));
@@ -548,7 +548,8 @@ void MainWindow::on_newsUpdateNews_currentIndexChanged(const QString &arg1)
 		auto news = ui->newsUpdateNews->currentText();
 		ui->newsUpdateHeader->setText(news);
 		ui->newsUpdateDescription->setText(CJsonParser::getParser()->findData("news",news,"text"));
-		ui->newsUpdateDate->setDateTime(QDateTime::fromString(CJsonParser::getParser()->findData("news",news,"date")));
+		qDebug() << CJsonParser::getParser()->findData("news",news,"date");
+		ui->newsUpdateDate->setDate(QDate::fromString(CJsonParser::getParser()->findData("news",news,"date"),"yyyy-MM-dd"));
 	});
 	CHttpController::getInstatnce()->GET("http://localhost/Dance_School/clServer/get/news.php");
 }
