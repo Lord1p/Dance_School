@@ -553,7 +553,7 @@
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="addLesson">
        <attribute name="title">
@@ -611,10 +611,16 @@
              <item>
               <widget class="QDateTimeEdit" name="lessonAddDateTime_3">
                <property name="displayFormat">
-                <string>yyyy-mm-dd hh:mm:ss</string>
+                <string>yyyy-MM-dd hh:mm:ss</string>
                </property>
                <property name="calendarPopup">
                 <bool>true</bool>
+               </property>
+               <property name="currentSectionIndex">
+                <number>0</number>
+               </property>
+               <property name="timeSpec">
+                <enum>Qt::TimeZone</enum>
                </property>
               </widget>
              </item>
@@ -625,7 +631,7 @@
              <item>
               <widget class="QPushButton" name="lessonAddbutton">
                <property name="text">
-                <string>Add new course</string>
+                <string>Add new lesson</string>
                </property>
               </widget>
              </item>
@@ -662,7 +668,21 @@
               </widget>
              </item>
              <item>
-              <widget class="QComboBox" name="lessonUpdateCourse"/>
+              <widget class="QComboBox" name="lessonUpdateOldCourse"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="trainerLayout_13">
+             <item>
+              <widget class="QLabel" name="label_76">
+               <property name="text">
+                <string>Date:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="lessonUpdateOldDate"/>
              </item>
             </layout>
            </item>
@@ -671,14 +691,14 @@
              <item>
               <widget class="QLabel" name="label_73">
                <property name="text">
-                <string>Date:</string>
+                <string>New date:</string>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QDateTimeEdit" name="lessonUpdateDate">
                <property name="displayFormat">
-                <string>yyyy-mm-dd hh:mm:ss</string>
+                <string>yyyy-MM-dd hh:mm:ss</string>
                </property>
                <property name="calendarPopup">
                 <bool>true</bool>
@@ -703,20 +723,6 @@
            </item>
            <item>
             <layout class="QVBoxLayout" name="descriptionLayout_13">
-             <item>
-              <layout class="QHBoxLayout" name="trainerLayout_12">
-               <item>
-                <widget class="QLabel" name="label_75">
-                 <property name="text">
-                  <string>New course name:</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QComboBox" name="lessonUpdateCourse_2"/>
-               </item>
-              </layout>
-             </item>
              <item>
               <widget class="QPushButton" name="lessonUpdateButton">
                <property name="text">
@@ -752,12 +758,26 @@
              <item>
               <widget class="QLabel" name="label_74">
                <property name="text">
-                <string>Lesson name:</string>
+                <string>Course name:</string>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QComboBox" name="lessonDeleteName"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="trainerLayout_14">
+             <item>
+              <widget class="QLabel" name="label_77">
+               <property name="text">
+                <string>Date:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="lessonDeleteDate"/>
              </item>
             </layout>
            </item>
@@ -1105,7 +1125,7 @@
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="addNews">
        <attribute name="title">
@@ -1167,7 +1187,7 @@
              <item>
               <widget class="QDateEdit" name="newsAddDate">
                <property name="displayFormat">
-                <string>yyyy-mm-dd</string>
+                <string>yyyy-MM-dd</string>
                </property>
                <property name="calendarPopup">
                 <bool>true</bool>

@@ -23,6 +23,10 @@ public:
 	const QJsonObject& getData() const {return data; }
 	const QStringList& getDataList(const QString&,const QString&);
 	QString findData(const QString&,const QString&,const QString&);
+	QString findData(const QString&,const QString&,const QString&,const QString&);
+	QString findData(const QString&,const QString&,const QString&,const QString&,const QString&);
+	const QStringList& findListData(const QString&,const QString&,const QString&);
+	const QStringList& findListData(const QString&,const QString&,const QString&,const QString&);
 signals:
 	void dataModified();
 public slots:

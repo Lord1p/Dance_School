@@ -152,7 +152,10 @@ public:
     QVBoxLayout *courseSettingLayout_14;
     QHBoxLayout *trainerLayout_11;
     QLabel *label_71;
-    QComboBox *lessonUpdateCourse;
+    QComboBox *lessonUpdateOldCourse;
+    QHBoxLayout *trainerLayout_13;
+    QLabel *label_76;
+    QComboBox *lessonUpdateOldDate;
     QHBoxLayout *priceLayout_9;
     QLabel *label_73;
     QDateTimeEdit *lessonUpdateDate;
@@ -160,9 +163,6 @@ public:
     QLabel *label_72;
     QComboBox *lessonUpdateRoom;
     QVBoxLayout *descriptionLayout_13;
-    QHBoxLayout *trainerLayout_12;
-    QLabel *label_75;
-    QComboBox *lessonUpdateCourse_2;
     QPushButton *lessonUpdateButton;
     QWidget *removeLesson;
     QWidget *horizontalLayoutWidget_20;
@@ -171,6 +171,9 @@ public:
     QHBoxLayout *courseLayout_18;
     QLabel *label_74;
     QComboBox *lessonDeleteName;
+    QHBoxLayout *trainerLayout_14;
+    QLabel *label_77;
+    QComboBox *lessonDeleteDate;
     QVBoxLayout *descriptionLayout_14;
     QPushButton *lessonDeleteButton;
     QWidget *trainers;
@@ -847,6 +850,8 @@ public:
         lessonAddDateTime_3 = new QDateTimeEdit(horizontalLayoutWidget_15);
         lessonAddDateTime_3->setObjectName(QString::fromUtf8("lessonAddDateTime_3"));
         lessonAddDateTime_3->setCalendarPopup(true);
+        lessonAddDateTime_3->setCurrentSectionIndex(0);
+        lessonAddDateTime_3->setTimeSpec(Qt::TimeZone);
 
         priceLayout_8->addWidget(lessonAddDateTime_3);
 
@@ -889,13 +894,29 @@ public:
 
         trainerLayout_11->addWidget(label_71);
 
-        lessonUpdateCourse = new QComboBox(horizontalLayoutWidget_19);
-        lessonUpdateCourse->setObjectName(QString::fromUtf8("lessonUpdateCourse"));
+        lessonUpdateOldCourse = new QComboBox(horizontalLayoutWidget_19);
+        lessonUpdateOldCourse->setObjectName(QString::fromUtf8("lessonUpdateOldCourse"));
 
-        trainerLayout_11->addWidget(lessonUpdateCourse);
+        trainerLayout_11->addWidget(lessonUpdateOldCourse);
 
 
         courseSettingLayout_14->addLayout(trainerLayout_11);
+
+        trainerLayout_13 = new QHBoxLayout();
+        trainerLayout_13->setSpacing(6);
+        trainerLayout_13->setObjectName(QString::fromUtf8("trainerLayout_13"));
+        label_76 = new QLabel(horizontalLayoutWidget_19);
+        label_76->setObjectName(QString::fromUtf8("label_76"));
+
+        trainerLayout_13->addWidget(label_76);
+
+        lessonUpdateOldDate = new QComboBox(horizontalLayoutWidget_19);
+        lessonUpdateOldDate->setObjectName(QString::fromUtf8("lessonUpdateOldDate"));
+
+        trainerLayout_13->addWidget(lessonUpdateOldDate);
+
+
+        courseSettingLayout_14->addLayout(trainerLayout_13);
 
         priceLayout_9 = new QHBoxLayout();
         priceLayout_9->setSpacing(6);
@@ -933,22 +954,6 @@ public:
         descriptionLayout_13 = new QVBoxLayout();
         descriptionLayout_13->setSpacing(6);
         descriptionLayout_13->setObjectName(QString::fromUtf8("descriptionLayout_13"));
-        trainerLayout_12 = new QHBoxLayout();
-        trainerLayout_12->setSpacing(6);
-        trainerLayout_12->setObjectName(QString::fromUtf8("trainerLayout_12"));
-        label_75 = new QLabel(horizontalLayoutWidget_19);
-        label_75->setObjectName(QString::fromUtf8("label_75"));
-
-        trainerLayout_12->addWidget(label_75);
-
-        lessonUpdateCourse_2 = new QComboBox(horizontalLayoutWidget_19);
-        lessonUpdateCourse_2->setObjectName(QString::fromUtf8("lessonUpdateCourse_2"));
-
-        trainerLayout_12->addWidget(lessonUpdateCourse_2);
-
-
-        descriptionLayout_13->addLayout(trainerLayout_12);
-
         lessonUpdateButton = new QPushButton(horizontalLayoutWidget_19);
         lessonUpdateButton->setObjectName(QString::fromUtf8("lessonUpdateButton"));
 
@@ -989,6 +994,22 @@ public:
 
 
         courseSettingLayout_15->addLayout(courseLayout_18);
+
+        trainerLayout_14 = new QHBoxLayout();
+        trainerLayout_14->setSpacing(6);
+        trainerLayout_14->setObjectName(QString::fromUtf8("trainerLayout_14"));
+        label_77 = new QLabel(horizontalLayoutWidget_20);
+        label_77->setObjectName(QString::fromUtf8("label_77"));
+
+        trainerLayout_14->addWidget(label_77);
+
+        lessonDeleteDate = new QComboBox(horizontalLayoutWidget_20);
+        lessonDeleteDate->setObjectName(QString::fromUtf8("lessonDeleteDate"));
+
+        trainerLayout_14->addWidget(lessonDeleteDate);
+
+
+        courseSettingLayout_15->addLayout(trainerLayout_14);
 
         descriptionLayout_14 = new QVBoxLayout();
         descriptionLayout_14->setSpacing(6);
@@ -1622,9 +1643,9 @@ public:
         tabWidget->setCurrentIndex(2);
         courseSettings->setCurrentIndex(1);
         removeStyle->setCurrentIndex(1);
-        lessonSettings->setCurrentIndex(1);
+        lessonSettings->setCurrentIndex(2);
         trainerSettings->setCurrentIndex(1);
-        newsSettings->setCurrentIndex(1);
+        newsSettings->setCurrentIndex(0);
         roomsSettings->setCurrentIndex(0);
 
 
@@ -1670,17 +1691,18 @@ public:
         label_61->setText(QApplication::translate("MainWindow", "Course name:", nullptr));
         label_62->setText(QApplication::translate("MainWindow", "Room:", nullptr));
         label_64->setText(QApplication::translate("MainWindow", "Date:", nullptr));
-        lessonAddDateTime_3->setDisplayFormat(QApplication::translate("MainWindow", "yyyy-mm-dd hh:mm:ss", nullptr));
-        lessonAddbutton->setText(QApplication::translate("MainWindow", "Add new course", nullptr));
+        lessonAddDateTime_3->setDisplayFormat(QApplication::translate("MainWindow", "yyyy-MM-dd hh:mm:ss", nullptr));
+        lessonAddbutton->setText(QApplication::translate("MainWindow", "Add new lesson", nullptr));
         lessonSettings->setTabText(lessonSettings->indexOf(addLesson), QApplication::translate("MainWindow", "Add new", nullptr));
         label_71->setText(QApplication::translate("MainWindow", "Course name:", nullptr));
-        label_73->setText(QApplication::translate("MainWindow", "Date:", nullptr));
-        lessonUpdateDate->setDisplayFormat(QApplication::translate("MainWindow", "yyyy-mm-dd hh:mm:ss", nullptr));
+        label_76->setText(QApplication::translate("MainWindow", "Date:", nullptr));
+        label_73->setText(QApplication::translate("MainWindow", "New date:", nullptr));
+        lessonUpdateDate->setDisplayFormat(QApplication::translate("MainWindow", "yyyy-MM-dd hh:mm:ss", nullptr));
         label_72->setText(QApplication::translate("MainWindow", "Room:", nullptr));
-        label_75->setText(QApplication::translate("MainWindow", "New course name:", nullptr));
         lessonUpdateButton->setText(QApplication::translate("MainWindow", "Update lesson", nullptr));
         lessonSettings->setTabText(lessonSettings->indexOf(updateLesson), QApplication::translate("MainWindow", "Update", nullptr));
-        label_74->setText(QApplication::translate("MainWindow", "Lesson name:", nullptr));
+        label_74->setText(QApplication::translate("MainWindow", "Course name:", nullptr));
+        label_77->setText(QApplication::translate("MainWindow", "Date:", nullptr));
         lessonDeleteButton->setText(QApplication::translate("MainWindow", "Delete lesson", nullptr));
         lessonSettings->setTabText(lessonSettings->indexOf(removeLesson), QApplication::translate("MainWindow", "Remove", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(lessons), QApplication::translate("MainWindow", "Lessons", nullptr));
@@ -1708,7 +1730,7 @@ public:
         label_101->setText(QApplication::translate("MainWindow", "Header:", nullptr));
         label_106->setText(QApplication::translate("MainWindow", "Description:", nullptr));
         label_102->setText(QApplication::translate("MainWindow", "Date:", nullptr));
-        newsAddDate->setDisplayFormat(QApplication::translate("MainWindow", "yyyy-mm-dd", nullptr));
+        newsAddDate->setDisplayFormat(QApplication::translate("MainWindow", "yyyy-MM-dd", nullptr));
         newsAddButton->setText(QApplication::translate("MainWindow", "Add new news", nullptr));
         newsSettings->setTabText(newsSettings->indexOf(addNews), QApplication::translate("MainWindow", "Add new", nullptr));
         label_103->setText(QApplication::translate("MainWindow", "News:", nullptr));

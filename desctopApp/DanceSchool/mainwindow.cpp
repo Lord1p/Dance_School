@@ -26,6 +26,10 @@ MainWindow::MainWindow(QWidget *parent) :
 	ui->courseCountOfPalces->setValue(settings.value("palcescount","").toInt());
 	ui->courseDescription->appendPlainText(settings.value("description","").toString());
 	ui->courseDuration->setValue(settings.value("duration","").toInt());
+	ui->lessonAddDateTime_3->setDateTime(QDateTime::currentDateTime());
+	ui->lessonUpdateDate->setDateTime(QDateTime::currentDateTime());
+	ui->newsAddDate->setDate(QDate::currentDate());
+	ui->newsUpdateDate->setDate(QDate::currentDate());
 }
 
 MainWindow::~MainWindow()
@@ -504,10 +508,10 @@ void MainWindow::on_tabWidget_currentChanged(int index)
 			CJsonParser::getParser()->disconnect();
 			ui->lessonAddCourse_3->clear();
 			ui->lessonAddCourse_3->addItems(CJsonParser::getParser()->getDataList("courses","courseName"));
-			ui->lessonUpdateCourse->clear();
-			ui->lessonUpdateCourse->addItems(CJsonParser::getParser()->getDataList("courses","courseName"));
-			ui->lessonUpdateCourse_2->clear();
-			ui->lessonUpdateCourse_2->addItems(CJsonParser::getParser()->getDataList("courses","courseName"));
+			ui->lessonUpdateOldCourse->clear();
+			ui->lessonUpdateOldCourse->addItems(CJsonParser::getParser()->getDataList("courses","courseName"));
+			ui->lessonDeleteName->clear();
+			ui->lessonDeleteName->addItems(CJsonParser::getParser()->getDataList("courses","courseName"));
 			connect(CJsonParser::getParser(),&CJsonParser::dataModified,this,[&](){
 				CJsonParser::getParser()->disconnect();
 				ui->lessonAddRoom_3->clear();
@@ -545,6 +549,10 @@ void MainWindow::on_tabWidget_currentChanged(int index)
 			CJsonParser::getParser()->disconnect();
 			ui->roomDeleteNumber->clear();
 			ui->roomDeleteNumber->addItems(CJsonParser::getParser()->getDataList("rooms","roomNumber"));
+			ui->lessonAddRoom_3->clear();
+			ui->lessonAddRoom_3->addItems(CJsonParser::getParser()->getDataList("rooms","roomNumber"));
+			ui->lessonUpdateRoom->clear();
+			ui->lessonUpdateRoom->addItems(CJsonParser::getParser()->getDataList("rooms","roomNumber"));
 		});
 		CHttpController::getInstatnce()->GET("http://localhost/Dance_School/clServer/get/rooms.php");
 		break;
@@ -590,14 +598,140 @@ void MainWindow::on_newsUpdateNews_currentIndexChanged(const QString &arg1)
 	CHttpController::getInstatnce()->GET("http://localhost/Dance_School/clServer/get/news.php");
 }
 
-void MainWindow::on_lessonUpdateCourse_currentIndexChanged(const QString &arg1)
-{
-	//CJsonData::getInstance()->clearData();
-	//CJsonParser::getParser()->disconnect();
-	//CJsonData::getInstance()->disconnect();
-	//connect(CJsonParser::getParser(),&CJsonParser::dataModified,this,[&](){settings.setValue("courseUpdeteTrainerId",CJsonParser::getParser()->findData("courses",courseDescr,"trainerId"));
-	//	settings.setValue("courseUpdeteStyleId",CJsonParser::getParser()->findData("courses",courseDescr,"styleId"));
-	//});
-	//CHttpController::getInstatnce()->GET("http://localhost/Dance_School/clServer/get/lessons.php");
 
+void MainWindow::on_lessonUpdateButton_clicked()
+{
+
+	CJsonData::getInstance()->clearData();
+	CJsonParser::getParser()->disconnect();
+	CJsonData::getInstance()->disconnect();
+
+	CJsonData::getInstance()->setData("courseId",settings.value("lessonCourseId","").toString());
+	CJsonData::getInstance()->setData("roomId",settings.value("lessonRoomId","").toString());
+	CJsonData::getInstance()->setData("date",ui->lessonUpdateDate->text());
+	connect(CJsonParser::getParser(),&CJsonParser::dataModified,this,[&](){
+		CJsonParser::getParser()->disconnect();
+		auto id = CJsonParser::getParser()->findData("lessons",settings.value("lessonCourseId","").toString(),ui->lessonUpdateOldDate->currentText(),"lessonId");
+		CJsonData::getInstance()->setData("lessonId",id);
+		emit CJsonData::getInstance()->readyToPost();
+	});
+	connect(CJsonData::getInstance(),&CJsonData::readyToPost,this,[&](){
+		CJsonData::getInstance()->disconnect();
+		CHttpController::getInstatnce()->POST("http://localhost/Dance_School/clServer/delete/lessons.php",CJsonData::getInstance()->getData());
+	});
+	CHttpController::getInstatnce()->GET("http://localhost/Dance_School/clServer/get/lessons.php");
+}
+
+void MainWindow::on_lessonUpdateOldCourse_currentIndexChanged(const QString &arg1)
+{
+
+	CJsonData::getInstance()->clearData();
+	CJsonParser::getParser()->disconnect();
+	CJsonData::getInstance()->disconnect();
+	connect(CJsonParser::getParser(),&CJsonParser::dataModified,this,[&](){
+		CJsonParser::getParser()->disconnect();
+		auto id = CJsonParser::getParser()->findData("courses",ui->lessonUpdateOldCourse->currentText(),"courseId");
+		settings.setValue("lessonCourseId",id);
+		connect(CJsonParser::getParser(),&CJsonParser::dataModified,this,[&](){
+			CJsonParser::getParser()->disconnect();
+			auto lessons = CJsonParser::getParser()->findListData("lessons",settings.value("lessonCourseId","").toString(),"date");
+			ui->lessonUpdateOldDate->clear();
+			ui->lessonUpdateOldDate->addItems(lessons);
+		});
+		CHttpController::getInstatnce()->GET("http://localhost/Dance_School/clServer/get/lessons.php");
+	});
+	CHttpController::getInstatnce()->GET("http://localhost/Dance_School/clServer/get/courses.php");
+
+}
+
+void MainWindow::on_lessonAddCourse_3_currentIndexChanged(const QString &arg1)
+{
+}
+
+void MainWindow::on_lessonUpdateOldDate_currentIndexChanged(const QString &arg1)
+{
+	CJsonData::getInstance()->clearData();
+	CJsonParser::getParser()->disconnect();
+	CJsonData::getInstance()->disconnect();
+	connect(CJsonParser::getParser(),&CJsonParser::dataModified,this,[&](){
+		CJsonParser::getParser()->disconnect();
+		auto id = CJsonParser::getParser()->findData("lessons",settings.value("lessonCourseId","").toString(),ui->lessonUpdateOldDate->currentText(),"roomId");
+		settings.setValue("lessonRoomId",id);
+		connect(CJsonParser::getParser(),&CJsonParser::dataModified,this,[&](){
+			CJsonParser::getParser()->disconnect();
+			auto room = CJsonParser::getParser()->findData("rooms",settings.value("lessonRoomId","").toString(),"roomNumber");
+			ui->lessonUpdateRoom->setCurrentText(room);
+		});
+		CHttpController::getInstatnce()->GET("http://localhost/Dance_School/clServer/get/rooms.php");
+	});
+	CHttpController::getInstatnce()->GET("http://localhost/Dance_School/clServer/get/lessons.php");
+}
+
+void MainWindow::on_lessonUpdateRoom_currentIndexChanged(const QString &arg1)
+{
+
+	CJsonData::getInstance()->clearData();
+	CJsonParser::getParser()->disconnect();
+	CJsonData::getInstance()->disconnect();
+	connect(CJsonParser::getParser(),&CJsonParser::dataModified,this,[&](){
+		CJsonParser::getParser()->disconnect();
+		auto id = CJsonParser::getParser()->findData("rooms",ui->lessonUpdateRoom->currentText(),"roomId");
+		settings.setValue("lessonRoomId",id);
+	});
+	CHttpController::getInstatnce()->GET("http://localhost/Dance_School/clServer/get/rooms.php");
+}
+
+void MainWindow::on_lessonDeleteButton_clicked()
+{
+	CJsonData::getInstance()->clearData();
+	CJsonParser::getParser()->disconnect();
+	CJsonData::getInstance()->disconnect();
+	connect(CJsonParser::getParser(),&CJsonParser::dataModified,this,[&](){
+		CJsonParser::getParser()->disconnect();
+		auto lessonId = CJsonParser::getParser()->findData("lessons",settings.value("lessonDeleteCourseId","").toString(),settings.value("lessonDeleteRoomId","").toString(),ui->lessonDeleteDate->currentText(),"lessonId");
+		CJsonData::getInstance()->setData("lessonId",lessonId);
+		qDebug() << lessonId;
+		CHttpController::getInstatnce()->POST("http://localhost/Dance_School/clServer/delete/lessons.php",CJsonData::getInstance()->getData());
+	});
+	CHttpController::getInstatnce()->GET("http://localhost/Dance_School/clServer/get/lessons.php");
+}
+
+void MainWindow::on_lessonDeleteName_currentIndexChanged(const QString &arg1)
+{
+	CJsonData::getInstance()->clearData();
+	CJsonParser::getParser()->disconnect();
+	CJsonData::getInstance()->disconnect();
+	connect(CJsonParser::getParser(),&CJsonParser::dataModified,this,[&](){
+		CJsonParser::getParser()->disconnect();
+		auto id = CJsonParser::getParser()->findData("courses",ui->lessonDeleteName->currentText(),"courseId");
+		settings.setValue("lessonDeleteCourseId",id);
+		connect(CJsonParser::getParser(),&CJsonParser::dataModified,this,[&](){
+			CJsonParser::getParser()->disconnect();
+			auto lessons = CJsonParser::getParser()->findListData("lessons",settings.value("lessonDeleteCourseId","").toString(),"date");
+			ui->lessonDeleteDate->clear();
+			ui->lessonDeleteDate->addItems(lessons);
+		});
+		CHttpController::getInstatnce()->GET("http://localhost/Dance_School/clServer/get/lessons.php");
+	});
+	CHttpController::getInstatnce()->GET("http://localhost/Dance_School/clServer/get/courses.php");
+}
+
+
+void MainWindow::on_lessonDeleteDate_currentIndexChanged(const QString &arg1)
+{
+	CJsonData::getInstance()->clearData();
+	CJsonParser::getParser()->disconnect();
+	CJsonData::getInstance()->disconnect();
+	//connect(CJsonParser::getParser(),&CJsonParser::dataModified,this,[&](){
+	//	CJsonParser::getParser()->disconnect();
+	//	auto rooms = CJsonParser::getParser()->findListData("lessons",settings.value("lessonDeleteCourseId"),ui->lessonDeleteDate->currentText(),"roomId");
+	//	settings.setValue("lessonDeleteRoomId",id);
+	//	connect(CJsonParser::getParser(),&CJsonParser::dataModified,this,[&](){
+	//		CJsonParser::getParser()->disconnect();
+	//		auto room = CJsonParser::getParser()->findData("rooms",settings.value("lessonDeleteRoomId","").toString(),"roomNumber");
+	//		ui->lessonDeleteRoom->setCurrentText(room);
+	//	});
+	//	CHttpController::getInstatnce()->GET("http://localhost/Dance_School/clServer/get/rooms.php");
+	//});
+	CHttpController::getInstatnce()->GET("http://localhost/Dance_School/clServer/get/lessons.php");
 }

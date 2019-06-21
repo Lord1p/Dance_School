@@ -64,7 +64,21 @@ private slots:
 
 	void on_newsUpdateNews_currentIndexChanged(const QString &arg1);
 
-	void on_lessonUpdateCourse_currentIndexChanged(const QString &arg1);
+	void on_lessonUpdateButton_clicked();
+
+	void on_lessonUpdateOldCourse_currentIndexChanged(const QString &arg1);
+
+	void on_lessonAddCourse_3_currentIndexChanged(const QString &arg1);
+
+	void on_lessonUpdateOldDate_currentIndexChanged(const QString &arg1);
+
+	void on_lessonUpdateRoom_currentIndexChanged(const QString &arg1);
+
+	void on_lessonDeleteButton_clicked();
+
+	void on_lessonDeleteName_currentIndexChanged(const QString &arg1);
+
+	void on_lessonDeleteDate_currentIndexChanged(const QString &arg1);
 
 private:
 	Ui::MainWindow *ui;
